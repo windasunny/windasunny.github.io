@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Http Session on Sunny Site</title>
+        <link>http://localhost:1313/tags/http-session/</link>
+        <description>Recent content in Http Session on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/http-session/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Day 30] 閑的沒事 - HTTP SESSION</title>
+        <link>http://localhost:1313/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</link>
+        <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</guid>
+        <description>&lt;h1 id=&#34;http-session&#34;&gt;Http session&lt;/h1&gt;
+&lt;p&gt;Http session 利用了HTTP/1.1中的&lt;code&gt;Keep-Alive&lt;/code&gt;功能。&lt;/p&gt;
+&lt;h1 id=&#34;keep-alive&#34;&gt;Keep-Alive&lt;/h1&gt;
+&lt;p&gt;早期的Http版本中，每次的Http request&amp;amp;response完成後，連線就會被關閉。也就是說，當網頁有多個元素的時候（圖片、CDN、腳本等），每個元素的請求都要重新建一個TCP連線，因為建立TCP連線需要時間（從TCP&amp;amp;UDP連線可以測得出來，同樣的code UDP協議就是快很多），這個效果是非常不好的。&lt;/p&gt;
+&lt;p&gt;為了解決這個問題，HTTP/1.1引入了&lt;code&gt;Persistent Connection&lt;/code&gt;（持久連線），也可以稱作&lt;code&gt;Keep-Alive&lt;/code&gt;，功能目的是允許在已經建立的TCP連線上執行多次的Http request&amp;amp;response，不用在重新連接。&lt;/p&gt;
+&lt;h1 id=&#34;http-flood&#34;&gt;Http Flood&lt;/h1&gt;
+&lt;p&gt;Http Get Flood和Http Post Flood兩個都是常見的Http Flood攻擊，跟Http session一樣作用於應用層，同樣更難檢測跟防禦。&lt;/p&gt;
+&lt;p&gt;但Http Get/Post Flood都是大量發送Request到目標主機，嘗試消耗目標服務器的頻寬與資源；Http Session Flood主要是濫用Http session管理機制嘗試消耗目標服務器的資源，比如說創建大量未完成或畸形的對話連接。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

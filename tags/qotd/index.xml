@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Qotd on Sunny Site</title>
+        <link>http://localhost:1313/tags/qotd/</link>
+        <description>Recent content in Qotd on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/qotd/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Day 25] 閑的沒事 - QOTD反射攻擊</title>
+        <link>http://localhost:1313/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <description>&lt;h1 id=&#34;qotd&#34;&gt;QOTD&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/alphaolomi/51f27912abe699dd5db95cfbc21d1a2d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quote of the Day（每日引言）&lt;/a&gt;協議是為了在網際網絡上提供一種簡單的測試和演示網路通訊的能力而創建的。它的主要目的不是為了傳送實際的有用數據，而是為了展示伺服器之間的基本通信能力和連接性。在現今已經相對不常見，並且在大多數實際應用中已經被淘汰或不再使用。但是還是出現在了&lt;a class=&#34;link&#34; href=&#34;https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2021-q2-zh-tw/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cloudflare 2021 年第二季 DDoS 攻擊趨勢&lt;/a&gt;報告中。&lt;/p&gt;
+&lt;h1 id=&#34;測試&#34;&gt;測試&lt;/h1&gt;
+&lt;p&gt;在inet設定qotd，qotd佔用port 17&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; telnet localhost 17
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;code&#34;&gt;code&lt;/h1&gt;
+&lt;p&gt;跟chargen一樣，使感染的機器把response送到目標機
+把port改成17就可以了&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

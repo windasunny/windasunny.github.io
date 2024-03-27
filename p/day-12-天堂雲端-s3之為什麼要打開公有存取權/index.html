@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="AWS S3 是什麼？ AWS Simple Storage Service (S3)是一個object storage service，主要用於在雲端環境中的存儲與任何數量的數據檢索。高可用性、高耐久性、及整合AWS生態系統使得此項服務廣為人知。 也就是說，文件、圖檔、靜態庫（javascript庫等）、用戶上傳內容、靜態網站、資料庫資料、日誌、映像檔都可以放在S3裡面，而S3也提供災難復原及備份還原等功能。 所以為什麼會設定公開權限？ AWS S3在建立一個新的S3 bucket的時候，AWS都會提醒使用者，盡量不要使用公開存取權限 &lt;- 新建bucket的時候，會有AWS的友善提醒 但為什麼還是很多人會打開公開存取權限呢？ 架設靜態網站 S3有提供架設靜態網站的功能，只要上傳HTML靜態檔到S3，就可以架設靜態網站。 不過也需要將S3設定成公開讀取權限，畢竟HTML靜態檔要設定成公眾都可以讀取，不然客戶端要怎麼讀取到HTML檔案的內容呢。 一但將S3設定成公開讀取權限，就要小心有沒有上傳不該上傳的檔案，例如.git、.env、config.yaml等。 如果沒有公開存取權限 設定S3，在這個S3 bucket上傳一個靜態檔案，並設定靜態檔案託管，會得到一個這個靜態檔案的URI跟URL，URL格式通常是這樣的：https://{YOUR_S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}.html 連接此URL，如果沒有公開權限，會得到以下錯誤訊息 1 2 3 4 5 6 &lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Access Denied&lt;/Message&gt; &lt;RequestId&gt;XXXXXXXXXXXX&lt;/RequestId&gt; &lt;HostId&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=&lt;/HostId&gt; &lt;/Error&gt; 為了使公眾能觀看靜態檔案內容，只好打開公開存取權限 打開了就可以正常訪問這個放在S3的靜態檔案了。 日誌、備份檔、映像檔、靜態庫 S3一個常見的用途，就是存放一些主機日誌、應用程式備份檔、部署容器的映像檔、程式語言靜態庫等，因為S3高耐久性與高可用性很適合長期存放一些檔案內容。但由於為了一時方便，很多時候讀取靜態庫跟映像檔會設定成公開存取權限 ；傳送日誌及備份檔的時候也會因為方便，將bucket設定成公開讀取好方便傳送。這就會造成潛在的洩漏風險。 臨時修改 開發團隊常常遇到一種情境，上午開會說緊急支援，下午就得上production環境，這種時候當天都快過不下去了就會發生兩個潛在的風險： 權限配置錯誤 - 不管了全開再說 開發環境變成正式環境 - 不管了先上再說 以上兩種，我都親身體驗過，都快爆炸了還管什麼安不安全。但事後並不會回去補&hellip; 隱晦式安全（Security through obscurity） 大家都看不見所以很安全 Security through obscurity指的就是攻擊者猜不到目標URL，所以使用者相信，就算S3設定是公開存取也很安全。 實際上是，攻擊者也猜不到subdomain呢，但其實爆破subdomain的工具有很多；同理，S3 bucket name跟gmail還有domain name一樣是有唯一性的，所以並不會發生兩個名字一樣的bucket衝突到的情況，而因為這樣使用者以為別人不會知道我的s3 bucket名稱是什麼，所以就理所當然的開啟公開權限。但現在攻擊者會盡可能地猜出名稱，包含常見的字串型態或是使用AI工具猜測常見的名稱（就跟猜密碼一樣）。所以說S3 bucket還是很有可能被爆破的，就連Github上面有很多專門暴力搜尋S3 bucket名稱的工具。">
+<title>[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？</title>
+
+<link rel='canonical' href='http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/'>
+
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？">
+<meta property='og:description' content="AWS S3 是什麼？ AWS Simple Storage Service (S3)是一個object storage service，主要用於在雲端環境中的存儲與任何數量的數據檢索。高可用性、高耐久性、及整合AWS生態系統使得此項服務廣為人知。 也就是說，文件、圖檔、靜態庫（javascript庫等）、用戶上傳內容、靜態網站、資料庫資料、日誌、映像檔都可以放在S3裡面，而S3也提供災難復原及備份還原等功能。 所以為什麼會設定公開權限？ AWS S3在建立一個新的S3 bucket的時候，AWS都會提醒使用者，盡量不要使用公開存取權限 &lt;- 新建bucket的時候，會有AWS的友善提醒 但為什麼還是很多人會打開公開存取權限呢？ 架設靜態網站 S3有提供架設靜態網站的功能，只要上傳HTML靜態檔到S3，就可以架設靜態網站。 不過也需要將S3設定成公開讀取權限，畢竟HTML靜態檔要設定成公眾都可以讀取，不然客戶端要怎麼讀取到HTML檔案的內容呢。 一但將S3設定成公開讀取權限，就要小心有沒有上傳不該上傳的檔案，例如.git、.env、config.yaml等。 如果沒有公開存取權限 設定S3，在這個S3 bucket上傳一個靜態檔案，並設定靜態檔案託管，會得到一個這個靜態檔案的URI跟URL，URL格式通常是這樣的：https://{YOUR_S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}.html 連接此URL，如果沒有公開權限，會得到以下錯誤訊息 1 2 3 4 5 6 &lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Access Denied&lt;/Message&gt; &lt;RequestId&gt;XXXXXXXXXXXX&lt;/RequestId&gt; &lt;HostId&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=&lt;/HostId&gt; &lt;/Error&gt; 為了使公眾能觀看靜態檔案內容，只好打開公開存取權限 打開了就可以正常訪問這個放在S3的靜態檔案了。 日誌、備份檔、映像檔、靜態庫 S3一個常見的用途，就是存放一些主機日誌、應用程式備份檔、部署容器的映像檔、程式語言靜態庫等，因為S3高耐久性與高可用性很適合長期存放一些檔案內容。但由於為了一時方便，很多時候讀取靜態庫跟映像檔會設定成公開存取權限 ；傳送日誌及備份檔的時候也會因為方便，將bucket設定成公開讀取好方便傳送。這就會造成潛在的洩漏風險。 臨時修改 開發團隊常常遇到一種情境，上午開會說緊急支援，下午就得上production環境，這種時候當天都快過不下去了就會發生兩個潛在的風險： 權限配置錯誤 - 不管了全開再說 開發環境變成正式環境 - 不管了先上再說 以上兩種，我都親身體驗過，都快爆炸了還管什麼安不安全。但事後並不會回去補&hellip; 隱晦式安全（Security through obscurity） 大家都看不見所以很安全 Security through obscurity指的就是攻擊者猜不到目標URL，所以使用者相信，就算S3設定是公開存取也很安全。 實際上是，攻擊者也猜不到subdomain呢，但其實爆破subdomain的工具有很多；同理，S3 bucket name跟gmail還有domain name一樣是有唯一性的，所以並不會發生兩個名字一樣的bucket衝突到的情況，而因為這樣使用者以為別人不會知道我的s3 bucket名稱是什麼，所以就理所當然的開啟公開權限。但現在攻擊者會盡可能地猜出名稱，包含常見的字串型態或是使用AI工具猜測常見的名稱（就跟猜密碼一樣）。所以說S3 bucket還是很有可能被爆破的，就連Github上面有很多專門暴力搜尋S3 bucket名稱的工具。">
+<meta property='og:url' content='http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/'>
+<meta property='og:site_name' content='Sunny Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='S3' /><meta property='article:published_time' content='2023-09-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？">
+<meta name="twitter:description" content="AWS S3 是什麼？ AWS Simple Storage Service (S3)是一個object storage service，主要用於在雲端環境中的存儲與任何數量的數據檢索。高可用性、高耐久性、及整合AWS生態系統使得此項服務廣為人知。 也就是說，文件、圖檔、靜態庫（javascript庫等）、用戶上傳內容、靜態網站、資料庫資料、日誌、映像檔都可以放在S3裡面，而S3也提供災難復原及備份還原等功能。 所以為什麼會設定公開權限？ AWS S3在建立一個新的S3 bucket的時候，AWS都會提醒使用者，盡量不要使用公開存取權限 &lt;- 新建bucket的時候，會有AWS的友善提醒 但為什麼還是很多人會打開公開存取權限呢？ 架設靜態網站 S3有提供架設靜態網站的功能，只要上傳HTML靜態檔到S3，就可以架設靜態網站。 不過也需要將S3設定成公開讀取權限，畢竟HTML靜態檔要設定成公眾都可以讀取，不然客戶端要怎麼讀取到HTML檔案的內容呢。 一但將S3設定成公開讀取權限，就要小心有沒有上傳不該上傳的檔案，例如.git、.env、config.yaml等。 如果沒有公開存取權限 設定S3，在這個S3 bucket上傳一個靜態檔案，並設定靜態檔案託管，會得到一個這個靜態檔案的URI跟URL，URL格式通常是這樣的：https://{YOUR_S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}.html 連接此URL，如果沒有公開權限，會得到以下錯誤訊息 1 2 3 4 5 6 &lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Access Denied&lt;/Message&gt; &lt;RequestId&gt;XXXXXXXXXXXX&lt;/RequestId&gt; &lt;HostId&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=&lt;/HostId&gt; &lt;/Error&gt; 為了使公眾能觀看靜態檔案內容，只好打開公開存取權限 打開了就可以正常訪問這個放在S3的靜態檔案了。 日誌、備份檔、映像檔、靜態庫 S3一個常見的用途，就是存放一些主機日誌、應用程式備份檔、部署容器的映像檔、程式語言靜態庫等，因為S3高耐久性與高可用性很適合長期存放一些檔案內容。但由於為了一時方便，很多時候讀取靜態庫跟映像檔會設定成公開存取權限 ；傳送日誌及備份檔的時候也會因為方便，將bucket設定成公開讀取好方便傳送。這就會造成潛在的洩漏風險。 臨時修改 開發團隊常常遇到一種情境，上午開會說緊急支援，下午就得上production環境，這種時候當天都快過不下去了就會發生兩個潛在的風險： 權限配置錯誤 - 不管了全開再說 開發環境變成正式環境 - 不管了先上再說 以上兩種，我都親身體驗過，都快爆炸了還管什麼安不安全。但事後並不會回去補&hellip; 隱晦式安全（Security through obscurity） 大家都看不見所以很安全 Security through obscurity指的就是攻擊者猜不到目標URL，所以使用者相信，就算S3設定是公開存取也很安全。 實際上是，攻擊者也猜不到subdomain呢，但其實爆破subdomain的工具有很多；同理，S3 bucket name跟gmail還有domain name一樣是有唯一性的，所以並不會發生兩個名字一樣的bucket衝突到的情況，而因為這樣使用者以為別人不會知道我的s3 bucket名稱是什麼，所以就理所當然的開啟公開權限。但現在攻擊者會盡可能地猜出名稱，包含常見的字串型態或是使用AI工具猜測常見的名稱（就跟猜密碼一樣）。所以說S3 bucket還是很有可能被爆破的，就連Github上面有很多專門暴力搜尋S3 bucket名稱的工具。">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/photo_hu8620cb7cfc6466f8df74a7b25e7d0145_288788_300x0_resize_box_3.png" width="300"
+                            height="282" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">☯︎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Sunny Site</a></h1>
+            <h2 class="site-description">How long has it been since you last saw the starry sky? Stars are not meant to be seen this way, one should not hang one&#39;s head.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/windasunny'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/sunny-tsai-178731225/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" ?><svg height="72" viewBox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" fill="#007EBB"/><path d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z" fill="#FFF"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" selected>English</option>
+                                
+                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#架設靜態網站">架設靜態網站</a>
+          <ol>
+            <li><a href="#如果沒有公開存取權限">如果沒有公開存取權限</a></li>
+            <li><a href="#為了使公眾能觀看靜態檔案內容只好打開公開存取權限">為了使公眾能觀看靜態檔案內容，只好打開公開存取權限</a></li>
+          </ol>
+        </li>
+        <li><a href="#日誌備份檔映像檔靜態庫">日誌、備份檔、映像檔、靜態庫</a></li>
+        <li><a href="#臨時修改">臨時修改</a></li>
+        <li><a href="#隱晦式安全security-through-obscurity">隱晦式安全（Security through obscurity）</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="background-color: #2a9d8f; color: #fff;">
+                2023鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/">[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 25, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="aws-s3">AWS S3</h1>
+<p>是什麼？</p>
+<p><a class="link" href="https://aws.amazon.com/tw/s3/"  target="_blank" rel="noopener"
+    >AWS Simple Storage Service (S3)</a>是一個object storage service，主要用於在雲端環境中的存儲與任何數量的數據檢索。高可用性、高耐久性、及整合AWS生態系統使得此項服務廣為人知。</p>
+<p>也就是說，文件、圖檔、靜態庫（javascript庫等）、用戶上傳內容、靜態網站、資料庫資料、日誌、映像檔都可以放在S3裡面，而S3也提供災難復原及備份還原等功能。</p>
+<h1 id="所以為什麼會設定公開權限">所以為什麼會設定公開權限？</h1>
+<p>AWS S3在建立一個新的S3 bucket的時候，AWS都會提醒使用者，盡量不要使用<strong>公開存取權限</strong>
+<img src="https://imgur.com/DpKNX8W.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+> &lt;- 新建bucket的時候，會有AWS的友善提醒</p>
+<p>但為什麼還是很多人會打開公開存取權限呢？</p>
+<h3 id="架設靜態網站">架設靜態網站</h3>
+<p>S3有提供架設靜態網站的功能，只要上傳HTML靜態檔到S3，就可以架設靜態網站。
+不過也需要將S3設定成<strong>公開讀取權限</strong>，畢竟HTML靜態檔要設定成公眾都可以讀取，不然客戶端要怎麼讀取到HTML檔案的內容呢。
+一但將S3設定成公開讀取權限，就要小心有沒有上傳不該上傳的檔案，例如.git、.env、config.yaml等。</p>
+<h4 id="如果沒有公開存取權限">如果沒有公開存取權限</h4>
+<p>設定S3，在這個S3 bucket上傳一個靜態檔案，並設定靜態檔案託管，會得到一個這個靜態檔案的URI跟URL，URL格式通常是這樣的：https://{YOUR_S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}.html
+連接此URL，如果沒有公開權限，會得到以下錯誤訊息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;Error&gt;
+</span></span><span class="line"><span class="cl">    &lt;Code&gt;AccessDenied&lt;/Code&gt;
+</span></span><span class="line"><span class="cl">    &lt;Message&gt;Access Denied&lt;/Message&gt;
+</span></span><span class="line"><span class="cl">    &lt;RequestId&gt;XXXXXXXXXXXX&lt;/RequestId&gt;
+</span></span><span class="line"><span class="cl">    &lt;HostId&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=&lt;/HostId&gt;
+</span></span><span class="line"><span class="cl">&lt;/Error&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="為了使公眾能觀看靜態檔案內容只好打開公開存取權限">為了使公眾能觀看靜態檔案內容，只好打開公開存取權限</h4>
+<p>打開了就可以正常訪問這個放在S3的靜態檔案了。</p>
+<hr>
+<h3 id="日誌備份檔映像檔靜態庫">日誌、備份檔、映像檔、靜態庫</h3>
+<p>S3一個常見的用途，就是存放一些主機日誌、應用程式備份檔、部署容器的映像檔、程式語言靜態庫等，因為S3高耐久性與高可用性很適合長期存放一些檔案內容。但由於為了一時方便，很多時候讀取靜態庫跟映像檔會設定成公開存取權限
+；傳送日誌及備份檔的時候也會因為方便，將bucket設定成公開讀取好方便傳送。這就會造成潛在的洩漏風險。</p>
+<hr>
+<h3 id="臨時修改">臨時修改</h3>
+<p>開發團隊常常遇到一種情境，上午開會說緊急支援，下午就得上production環境，這種時候當天都快過不下去了就會發生兩個潛在的風險：</p>
+<ol>
+<li>權限配置錯誤 - 不管了全開再說</li>
+<li>開發環境變成正式環境 - 不管了先上再說</li>
+</ol>
+<p>以上兩種，我都親身體驗過，都快爆炸了還管什麼安不安全。但事後並不會回去補&hellip;</p>
+<hr>
+<h3 id="隱晦式安全security-through-obscurity">隱晦式安全（Security through obscurity）</h3>
+<blockquote>
+<p>大家都看不見所以很安全</p>
+</blockquote>
+<p><a class="link" href="https://zh.wikipedia.org/zh-tw/%E9%9A%B1%E6%99%A6%E5%BC%8F%E5%AE%89%E5%85%A8"  target="_blank" rel="noopener"
+    >Security through obscurity</a>指的就是攻擊者猜不到目標URL，所以使用者相信，就算S3設定是公開存取也很安全。</p>
+<p>實際上是，攻擊者也猜不到subdomain呢，但其實爆破subdomain的工具有很多；同理，S3 bucket name跟gmail還有domain name一樣是有唯一性的，所以並不會發生兩個名字一樣的bucket衝突到的情況，而因為這樣使用者以為別人不會知道我的s3 bucket名稱是什麼，所以就理所當然的開啟公開權限。但現在攻擊者會盡可能地猜出名稱，包含常見的字串型態或是使用AI工具猜測常見的名稱（就跟猜密碼一樣）。所以說S3 bucket還是很有可能被爆破的，就連Github上面有很多專門暴力搜尋S3 bucket名稱的工具。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cloud/">Cloud</a>
+        
+            <a href="/tags/s3/">S3</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 18] 天堂雲端 - S3 takeover POC</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 15] 天堂雲端 - Data Exfiltration on S3</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 13] 天堂雲端 - S3 Bucket Enumeration</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 30] 閑的沒事 - HTTP SESSION</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 29] 閑的沒事 - Fragmentation UDP</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 sunny tsai
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.2">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

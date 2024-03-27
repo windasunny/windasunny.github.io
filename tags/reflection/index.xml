@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Reflection on Sunny Site</title>
+        <link>http://localhost:1313/tags/reflection/</link>
+        <description>Recent content in Reflection on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Fri, 29 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/reflection/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Day 16] 閑著沒事 - 反射攻擊理論</title>
+        <link>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</link>
+        <pubDate>Fri, 29 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</guid>
+        <description>&lt;h1 id=&#34;什麼是反射攻擊&#34;&gt;什麼是反射攻擊&lt;/h1&gt;
+&lt;p&gt;反射攻擊指的就是利用大量代理伺服器或是開放的資源來放大流量，通常使用允許小的request生成大量的response，這些response會被重定向的目標伺服器&lt;/p&gt;
+&lt;h2 id=&#34;步驟&#34;&gt;步驟&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;攻擊者準備已被控制的合法伺服器，作為反射服務器&lt;/li&gt;
+&lt;li&gt;攻擊者向這些反射服務器發送request，來源地址偽裝成目標地址。通常使用UDP封包，因為UDP不需連接即可發送。&lt;/li&gt;
+&lt;li&gt;攻擊者選定一些適合做反射攻擊的協議，可以以小博大。例如DNS、NTP、SSDP、CLDAP、Memcached、CharGen 或 QOTD。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;dns反射攻擊&#34;&gt;DNS反射攻擊&lt;/h3&gt;
+&lt;p&gt;攻擊者向反射服務器發送解析DNS request，反射服務器向目標主機發送大量的DNS response回覆給目標主機
+例如:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; dig ANY http://{TARGET HOST} @x.x.x.x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;ntp反射攻擊&#34;&gt;NTP反射攻擊&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NTP : 通過網路協議使主機時間同步化
+攻擊者利用偽造的IP地址向NTP（Network Time Protocol/網路時間協議）反射伺服器發送Request&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; ntpdc -n -c monlist x.x.x.x | wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;ssdp反射攻擊&#34;&gt;SSDP反射攻擊&lt;/h3&gt;
+&lt;p&gt;攻擊者使用偽造的IP地址向SSDP（Simple Service Discovery Protocol/簡單服務發現協議）伺服器發送Request
+SSDP用於Universal Plug and Play（UPnP）設備上，用來發現設備。特別應用在物聯網及智能家電上。
+（我沒有需要UPnP的設備，端口打不開，先跳過）
+如果需要測試的話可以先用nmap測試是否可以收到response&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nmap x.x.x.x -p 1900 -sU --script=upnp-info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;snmp反射攻擊&#34;&gt;SNMP反射攻擊&lt;/h3&gt;
+&lt;p&gt;攻擊者利用偽造的IP地址向SNMP（Simple Network Management Protocol/簡單網絡管理協議）伺服器發送請求&lt;/p&gt;
+&lt;h3 id=&#34;chargen反射攻擊&#34;&gt;Chargen反射攻擊&lt;/h3&gt;
+&lt;p&gt;Chargen是一個用於測試的協議，攻擊者可以使用偽造的IP地址向Chargen伺服器發送Request，伺服器將以無限數據流形式回應。
+查看port 19是否有chargen服務傳輸字元&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;telnet -r localhost 19
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;ldap放大攻擊&#34;&gt;LDAP放大攻擊&lt;/h3&gt;
+&lt;p&gt;攻擊者使用偽造的IP地址向LDAP（輕量級目錄訪問協議）伺服器發送Request&lt;/p&gt;
+&lt;h3 id=&#34;cldap&#34;&gt;CLDAP&lt;/h3&gt;
+&lt;p&gt;攻擊者使用偽造的IP地址向CLDAP（無連接輕量級目錄訪問協議）伺服器發送Request&lt;/p&gt;
+&lt;h3 id=&#34;memcached反射攻擊&#34;&gt;Memcached反射攻擊&lt;/h3&gt;
+&lt;p&gt;攻擊者利用Memcached伺服器中存儲的大量數據，將攻擊目標的IP地址偽造為請求的來源，然後發送一個小的請求，Memcached伺服器會回應大量數據到目標IP地址。&lt;/p&gt;
+&lt;h3 id=&#34;qotd&#34;&gt;QOTD&lt;/h3&gt;
+&lt;p&gt;攻擊者使用偽造的IP地址向QOTD（每日引言）伺服器發送Request
+聽起來很怪但是出現在2021 cloudflare ddos報告中..&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
