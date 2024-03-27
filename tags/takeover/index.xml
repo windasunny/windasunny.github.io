@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Takeover on Sunny Site</title>
+        <link>http://localhost:1313/tags/takeover/</link>
+        <description>Recent content in Takeover on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/takeover/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Day 18] 天堂雲端 - S3 takeover POC</title>
+        <link>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
+        <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
+        <description>&lt;h1 id=&#34;s3-takeover-poc&#34;&gt;S3 takeover POC&lt;/h1&gt;
+&lt;p&gt;第一步：確認target ip
+第二步：掃描target ip 下符合條件的子域
+第三步：確認這個S3 bucket web endpoint是不存在的
+第四步：takeover it!&lt;/p&gt;
+&lt;h3 id=&#34;第一步&#34;&gt;第一步&lt;/h3&gt;
+&lt;p&gt;確認標的：example.com  # 我沒有域名，很窮QQ&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;第二部&#34;&gt;第二部&lt;/h3&gt;
+&lt;p&gt;找出所有子域&lt;/p&gt;
+&lt;h4 id=&#34;1-使用dig查詢dns-record&#34;&gt;1. 使用dig查詢DNS record&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 列出 authority section&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; dig example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt; AUTHORITY SECTION:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;example.com.		71232	IN	NS	a.iana-servers.net.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;example.com.		71232	IN	NS	b.iana-servers.net.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 找出所有subdomain&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; dig @a.iana-servers.net example.com axfr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果有找到subdomain會輸出類似以下數據&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mail.example.com.	1800	IN	A	1.2.3.4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;www.example.com.	1800	IN	A	5.6.7.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查找CNAME指向子域名的s3 web endpoint&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; dig sub.example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;2-使用shodan或fofa等搜尋banner&#34;&gt;2. 使用Shodan或Fofa等搜尋banner&lt;/h4&gt;
+&lt;p&gt;找出banner有以下關鍵字&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;Code&amp;gt;NoSuchBucket&amp;lt;/Code&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;第三步確認這個s3-bucket不存在&#34;&gt;第三步：確認這個S3 bucket不存在&lt;/h3&gt;
+&lt;p&gt;Response:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;Error&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;Code&amp;gt;NoSuchBucket&amp;lt;/Code&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;Message&amp;gt;The&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;specified&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;bucket&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;does&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;exist&amp;lt;/Message&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;BucketName&amp;gt;...&amp;lt;/BucketName&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;/Error&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;第四部takeover&#34;&gt;第四部：takeover！&lt;/h3&gt;
+&lt;p&gt;創建一個名字一樣地域一樣的s3 bucket，再次訪問subdomain，如果成功印出上傳的網頁，算是接管成功！&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>[Day 14] 天堂雲端 - S3 takeover</title>
+        <link>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
+        <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
+        <description>&lt;p&gt;前天寫道每個S3 bucket object都有唯一的URL訪問路口，格式會長得像這樣：
+https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
+&lt;p&gt;如果在S3 bucket裡面設定了靜態託管服務
+&lt;img src=&#34;https://imgur.com/ZitOzXO.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定靜態託管後，會在下方找到S3提供的web endpoint
+&lt;img src=&#34;https://imgur.com/bAJy3La.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+通常會有兩種形式其中之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;s3-網站破折號 (-)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;區域‐http://{S3_BUCKET_NAME}.s3-website-{Region}.amazonaws.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;s3-網站點 (.)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;區域‐http://{S3_BUCKET_NAME}.s3-website.{Region}.amazonaws.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這個S3提供的Web endpoint會導倒配置的靜態文件。&lt;/p&gt;
+&lt;h1 id=&#34;建立靜態網址&#34;&gt;建立靜態網址&lt;/h1&gt;
+&lt;p&gt;S3 bucket只是託管了靜態檔案，通常不會把這個URL直接提供給公眾用戶，會用DNS Record CNAME將域名指向S3 Web endpoint。&lt;/p&gt;
+&lt;h2 id=&#34;自訂網域與s3-web-endpoint&#34;&gt;自訂網域與S3 Web endpoint&lt;/h2&gt;
+&lt;p&gt;把這個Web endpoint指向自定義的DNS
+通常DNS Record會長這樣&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CNAME  subdomain.example.com  http://S3_BUCKET_WEB_ENDPOINT
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;突然有一天這個s3-bucket不用了&#34;&gt;突然有一天，這個S3 bucket不用了&lt;/h2&gt;
+&lt;p&gt;不要問我為什麼，不用了就是不用了，刪掉這個S3 bucket還可以省錢呢。
+然後就把S3 bucket刪掉。咦好像少了什麼？&lt;/p&gt;
+&lt;h2 id=&#34;dns-record還留有s3-bucket-web-point紀錄&#34;&gt;DNS Record還留有S3 bucket web point紀錄&lt;/h2&gt;
+&lt;p&gt;S3 bucket刪除了，但DNS Record還留有S3 bucket的web endpoint紀錄
+但因為DNS Record也不是都有人在上面看，所以說不定還沒有人知道？&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;takeover&#34;&gt;Takeover&lt;/h1&gt;
+&lt;h2 id=&#34;攻擊者掃描整個dns-record&#34;&gt;攻擊者掃描整個DNS Record&lt;/h2&gt;
+&lt;p&gt;使用工具（不管是暴力破解還是非暴力破解還是直接掃描DNS Record）找subdomain，獲取整個DNS Record，看看有沒有無人認領的S3 bucket web endpoint。&lt;/p&gt;
+&lt;p&gt;如果有找到疑似沒有人在用的S3 bucket web endpoint，訪問web endpoint得到這樣的輸出&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This XML file does not appear to have any style information associated with it. The document tree is shown below.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;Error&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;Code&amp;gt;NoSuchBucket&amp;lt;/Code&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;Message&amp;gt;The specified bucket does not exist&amp;lt;/Message&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;BucketName&amp;gt;XXX&amp;lt;/BucketName&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;RequestId&amp;gt;XXXXXXXXXXXXX&amp;lt;/RequestId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;HostId&amp;gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=&amp;lt;/HostId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;/Error&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;代表說攻擊者可以建立一個新的bucket，名稱跟DNS Record上面的一模一樣，完成接管(takeover)，可以用來進行各式各樣的攻擊。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下是一個簡單的建立單純的TCP SYN封包示例 Gopacket建立封包 按照文件，code應該要這樣寫 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 package main import ( &#34;log&#34; &#34;net&#34; &#34;time&#34; &#34;github.">
+<title>[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）</title>
+
+<link rel='canonical' href='http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/'>
+
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）">
+<meta property='og:description' content="以下是一個簡單的建立單純的TCP SYN封包示例 Gopacket建立封包 按照文件，code應該要這樣寫 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 package main import ( &#34;log&#34; &#34;net&#34; &#34;time&#34; &#34;github.">
+<meta property='og:url' content='http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/'>
+<meta property='og:site_name' content='Sunny Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='gopacket' /><meta property='article:published_time' content='2023-09-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-21T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）">
+<meta name="twitter:description" content="以下是一個簡單的建立單純的TCP SYN封包示例 Gopacket建立封包 按照文件，code應該要這樣寫 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 package main import ( &#34;log&#34; &#34;net&#34; &#34;time&#34; &#34;github.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/photo_hu8620cb7cfc6466f8df74a7b25e7d0145_288788_300x0_resize_box_3.png" width="300"
+                            height="282" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">☯︎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Sunny Site</a></h1>
+            <h2 class="site-description">How long has it been since you last saw the starry sky? Stars are not meant to be seen this way, one should not hang one&#39;s head.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/windasunny'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/sunny-tsai-178731225/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" ?><svg height="72" viewBox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" fill="#007EBB"/><path d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z" fill="#FFF"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" selected>English</option>
+                                
+                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#gopacket建立封包">Gopacket建立封包</a>
+      <ol>
+        <li><a href="#驚喜點">驚喜點</a></li>
+      </ol>
+    </li>
+    <li><a href="#使用netdial發送封包">使用net.Dial發送封包</a></li>
+    <li><a href="#攔截封包">攔截封包</a>
+      <ol>
+        <li><a href="#碎碎念">碎碎念</a></li>
+        <li><a href="#2023-09-22補">2023-09-22補</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="background-color: #2a9d8f; color: #fff;">
+                2023鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/">[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 21, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>以下是一個簡單的建立單純的TCP SYN封包示例</p>
+<h2 id="gopacket建立封包">Gopacket建立封包</h2>
+<p>按照文件，code應該要這樣寫</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;net&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/google/gopacket&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/google/gopacket/layers&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/google/gopacket/pcap&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">device</span>      <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;bridge100&#34;</span>  <span class="c1">// 換了一張網卡
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">snapshotLen</span> <span class="kt">int32</span>  <span class="p">=</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">promiscuous</span> <span class="kt">bool</span>   <span class="p">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">err</span>         <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">timeout</span>     <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span> <span class="p">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">handle</span>      <span class="o">*</span><span class="nx">pcap</span><span class="p">.</span><span class="nx">Handle</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">buffer</span>      <span class="nx">gopacket</span><span class="p">.</span><span class="nx">SerializeBuffer</span>
+</span></span><span class="line"><span class="cl">	<span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">SerializationOptions</span> <span class="p">=</span> <span class="nx">gopacket</span><span class="p">.</span><span class="nx">SerializeOptions</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">FixLengths</span><span class="p">:</span>       <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ComputeChecksums</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Open device
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">handle</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">pcap</span><span class="p">.</span><span class="nf">OpenLive</span><span class="p">(</span><span class="nx">device</span><span class="p">,</span> <span class="nx">snapshotLen</span><span class="p">,</span> <span class="nx">promiscuous</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">handle</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// SrcMAC跟DstMAC兩個可以不用按照真實案例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ethernetLayer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">layers</span><span class="p">.</span><span class="nx">Ethernet</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">SrcMAC</span><span class="p">:</span>       <span class="nx">net</span><span class="p">.</span><span class="nx">HardwareAddr</span><span class="p">{</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">DstMAC</span><span class="p">:</span>       <span class="nx">net</span><span class="p">.</span><span class="nx">HardwareAddr</span><span class="p">{</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">EthernetType</span><span class="p">:</span> <span class="nx">layers</span><span class="p">.</span><span class="nx">EthernetTypeIPv4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ipLayer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">layers</span><span class="p">.</span><span class="nx">IPv4</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">SrcIP</span><span class="p">:</span>    <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>    <span class="c1">//source ip
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">DstIP</span><span class="p">:</span>    <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">10</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Version</span><span class="p">:</span>  <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">TTL</span><span class="p">:</span>      <span class="mi">64</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Protocol</span><span class="p">:</span> <span class="nx">layers</span><span class="p">.</span><span class="nx">IPProtocolTCP</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tcpLayer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">layers</span><span class="p">.</span><span class="nx">TCP</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">SrcPort</span><span class="p">:</span> <span class="nx">layers</span><span class="p">.</span><span class="nf">TCPPort</span><span class="p">(</span><span class="mi">12345</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">DstPort</span><span class="p">:</span> <span class="nx">layers</span><span class="p">.</span><span class="nf">TCPPort</span><span class="p">(</span><span class="mi">12345</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">SYN</span><span class="p">:</span>     <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ACK</span><span class="p">:</span>     <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tcpLayer</span><span class="p">.</span><span class="nf">SetNetworkLayerForChecksum</span><span class="p">(</span><span class="nx">ipLayer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// And create the packet with the layers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">buffer</span> <span class="p">=</span> <span class="nx">gopacket</span><span class="p">.</span><span class="nf">NewSerializeBuffer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gopacket</span><span class="p">.</span><span class="nf">SerializeLayers</span><span class="p">(</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">SerializationOptions</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ethernetLayer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ipLayer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">tcpLayer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Send serialize packet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">outgoingPacket</span> <span class="o">:=</span> <span class="nx">buffer</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="p">=</span> <span class="nx">handle</span><span class="p">.</span><span class="nf">WritePacketData</span><span class="p">(</span><span class="nx">outgoingPacket</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同樣在靶機上攔截封包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 靶機上收到Flag為S(SYN)封包</span>
+</span></span><span class="line"><span class="cl">02:48:47.273581 IP <span class="o">(</span>tos 0x0, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 64<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.37.129.2.12347 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>S<span class="o">]</span>, cksum 0xd356 <span class="o">(</span>correct<span class="o">)</span>, seq 7459, win 65535, options <span class="o">[</span>mss 1460,wscale 6,sackOK,nop,nop,TS val <span class="m">16909060</span> ecr 84281096,eol<span class="o">]</span>, length <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>沒錯只有這樣，正常的SYN封包是會讓靶機回傳ACK/SYN封包做三次握手的第二步驗證的，但沒有，說明這是異常封包。</p>
+<h3 id="驚喜點">驚喜點</h3>
+<p>可以在Network Layer層修改任意SrcIP</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">ipLayer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">layers</span><span class="p">.</span><span class="nx">IPv4</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">SrcIP</span><span class="p">:</span>    <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>    <span class="c1">// &lt;- 這邊改成任意IP，就算是網段下沒有配置的IP也可以
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">DstIP</span><span class="p">:</span>    <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">10</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Version</span><span class="p">:</span>  <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">TTL</span><span class="p">:</span>      <span class="mi">64</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Protocol</span><span class="p">:</span> <span class="nx">layers</span><span class="p">.</span><span class="nx">IPProtocolTCP</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後可以發送。</p>
+<h2 id="使用netdial發送封包">使用net.Dial發送封包</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">targetIP</span> <span class="o">:=</span> <span class="s">&#34;10.211.55.10&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">targetPort</span> <span class="o">:=</span> <span class="mi">12345</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">tcpConn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s:%d&#34;</span><span class="p">,</span> <span class="nx">targetIP</span><span class="p">,</span> <span class="nx">targetPort</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Failed to connect：%v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">tcpConn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="攔截封包">攔截封包</h2>
+<p>看起來是很正常的TCP三次握手</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">02:55:36.431738 IP <span class="o">(</span>tos 0x0, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 52<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.211.55.2.52261 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>.<span class="o">]</span>, cksum 0x4fe0 <span class="o">(</span>correct<span class="o">)</span>, ack 1, win 2058, options <span class="o">[</span>nop,nop,TS val <span class="m">2224605755</span> ecr 3013823431<span class="o">]</span>, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">02:55:36.432070 IP <span class="o">(</span>tos 0x2,ECT<span class="o">(</span>0<span class="o">)</span>, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 72<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.211.55.2.52261 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>P.<span class="o">]</span>, cksum 0xeed4 <span class="o">(</span>correct<span class="o">)</span>, seq 1:21, ack 1, win 2058, options <span class="o">[</span>nop,nop,TS val <span class="m">2224605755</span> ecr 3013823431<span class="o">]</span>, length <span class="m">20</span>
+</span></span><span class="line"><span class="cl">02:55:36.432123 IP <span class="o">(</span>tos 0x0, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 52<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.211.55.2.52261 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>F.<span class="o">]</span>, cksum 0x4fcb <span class="o">(</span>correct<span class="o">)</span>, seq 21, ack 1, win 2058, options <span class="o">[</span>nop,nop,TS val <span class="m">2224605755</span> ecr 3013823431<span class="o">]</span>, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">02:55:36.432199 IP <span class="o">(</span>tos 0x0, ttl 64, id 9536, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 52<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    ubuntu-linux-20-04-desktop.12345 &gt; 10.211.55.2.52261: Flags <span class="o">[</span>.<span class="o">]</span>, cksum 0x83d8 <span class="o">(</span>incorrect -&gt; 0x55d8<span class="o">)</span>, ack 21, win 509, options <span class="o">[</span>nop,nop,TS val <span class="m">3013823432</span> ecr 2224605755<span class="o">]</span>, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">02:55:36.446463 IP <span class="o">(</span>tos 0x2,ECT<span class="o">(</span>0<span class="o">)</span>, ttl 64, id 9537, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 608<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    ubuntu-linux-20-04-desktop.12345 &gt; 10.211.55.2.52261: Flags <span class="o">[</span>P.<span class="o">]</span>, cksum 0x8604 <span class="o">(</span>incorrect -&gt; 0x8842<span class="o">)</span>, seq 1:557, ack 22, win 509, options <span class="o">[</span>nop,nop,TS val <span class="m">3013823446</span> ecr 2224605755<span class="o">]</span>, length <span class="m">556</span>
+</span></span><span class="line"><span class="cl">02:55:36.446805 IP <span class="o">(</span>tos 0x0, ttl 64, id 9538, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 52<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    ubuntu-linux-20-04-desktop.12345 &gt; 10.211.55.2.52261: Flags <span class="o">[</span>F.<span class="o">]</span>, cksum 0x83d8 <span class="o">(</span>incorrect -&gt; 0x539b<span class="o">)</span>, seq 557, ack 22, win 509, options <span class="o">[</span>nop,nop,TS val <span class="m">3013823447</span> ecr 2224605755<span class="o">]</span>, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">02:55:36.446863 IP <span class="o">(</span>tos 0x2,ECT<span class="o">(</span>0<span class="o">)</span>, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 40<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.211.55.2.52261 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>R<span class="o">]</span>, cksum 0x3974 <span class="o">(</span>correct<span class="o">)</span>, seq 2853653572, win 0, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">02:55:36.446962 IP <span class="o">(</span>tos 0x0, ttl 64, id 0, offset 0, flags <span class="o">[</span>DF<span class="o">]</span>, proto TCP <span class="o">(</span>6<span class="o">)</span>, length 40<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    10.211.55.2.52261 &gt; ubuntu-linux-20-04-desktop.12345: Flags <span class="o">[</span>R<span class="o">]</span>, cksum 0x3974 <span class="o">(</span>correct<span class="o">)</span>, seq 2853653572, win 0, length <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>明天的目標是：使用gopacket建立一個合法合理的封包。</p>
+<h3 id="碎碎念">碎碎念</h3>
+<p>我也不確定行不行？</p>
+<h3 id="2023-09-22補">2023-09-22補</h3>
+<p>gopacket TCP packet先pass，原碼還沒看完。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cloud/">Cloud</a>
+        
+            <a href="/tags/gopacket/">Gopacket</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 9] 閑的沒事就寫封包 - gopacket建立UDP封包</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 7] 閑的沒事就找套件 - gopacket</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 30] 閑的沒事 - HTTP SESSION</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 29] 閑的沒事 - Fragmentation UDP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-28-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-tcp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Day 28] 閑的沒事 - Fragmentation TCP</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 sunny tsai
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.2">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

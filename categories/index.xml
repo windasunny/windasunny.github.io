@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on Sunny Site</title>
+        <link>http://localhost:1313/categories/</link>
+        <description>Recent content in Categories on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2023鐵人賽</title>
+        <link>http://localhost:1313/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
+        <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/it_help.png" alt="Featured image of post 2023鐵人賽" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
