@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Screenshot on Sunny Site</title>
-        <link>http://localhost:1313/tags/screenshot/</link>
+        <link>https://windasunny.github.io/tags/screenshot/</link>
         <description>Recent content in Screenshot on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/screenshot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/screenshot/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 25] 天堂雲端 - EC2 桌面截圖（screenshot）</title>
-        <link>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
+        <link>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
         <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
+        <guid>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
         <description>&lt;h1 id=&#34;桌面截圖&#34;&gt;桌面截圖&lt;/h1&gt;
 &lt;p&gt;在滲透測試中，桌面截圖是一種獲得額外信息或增加攻擊者瞭解目標環境的重要手段&lt;/p&gt;
 &lt;ul&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Elastic Beanstalk on Sunny Site</title>
-        <link>http://localhost:1313/tags/elastic-beanstalk/</link>
+        <link>https://windasunny.github.io/tags/elastic-beanstalk/</link>
         <description>Recent content in Elastic Beanstalk on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/elastic-beanstalk/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/elastic-beanstalk/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 19] 天堂雲端 - AWS Elastic Beanstalk</title>
-        <link>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
+        <link>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
         <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
+        <guid>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
         <description>&lt;h1 id=&#34;aws-elastic-beanstalk&#34;&gt;AWS Elastic Beanstalk&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/elasticbeanstalk/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Beanstalk&lt;/a&gt;是AWS提供一個全受管的PaaS服務，用於建構、部署Web應用程式，只要使用者上傳code，Elastic Beanstalk會自動部署、負載平衡、自動調整等功能。&lt;del&gt;看起來就像在薛不懂infra的人。&lt;/del&gt;&lt;/p&gt;

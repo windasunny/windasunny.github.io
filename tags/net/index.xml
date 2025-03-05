@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Net on Sunny Site</title>
-        <link>http://localhost:1313/tags/net/</link>
+        <link>https://windasunny.github.io/tags/net/</link>
         <description>Recent content in Net on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/net/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/net/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 3] 閑的沒事就找套件 - Go原生套件&#39;net&#39;</title>
-        <link>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
+        <link>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
         <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
+        <guid>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
         <description>&lt;h1 id=&#34;用什麼套件建構封包&#34;&gt;用什麼套件建構封包&lt;/h1&gt;
 &lt;p&gt;先來測一下有go有什麼packet interface好用的套件，像其他語言例如c、python可以用socket建構封包。python還有另一個套件庫scapy，專門處理各種交互式數據封包操作庫。&lt;/p&gt;
 &lt;p&gt;回來go。首先，先建立一個SYN封包。

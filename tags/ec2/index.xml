@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ec2 on Sunny Site</title>
-        <link>http://localhost:1313/tags/ec2/</link>
+        <link>https://windasunny.github.io/tags/ec2/</link>
         <description>Recent content in Ec2 on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ec2/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/ec2/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 30] 天堂雲端 - SSM</title>
-        <link>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
+        <link>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
         <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
+        <guid>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
         <description>&lt;h1 id=&#34;ssmsendcommand&#34;&gt;ssm:SendCommand&lt;/h1&gt;
 &lt;p&gt;擁有該權限的用戶可以發送命令到一個或多個已註冊在SSM的EC2 instance或其他服務，允許在這些instance或主機上執行操作，例如運行腳本、管理更新或執行其他自動化任務。&lt;/p&gt;
 &lt;h2 id=&#34;使用send-command執行reverse-shell&#34;&gt;使用send command執行reverse shell&lt;/h2&gt;
@@ -140,10 +140,10 @@ Output:&lt;/p&gt;
         </item>
         <item>
         <title>[Day 29] 天堂雲端 - Systems Manager</title>
-        <link>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
+        <link>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
         <pubDate>Thu, 12 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
+        <guid>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
         <description>&lt;h1 id=&#34;ssm&#34;&gt;SSM&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_tw/systems-manager/latest/userguide/what-is-systems-manager.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Systems Manager (SSM)&lt;/a&gt; 是一個AWS服務，提供一個集中式的解決方案，用於管理和遠程操作AWS環境中的多個instance。&lt;/p&gt;
@@ -199,10 +199,10 @@ Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執�
         </item>
         <item>
         <title>[Day 28] 天堂雲端 - EC2權限升級</title>
-        <link>http://localhost:1313/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</link>
+        <link>https://windasunny.github.io/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</link>
         <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</guid>
+        <guid>https://windasunny.github.io/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</guid>
         <description>&lt;h1 id=&#34;權限升級&#34;&gt;權限升級&lt;/h1&gt;
 &lt;p&gt;在AWS雲端環境中，權限升級是透過IAM完成升級的，攻擊者需要找到哪個帳戶可以做到這件事。&lt;/p&gt;
 &lt;h2 id=&#34;shadow-admin&#34;&gt;Shadow admin&lt;/h2&gt;
@@ -423,10 +423,10 @@ iam-SetDefaultPolicyVersion權限允許將特定權限版本設定為默認版�
         </item>
         <item>
         <title>[Day 25] 天堂雲端 - EC2 桌面截圖（screenshot）</title>
-        <link>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
+        <link>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
         <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
+        <guid>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
         <description>&lt;h1 id=&#34;桌面截圖&#34;&gt;桌面截圖&lt;/h1&gt;
 &lt;p&gt;在滲透測試中，桌面截圖是一種獲得額外信息或增加攻擊者瞭解目標環境的重要手段&lt;/p&gt;
 &lt;ul&gt;
@@ -631,10 +631,10 @@ iam-SetDefaultPolicyVersion權限允許將特定權限版本設定為默認版�
         </item>
         <item>
         <title>[Day 24] 天堂雲端 - 取得EC2快照(snapshot)</title>
-        <link>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
+        <link>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
         <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
+        <guid>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
         <description>&lt;h1 id=&#34;aws-ebs&#34;&gt;AWS EBS&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/ebs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Block Store(EBS)&lt;/a&gt;是AWS提供的可擴展的高效能區塊儲存服務。通常EC2 instance上面的數據（包括操作系統、應用程序數據等）通常儲存在EBS上。而EC2的快照(snapshot)是EC2 instance的狀態的定期副本，通常是基於EBS volumes的，快照捕捉了EBS volumes上的數據的狀態。&lt;/p&gt;
@@ -786,10 +786,10 @@ iam-SetDefaultPolicyVersion權限允許將特定權限版本設定為默認版�
         </item>
         <item>
         <title>[Day 23] 天堂雲端 - AWS Account ID Enumeration</title>
-        <link>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
+        <link>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
         <pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
+        <guid>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
         <description>&lt;h1 id=&#34;account-id--arn&#34;&gt;Account ID &amp;amp; ARN&lt;/h1&gt;
 &lt;p&gt;昨天提到可以用SSRF等技術取得API KEY等資訊。
 如果說已取得API KEY，可以用AWS CLI提供的get-access-key-info取得Account ID&lt;/p&gt;
@@ -974,10 +974,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC</title>
-        <link>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
+        <link>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
         <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
+        <guid>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
         <description>&lt;p&gt;寫一個簡單的SSRF漏洞&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1095,10 +1095,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 21] 天堂雲端 - AWS Metadata Service (IMDS)</title>
-        <link>http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</link>
+        <link>https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</link>
         <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</guid>
+        <guid>https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</guid>
         <description>&lt;p&gt;在接下去寫EC2 POC之前，先來解釋AWS IMDS是啥&lt;/p&gt;
 &lt;h1 id=&#34;aws-metadata-service-imds&#34;&gt;AWS Metadata Service (IMDS)&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1183,10 +1183,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 20] 天堂雲端 - EC2之建立靶機</title>
-        <link>http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</link>
+        <link>https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</link>
         <pubDate>Tue, 03 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</guid>
+        <guid>https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</guid>
         <description>&lt;h1 id=&#34;aws-ec2&#34;&gt;AWS EC2&lt;/h1&gt;
 &lt;p&gt;Amazon Elastic Compute Cloud (AWS EC2)是AWS提供的IaaS服務，等同於在AWS上開啟虛擬機。&lt;/p&gt;
 &lt;h1 id=&#34;建立ec2&#34;&gt;建立EC2&lt;/h1&gt;
@@ -1239,10 +1239,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 19] 天堂雲端 - AWS Elastic Beanstalk</title>
-        <link>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
+        <link>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
         <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
+        <guid>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
         <description>&lt;h1 id=&#34;aws-elastic-beanstalk&#34;&gt;AWS Elastic Beanstalk&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/elasticbeanstalk/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Beanstalk&lt;/a&gt;是AWS提供一個全受管的PaaS服務，用於建構、部署Web應用程式，只要使用者上傳code，Elastic Beanstalk會自動部署、負載平衡、自動調整等功能。&lt;del&gt;看起來就像在薛不懂infra的人。&lt;/del&gt;&lt;/p&gt;

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="S3 takeover POC 第一步：確認target ip 第二步：掃描target ip 下符合條件的子域 第三步：確認這個S3 bucket web endpoint是不存在的 第四步：takeover it! 第一步 確認標的：example.com # 我沒有域名，很窮QQ 第二部 找出所有子域 1. 使用dig查詢DNS record 1 2 3 4 5 6 7 8 # 列出 authority section &gt; dig example.com ... ;; AUTHORITY SECTION: example.com.\t71232\tIN\tNS\ta.iana-servers.net. example.com.\t71232\tIN\tNS\tb.iana-servers.net. ... 1 2 # 找出所有subdomain &gt; dig @a.iana-servers.net example.com axfr 如果有找到subdomain會輸出類似以下數據 1 2 mail.example.com.\t1800\tIN\tA\t1.2.3.4 www.">
 <title>[Day 18] 天堂雲端 - S3 takeover POC</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 18] 天堂雲端 - S3 takeover POC">
 <meta property='og:description' content="S3 takeover POC 第一步：確認target ip 第二步：掃描target ip 下符合條件的子域 第三步：確認這個S3 bucket web endpoint是不存在的 第四步：takeover it! 第一步 確認標的：example.com # 我沒有域名，很窮QQ 第二部 找出所有子域 1. 使用dig查詢DNS record 1 2 3 4 5 6 7 8 # 列出 authority section &gt; dig example.com ... ;; AUTHORITY SECTION: example.com.\t71232\tIN\tNS\ta.iana-servers.net. example.com.\t71232\tIN\tNS\tb.iana-servers.net. ... 1 2 # 找出所有subdomain &gt; dig @a.iana-servers.net example.com axfr 如果有找到subdomain會輸出類似以下數據 1 2 mail.example.com.\t1800\tIN\tA\t1.2.3.4 www.">
-<meta property='og:url' content='http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='S3' /><meta property='article:tag' content='takeover' /><meta property='article:tag' content='poc' /><meta property='article:published_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-01T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 18] 天堂雲端 - S3 takeover POC">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -663,7 +663,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

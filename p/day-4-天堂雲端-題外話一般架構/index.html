@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="雲端架構 v.s. 一般架構 雲端架構主要基於一般架構，雲端架構只是將一般架構搬上雲，並利用雲供應商提供的雲服務取代一部份的服務，例如隊列(SQS、Azure Service Bus)、資料庫(SQL database、RDS)、快取(ElasticCache)、存儲服務(S3、 Google Cloud Storage) 一般架構 示意圖（網站架構） 如果實踐一個可以放在網域上的、可以儲存資料的網站，基本會有上圖那樣的網站架構。 分布式系統設計核心原則之一：拆解，把大系統拆解成互相解耦的幾個相對獨立的小系統 拆成最小可用系統 可擴展單元系統 安全性 技術要求 &hellip; 講到分布式系統設計有很多可以講，今天先講到這裡（要不然要跑題了）。 總之，為了高擴展性及安全性可用性還有技術要求等一般分布式架構都會拆分成單元小系統，雲端架構同理，所以會有雲端供應商也會推出一些雲端服務例如Queue、Cache等減少使用者建立及維護的負擔。 一般架構拆解 Web APP 基本網站環境 OS 包含網站框架、程式碼 瀏覽器服務 ex：Nginx/Apache 處理反向代理服務 託管各種規模網站與應用程式 通用TCP/UDP代理伺服器 資料庫服務 適合情境的資料庫服務 關聯式資料庫- MySQL 非結構化資料庫 - NoSQL 高性能列式存儲資料庫 - Clickhouse 快取服務（Cache） 建立適合快取的資料庫，應用高速、高併發量的內存key-value資料庫系統 Redis MemCache ">
 <title>[Day 4] 天堂雲端 - 題外話：一般架構</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 4] 天堂雲端 - 題外話：一般架構">
 <meta property='og:description' content="雲端架構 v.s. 一般架構 雲端架構主要基於一般架構，雲端架構只是將一般架構搬上雲，並利用雲供應商提供的雲服務取代一部份的服務，例如隊列(SQS、Azure Service Bus)、資料庫(SQL database、RDS)、快取(ElasticCache)、存儲服務(S3、 Google Cloud Storage) 一般架構 示意圖（網站架構） 如果實踐一個可以放在網域上的、可以儲存資料的網站，基本會有上圖那樣的網站架構。 分布式系統設計核心原則之一：拆解，把大系統拆解成互相解耦的幾個相對獨立的小系統 拆成最小可用系統 可擴展單元系統 安全性 技術要求 &hellip; 講到分布式系統設計有很多可以講，今天先講到這裡（要不然要跑題了）。 總之，為了高擴展性及安全性可用性還有技術要求等一般分布式架構都會拆分成單元小系統，雲端架構同理，所以會有雲端供應商也會推出一些雲端服務例如Queue、Cache等減少使用者建立及維護的負擔。 一般架構拆解 Web APP 基本網站環境 OS 包含網站框架、程式碼 瀏覽器服務 ex：Nginx/Apache 處理反向代理服務 託管各種規模網站與應用程式 通用TCP/UDP代理伺服器 資料庫服務 適合情境的資料庫服務 關聯式資料庫- MySQL 非結構化資料庫 - NoSQL 高性能列式存儲資料庫 - Clickhouse 快取服務（Cache） 建立適合快取的資料庫，應用高速、高併發量的內存key-value資料庫系統 Redis MemCache ">
-<meta property='og:url' content='http://localhost:1313/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:published_time' content='2023-09-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-17T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 4] 天堂雲端 - 題外話：一般架構">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -623,7 +623,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

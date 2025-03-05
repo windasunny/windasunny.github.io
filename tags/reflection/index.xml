@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Reflection on Sunny Site</title>
-        <link>http://localhost:1313/tags/reflection/</link>
+        <link>https://windasunny.github.io/tags/reflection/</link>
         <description>Recent content in Reflection on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 29 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/reflection/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/reflection/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 16] 閑著沒事 - 反射攻擊理論</title>
-        <link>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</link>
+        <link>https://windasunny.github.io/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</link>
         <pubDate>Fri, 29 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</guid>
+        <guid>https://windasunny.github.io/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</guid>
         <description>&lt;h1 id=&#34;什麼是反射攻擊&#34;&gt;什麼是反射攻擊&lt;/h1&gt;
 &lt;p&gt;反射攻擊指的就是利用大量代理伺服器或是開放的資源來放大流量，通常使用允許小的request生成大量的response，這些response會被重定向的目標伺服器&lt;/p&gt;
 &lt;h2 id=&#34;步驟&#34;&gt;步驟&lt;/h2&gt;

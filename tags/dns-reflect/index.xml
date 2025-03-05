@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Dns Reflect on Sunny Site</title>
-        <link>http://localhost:1313/tags/dns-reflect/</link>
+        <link>https://windasunny.github.io/tags/dns-reflect/</link>
         <description>Recent content in Dns Reflect on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/dns-reflect/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/dns-reflect/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 17] 閑著沒事 - DNS反射攻擊</title>
-        <link>http://localhost:1313/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>https://windasunny.github.io/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>https://windasunny.github.io/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;dns反射攻擊&#34;&gt;DNS反射攻擊&lt;/h1&gt;
 &lt;h2 id=&#34;攻擊手法&#34;&gt;攻擊手法&lt;/h2&gt;
 &lt;p&gt;攻擊者向反射服務器發送解析DNS request，反射服務器向目標主機發送大量的DNS response回覆給目標主機，造成攻擊者只要發送一點流量就能使目標主機收到大量的無意義的封包流量攻擊。&lt;/p&gt;

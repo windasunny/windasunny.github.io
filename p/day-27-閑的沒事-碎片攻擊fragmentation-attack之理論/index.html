@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Fragmentation Attack Fragmentation Attack（碎片攻擊）指的是利用IP協議的碎片化（fragmentation）機制來達成攻擊目的。IP碎片是指將一個較大的IP數據包拆分成多個較小的數據包，以適應網絡中最大傳輸單位（MTU）的限制。 以太網的MTU是1500，如果IP層有要傳輸的封包長度超過1500，那IP層就要對封包進行分片(fragmentation)，使每個封包的長度都小於1500。 使用netstat -i 查看MTU大小 碎片化在正常的網絡通信中是一個合法且有用的過程，但攻擊者可以利用這一機制進行惡意操作。 主要特徵與特點 碎片化利用 攻擊者可以將payload分割成小碎片，然後將這些碎片發送到目標主機，如此可以避掉防火牆或是IPS等防禦機制的檢查。 碎片重組 目標主機收到碎片後會重組成原始數據包，這個時候有些老舊系統就有點不行了，容易造成崩潰或拒絕服務。 具體例子 Ping of Death Ping of Death是一種利用Internet Control Message Protocol（ICMP）協議的碎片攻擊，攻擊者發送一個長度超過65535的封包，目標主機在重組分片的時候超出系統的緩衝區容量，造成緩衝區溢出。這種溢出可以導致系統崩潰或者讓攻擊者執行任意代碼。 手法 使用ping發出一條超出緩衝區容量的封包 1 &gt; ping -c 1 -s 65537 10.211.55.3 輸出 ping of death是一個很老的攻擊手段，現在的作業系統已經不讓我們做壞事了 1 ping: packet size 65537 is too large. Maximum is 65507 65507是65535-20(IP layer)-8(payload部分預留)=65507 Teardrop attack 在Teardrop攻擊中，攻擊者發送一系列畸形的IP碎片，這些碎片在重組時會互相重疊。目標系統可能無法正確處理這些重疊的碎片，從而導致系統崩潰或重啟。">
 <title>[Day 27] 閑的沒事 - 碎片攻擊（Fragmentation Attack）之理論</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 27] 閑的沒事 - 碎片攻擊（Fragmentation Attack）之理論">
 <meta property='og:description' content="Fragmentation Attack Fragmentation Attack（碎片攻擊）指的是利用IP協議的碎片化（fragmentation）機制來達成攻擊目的。IP碎片是指將一個較大的IP數據包拆分成多個較小的數據包，以適應網絡中最大傳輸單位（MTU）的限制。 以太網的MTU是1500，如果IP層有要傳輸的封包長度超過1500，那IP層就要對封包進行分片(fragmentation)，使每個封包的長度都小於1500。 使用netstat -i 查看MTU大小 碎片化在正常的網絡通信中是一個合法且有用的過程，但攻擊者可以利用這一機制進行惡意操作。 主要特徵與特點 碎片化利用 攻擊者可以將payload分割成小碎片，然後將這些碎片發送到目標主機，如此可以避掉防火牆或是IPS等防禦機制的檢查。 碎片重組 目標主機收到碎片後會重組成原始數據包，這個時候有些老舊系統就有點不行了，容易造成崩潰或拒絕服務。 具體例子 Ping of Death Ping of Death是一種利用Internet Control Message Protocol（ICMP）協議的碎片攻擊，攻擊者發送一個長度超過65535的封包，目標主機在重組分片的時候超出系統的緩衝區容量，造成緩衝區溢出。這種溢出可以導致系統崩潰或者讓攻擊者執行任意代碼。 手法 使用ping發出一條超出緩衝區容量的封包 1 &gt; ping -c 1 -s 65537 10.211.55.3 輸出 ping of death是一個很老的攻擊手段，現在的作業系統已經不讓我們做壞事了 1 ping: packet size 65537 is too large. Maximum is 65507 65507是65535-20(IP layer)-8(payload部分預留)=65507 Teardrop attack 在Teardrop攻擊中，攻擊者發送一系列畸形的IP碎片，這些碎片在重組時會互相重疊。目標系統可能無法正確處理這些重疊的碎片，從而導致系統崩潰或重啟。">
-<meta property='og:url' content='http://localhost:1313/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='fragmentation attack' /><meta property='article:published_time' content='2023-10-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-10T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 27] 閑的沒事 - 碎片攻擊（Fragmentation Attack）之理論">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -614,7 +614,7 @@ ping of death是一個很老的攻擊手段，現在的作業系統已經不讓�
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ddos on Sunny Site</title>
-        <link>http://localhost:1313/tags/ddos/</link>
+        <link>https://windasunny.github.io/tags/ddos/</link>
         <description>Recent content in Ddos on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Mon, 18 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ddos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/ddos/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 5] 閑的沒事就建立socket - sys</title>
-        <link>http://localhost:1313/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</link>
+        <link>https://windasunny.github.io/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</link>
         <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</guid>
+        <guid>https://windasunny.github.io/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</guid>
         <description>&lt;p&gt;在syscall還未被棄用的時後是用syscall建立socket指定來源PORT。現在使用&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/golang.org/x/sys&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;sys&lt;/a&gt;
 （主題是做DDOS，其實有沒有指定PORT不是重點，但這個在後面做raw socket是重點）&lt;/p&gt;
@@ -143,10 +143,10 @@
         </item>
         <item>
         <title>[Day 4] 閑的沒事 - 來源端口（踩坑）</title>
-        <link>http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</link>
+        <link>https://windasunny.github.io/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</link>
         <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</guid>
+        <guid>https://windasunny.github.io/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</guid>
         <description>&lt;h1 id=&#34;發送封包&#34;&gt;發送封包&lt;/h1&gt;
 &lt;p&gt;昨天建立一個TCP SYN packet
 TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&amp;hellip;&lt;/p&gt;
@@ -280,10 +280,10 @@ TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&
         </item>
         <item>
         <title>[Day 3] 閑的沒事就找套件 - Go原生套件&#39;net&#39;</title>
-        <link>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
+        <link>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
         <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
+        <guid>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
         <description>&lt;h1 id=&#34;用什麼套件建構封包&#34;&gt;用什麼套件建構封包&lt;/h1&gt;
 &lt;p&gt;先來測一下有go有什麼packet interface好用的套件，像其他語言例如c、python可以用socket建構封包。python還有另一個套件庫scapy，專門處理各種交互式數據封包操作庫。&lt;/p&gt;
 &lt;p&gt;回來go。首先，先建立一個SYN封包。
@@ -511,10 +511,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 2] 閑著沒事就DDOS - 什麼是DDOS</title>
-        <link>http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</link>
+        <link>https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</link>
         <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</guid>
+        <guid>https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</guid>
         <description>&lt;h1 id=&#34;什麼是ddos&#34;&gt;什麼是DDOS&lt;/h1&gt;
 &lt;p&gt;分散式阻斷服務（Distributed Denial of Service），主要是通過製造大流量來攻擊特定服務器或基礎設施，以阻斷正常流量，中斷用戶與服務器或應用程序的連接，造成流量阻塞。&lt;/p&gt;
 &lt;p&gt;什麼是&lt;strong&gt;DOS&lt;/strong&gt;？
@@ -553,10 +553,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 1] DDOS開賽前言</title>
-        <link>http://localhost:1313/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</link>
+        <link>https://windasunny.github.io/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</link>
         <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</guid>
+        <guid>https://windasunny.github.io/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</guid>
         <description>&lt;h2 id=&#34;鐵人賽開賽前言&#34;&gt;鐵人賽開賽前言&lt;/h2&gt;
 &lt;p&gt;其實這是我今年7月就準備寫的一個side project，結果拖到了現在一個code都沒有寫好。
 今年7月我寫了一個Go的併發爬蟲專案，併發爬蟲並丟到資料庫，跑了一個超快超迅速，沒有特定釋出memory的情況下還不吃memory，然後我就突然愛上Go了。我原本有用python寫關於底層封包設定，後來想想，既然要寫DDOS，代表說機器丟封包可能需要丟得越快越好，然後我就決定改用Go寫。&lt;del&gt;然後我就拖到現在都沒寫，還去參加了救生員訓練，delay了3個禮拜&lt;/del&gt;&lt;/p&gt;

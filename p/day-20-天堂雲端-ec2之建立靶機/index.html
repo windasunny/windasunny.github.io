@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="AWS EC2 Amazon Elastic Compute Cloud (AWS EC2)是AWS提供的IaaS服務，等同於在AWS上開啟虛擬機。 建立EC2 首先，先建立一台EC2靶機。記得安裝openssh 註：因為是當成靶機的關係，我是用SSH的方式連線雲端主機，如果是production環境的話可以換成System Manager快速設定ssm。因為吃流量計費所以我就先不用了 快速建立一個Flask Web app，放到這台EC2靶機中 1 2 3 4 5 6 7 8 9 10 11 12 from flask import Flask app = Flask(__name__) @app.route(&#34;/&#34;) def index(): return &#34;Hello World!&#34; if __name__ == &#34;__main__&#34;: app.run(host=&#34;0.0.0.0&#34;, port=8000) 編輯安全組規則 把flask佔用的PORT加到安全組規則中，不然外網吃不到。 測試 外網連接公有 IPv4 DNS，通常長這樣 - ec2-{IP}.compute-1.amazonaws.com，確認可以看到Hello World就可以接著後續的測試。">
 <title>[Day 20] 天堂雲端 - EC2之建立靶機</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 20] 天堂雲端 - EC2之建立靶機">
 <meta property='og:description' content="AWS EC2 Amazon Elastic Compute Cloud (AWS EC2)是AWS提供的IaaS服務，等同於在AWS上開啟虛擬機。 建立EC2 首先，先建立一台EC2靶機。記得安裝openssh 註：因為是當成靶機的關係，我是用SSH的方式連線雲端主機，如果是production環境的話可以換成System Manager快速設定ssm。因為吃流量計費所以我就先不用了 快速建立一個Flask Web app，放到這台EC2靶機中 1 2 3 4 5 6 7 8 9 10 11 12 from flask import Flask app = Flask(__name__) @app.route(&#34;/&#34;) def index(): return &#34;Hello World!&#34; if __name__ == &#34;__main__&#34;: app.run(host=&#34;0.0.0.0&#34;, port=8000) 編輯安全組規則 把flask佔用的PORT加到安全組規則中，不然外網吃不到。 測試 外網連接公有 IPv4 DNS，通常長這樣 - ec2-{IP}.compute-1.amazonaws.com，確認可以看到Hello World就可以接著後續的測試。">
-<meta property='og:url' content='http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:published_time' content='2023-10-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-03T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 20] 天堂雲端 - EC2之建立靶機">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -569,7 +569,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Account ID &amp; ARN 昨天提到可以用SSRF等技術取得API KEY等資訊。 如果說已取得API KEY，可以用AWS CLI提供的get-access-key-info取得Account ID 1 2 3 4 aws sts get-access-key-info --access-key-id=XXXXXXXXXXXX { &#34;Account&#34;: &#34;ACCOUNT_ID&#34; } 目標 在不存取任何AWS帳戶的情況下，要怎麼枚舉有效的AWS帳戶名稱？ Amazon Resource Name(ARN) Amazon Resource Name(ARN)結構如下： 1 arn:partition:service:region:account-id:resource-type/resource 用於唯一識別和管理資源的標識符。每個資源都有一個，包括IAM使用者和IAM組。 使用ARN枚舉AWS Account ID和ARN 第一種方法：UpdateAssumeRolePolicy 先使用ARN枚舉帳戶名稱 UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略。 創建不相關的AWS帳戶 建立一個不相關的AWS帳戶，接著建立一個角色。 枚舉 在角色的編輯信任政策中加入以下內容 1 2 3 4 5 6 7 8 9 10 11 12 { &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Effect&#34;: &#34;Deny&#34;, &#34;Principal&#34;: { &#34;AWS&#34;: &#34;arn:aws:iam::ACCOUNT_ID:user/USER_NAME&#34; }, &#34;Action&#34;: &#34;sts:AssumeRole&#34; } ] } 如果正確枚舉到USER_NAME，網頁會回傳信任政策已更新。等代表執行成功的回應。如果是錯誤的USER_NAME，網頁會回傳無法更新信任政策。Invalid principal in policy: &quot;AWS&quot;:&quot;arn:aws:iam::ACCOUNT_ID:user/XXXXX&quot;等資訊。">
 <title>[Day 23] 天堂雲端 - AWS Account ID Enumeration</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 23] 天堂雲端 - AWS Account ID Enumeration">
 <meta property='og:description' content="Account ID &amp; ARN 昨天提到可以用SSRF等技術取得API KEY等資訊。 如果說已取得API KEY，可以用AWS CLI提供的get-access-key-info取得Account ID 1 2 3 4 aws sts get-access-key-info --access-key-id=XXXXXXXXXXXX { &#34;Account&#34;: &#34;ACCOUNT_ID&#34; } 目標 在不存取任何AWS帳戶的情況下，要怎麼枚舉有效的AWS帳戶名稱？ Amazon Resource Name(ARN) Amazon Resource Name(ARN)結構如下： 1 arn:partition:service:region:account-id:resource-type/resource 用於唯一識別和管理資源的標識符。每個資源都有一個，包括IAM使用者和IAM組。 使用ARN枚舉AWS Account ID和ARN 第一種方法：UpdateAssumeRolePolicy 先使用ARN枚舉帳戶名稱 UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略。 創建不相關的AWS帳戶 建立一個不相關的AWS帳戶，接著建立一個角色。 枚舉 在角色的編輯信任政策中加入以下內容 1 2 3 4 5 6 7 8 9 10 11 12 { &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Effect&#34;: &#34;Deny&#34;, &#34;Principal&#34;: { &#34;AWS&#34;: &#34;arn:aws:iam::ACCOUNT_ID:user/USER_NAME&#34; }, &#34;Action&#34;: &#34;sts:AssumeRole&#34; } ] } 如果正確枚舉到USER_NAME，網頁會回傳信任政策已更新。等代表執行成功的回應。如果是錯誤的USER_NAME，網頁會回傳無法更新信任政策。Invalid principal in policy: &quot;AWS&quot;:&quot;arn:aws:iam::ACCOUNT_ID:user/XXXXX&quot;等資訊。">
-<meta property='og:url' content='http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:tag' content='enumeration' /><meta property='article:published_time' content='2023-10-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-06T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 23] 天堂雲端 - AWS Account ID Enumeration">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -745,7 +745,7 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">
