@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Takeover on Sunny Site</title>
-        <link>http://localhost:1313/tags/takeover/</link>
+        <link>https://windasunny.github.io/tags/takeover/</link>
         <description>Recent content in Takeover on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/takeover/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/takeover/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 18] 天堂雲端 - S3 takeover POC</title>
-        <link>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
+        <link>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
+        <guid>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
         <description>&lt;h1 id=&#34;s3-takeover-poc&#34;&gt;S3 takeover POC&lt;/h1&gt;
 &lt;p&gt;第一步：確認target ip
 第二步：掃描target ip 下符合條件的子域
@@ -112,10 +112,10 @@
         </item>
         <item>
         <title>[Day 14] 天堂雲端 - S3 takeover</title>
-        <link>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
+        <link>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
         <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
+        <guid>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
         <description>&lt;p&gt;前天寫道每個S3 bucket object都有唯一的URL訪問路口，格式會長得像這樣：
 https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
 &lt;p&gt;如果在S3 bucket裡面設定了靜態託管服務

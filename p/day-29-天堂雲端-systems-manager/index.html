@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="SSM AWS Systems Manager (SSM) 是一個AWS服務，提供一個集中式的解決方案，用於管理和遠程操作AWS環境中的多個instance。 主要功能 遠程執行命令 使用SSM控制EC2 instance，而無需進行SSH或RDP連接。這有助於提高安全性和簡化操作。 系統監控 SSM提供了關於EC2 instance的性能和運行狀況的詳細資訊，可以監控指標、設定警報並自動回應事件。 安全性 SSM 使用IAM來控制對instance的訪問權限，可以更精準的控制誰可以進行什麼操作。 設定Session Manager 在EC2上設定好Session Manager後即可使用(需要注意role有沒有設定到) Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執行主機啟動會話。 訪問 Remote Access: 1 &gt; aws ssm start-session --target {EC2_INSTANCE_ID} 會出現現在是由哪個account遠程訪問EC2 instance 1 Starting session with SessionId: XXXXXXXXXX ">
 <title>[Day 29] 天堂雲端 - Systems Manager</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 29] 天堂雲端 - Systems Manager">
 <meta property='og:description' content="SSM AWS Systems Manager (SSM) 是一個AWS服務，提供一個集中式的解決方案，用於管理和遠程操作AWS環境中的多個instance。 主要功能 遠程執行命令 使用SSM控制EC2 instance，而無需進行SSH或RDP連接。這有助於提高安全性和簡化操作。 系統監控 SSM提供了關於EC2 instance的性能和運行狀況的詳細資訊，可以監控指標、設定警報並自動回應事件。 安全性 SSM 使用IAM來控制對instance的訪問權限，可以更精準的控制誰可以進行什麼操作。 設定Session Manager 在EC2上設定好Session Manager後即可使用(需要注意role有沒有設定到) Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執行主機啟動會話。 訪問 Remote Access: 1 &gt; aws ssm start-session --target {EC2_INSTANCE_ID} 會出現現在是由哪個account遠程訪問EC2 instance 1 Starting session with SessionId: XXXXXXXXXX ">
-<meta property='og:url' content='http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:tag' content='ssm' /><meta property='article:published_time' content='2023-10-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-12T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 29] 天堂雲端 - Systems Manager">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -607,7 +607,7 @@ Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執�
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

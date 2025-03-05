@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="S3 Bucket是一個Object Storage Service，當物件(Object)存入Bucket的時候，這個物件(Object)會包含以下三個部分 Key 檔案名稱（唯一值） Value 物件(Object)內容 Metadata 紀錄物件(Object)相關訊息的資料(ex 上傳時間、修改時間等) 其中，Key代表著獲取檔案URL一個重要關鍵字。上傳後的物件(object)若是可以進行公開存取則訪問的URL會是長這樣：https://{S3_BUCKET_NAME}.s3.amazonaws.com/{KEY} Bucket Object訪問 公開存取檔案 如果是設定成可以公眾讀取的 開啟物件(object)URL可以正常訪問到檔案。 非公開存取檔案 如果物件(object)沒有設定公眾權限 訪問URL的時候會出現以下錯誤 1 2 3 4 5 6 7 This XML file does not appear to have any style information associated with it. The document tree is shown below. &lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Access Denied&lt;/Message&gt; &lt;RequestId&gt;XXXXXXX&lt;/RequestId&gt; &lt;HostId&gt;XXXXX=&lt;/HostId&gt; &lt;/Error&gt; 需要有token、credential跟signature才可以登入 1 https://{S3_BUCKET_NAME}.s3.{REGION}.amazonaws.com/{KEY}?response-content-disposition=inline&amp;X-Amz-Security-Token=XXX&amp;X-Amz-Algorithm=XXXXXXXX&amp;X-Amz-Date=DATE&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=XXXXXus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=XXX 不存在此檔案 如果輸入一個不存在此檔案的URL，輸出如下 1 2 3 4 5 6 7 This XML file does not appear to have any style information associated with it.">
 <title>[Day 13] 天堂雲端 - S3 Bucket Enumeration</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 13] 天堂雲端 - S3 Bucket Enumeration">
 <meta property='og:description' content="S3 Bucket是一個Object Storage Service，當物件(Object)存入Bucket的時候，這個物件(Object)會包含以下三個部分 Key 檔案名稱（唯一值） Value 物件(Object)內容 Metadata 紀錄物件(Object)相關訊息的資料(ex 上傳時間、修改時間等) 其中，Key代表著獲取檔案URL一個重要關鍵字。上傳後的物件(object)若是可以進行公開存取則訪問的URL會是長這樣：https://{S3_BUCKET_NAME}.s3.amazonaws.com/{KEY} Bucket Object訪問 公開存取檔案 如果是設定成可以公眾讀取的 開啟物件(object)URL可以正常訪問到檔案。 非公開存取檔案 如果物件(object)沒有設定公眾權限 訪問URL的時候會出現以下錯誤 1 2 3 4 5 6 7 This XML file does not appear to have any style information associated with it. The document tree is shown below. &lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Access Denied&lt;/Message&gt; &lt;RequestId&gt;XXXXXXX&lt;/RequestId&gt; &lt;HostId&gt;XXXXX=&lt;/HostId&gt; &lt;/Error&gt; 需要有token、credential跟signature才可以登入 1 https://{S3_BUCKET_NAME}.s3.{REGION}.amazonaws.com/{KEY}?response-content-disposition=inline&amp;X-Amz-Security-Token=XXX&amp;X-Amz-Algorithm=XXXXXXXX&amp;X-Amz-Date=DATE&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=XXXXXus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=XXX 不存在此檔案 如果輸入一個不存在此檔案的URL，輸出如下 1 2 3 4 5 6 7 This XML file does not appear to have any style information associated with it.">
-<meta property='og:url' content='http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='S3' /><meta property='article:tag' content='Enumeration' /><meta property='article:published_time' content='2023-09-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-26T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 13] 天堂雲端 - S3 Bucket Enumeration">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -761,7 +761,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Sunny Site</title>
-        <link>http://localhost:1313/zh-tw/</link>
+        <link>https://windasunny.github.io/zh-tw/</link>
         <description>Recent content on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <copyright>sunny tsai</copyright><atom:link href="http://localhost:1313/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>sunny tsai</copyright><atom:link href="https://windasunny.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>關於</title>
-        <link>http://localhost:1313/zh-tw/%E9%97%9C%E6%96%BC/</link>
+        <link>https://windasunny.github.io/zh-tw/%E9%97%9C%E6%96%BC/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/zh-tw/%E9%97%9C%E6%96%BC/</guid>
+        <guid>https://windasunny.github.io/zh-tw/%E9%97%9C%E6%96%BC/</guid>
         <description>&lt;p&gt;Golang/Coroutine/Distributed/Security
 I&amp;rsquo;m on the way.&lt;/p&gt;
 </description>

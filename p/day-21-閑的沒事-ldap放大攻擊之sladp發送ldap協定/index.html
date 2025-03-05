@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="LDAP Lightweight Directory Access Protocol（LDAP）是一種輕量的目錄服務協定（Directory Access Protocol，DAP）。目錄服務通常提供了有組織的記錄集合，這些記錄通常具有層級結構，也就是說這些資料之間存在著父子或是兄弟的關係。 LDAP的常見用途之一是提供中央位置來進行身份驗證，其中包括用戶帳戶和密碼的儲存，例如在Docker、Jenkins、Kubernetes、Open VPN和Linux Samba等服務中用於驗證帳戶和密碼。此外，系統管理員還可以使用LDAP單一登入來控制對LDAP資料庫的訪問。 實作了LDAP的軟體程式可以被視為是專門用來讀取資料的資料庫(這些資料可能經常被讀取，但不常被變動)，例如說經常用來儲存姓名、電子郵件、電話、地址等人事資料，或是拿來做使用者權限的驗證。 測試 安裝slapd 確定389 port被佔用 測試 我拿之前測試用的kali主機當ldap的client端 client端發送request 攔截封包 ldap主機攔截封包 明天寫攔截並發送ldap協定封包。">
 <title>[Day 21] 閑的沒事 - LDAP放大攻擊之sladp發送ldap協定</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 21] 閑的沒事 - LDAP放大攻擊之sladp發送ldap協定">
 <meta property='og:description' content="LDAP Lightweight Directory Access Protocol（LDAP）是一種輕量的目錄服務協定（Directory Access Protocol，DAP）。目錄服務通常提供了有組織的記錄集合，這些記錄通常具有層級結構，也就是說這些資料之間存在著父子或是兄弟的關係。 LDAP的常見用途之一是提供中央位置來進行身份驗證，其中包括用戶帳戶和密碼的儲存，例如在Docker、Jenkins、Kubernetes、Open VPN和Linux Samba等服務中用於驗證帳戶和密碼。此外，系統管理員還可以使用LDAP單一登入來控制對LDAP資料庫的訪問。 實作了LDAP的軟體程式可以被視為是專門用來讀取資料的資料庫(這些資料可能經常被讀取，但不常被變動)，例如說經常用來儲存姓名、電子郵件、電話、地址等人事資料，或是拿來做使用者權限的驗證。 測試 安裝slapd 確定389 port被佔用 測試 我拿之前測試用的kali主機當ldap的client端 client端發送request 攔截封包 ldap主機攔截封包 明天寫攔截並發送ldap協定封包。">
-<meta property='og:url' content='http://localhost:1313/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='ldap' /><meta property='article:published_time' content='2023-10-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-04T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 21] 閑的沒事 - LDAP放大攻擊之sladp發送ldap協定">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -595,7 +595,7 @@ client端發送request
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

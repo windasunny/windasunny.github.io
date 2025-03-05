@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ssm on Sunny Site</title>
-        <link>http://localhost:1313/tags/ssm/</link>
+        <link>https://windasunny.github.io/tags/ssm/</link>
         <description>Recent content in Ssm on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ssm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/ssm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 30] 天堂雲端 - SSM</title>
-        <link>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
+        <link>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
         <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
+        <guid>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
         <description>&lt;h1 id=&#34;ssmsendcommand&#34;&gt;ssm:SendCommand&lt;/h1&gt;
 &lt;p&gt;擁有該權限的用戶可以發送命令到一個或多個已註冊在SSM的EC2 instance或其他服務，允許在這些instance或主機上執行操作，例如運行腳本、管理更新或執行其他自動化任務。&lt;/p&gt;
 &lt;h2 id=&#34;使用send-command執行reverse-shell&#34;&gt;使用send command執行reverse shell&lt;/h2&gt;
@@ -140,10 +140,10 @@ Output:&lt;/p&gt;
         </item>
         <item>
         <title>[Day 29] 天堂雲端 - Systems Manager</title>
-        <link>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
+        <link>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
         <pubDate>Thu, 12 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
+        <guid>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
         <description>&lt;h1 id=&#34;ssm&#34;&gt;SSM&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_tw/systems-manager/latest/userguide/what-is-systems-manager.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Systems Manager (SSM)&lt;/a&gt; 是一個AWS服務，提供一個集中式的解決方案，用於管理和遠程操作AWS環境中的多個instance。&lt;/p&gt;

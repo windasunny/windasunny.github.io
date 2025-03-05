@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="用什麼套件建構封包 先來測一下有go有什麼packet interface好用的套件，像其他語言例如c、python可以用socket建構封包。python還有另一個套件庫scapy，專門處理各種交互式數據封包操作庫。 回來go。首先，先建立一個SYN封包。 使用Go原生庫中的net Overview Package net provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 import ( &#34;fmt&#34; &#34;net&#34; ) func main() { // 設定標的IP與PORT targetIP := &#34;10.211.55.10&#34; // 這是我建的一台測試VM targetPort := 12345 // 我在VM上起了flask web服務，web佔用12345 port // 建立TCP連接 conn, err := net.">
 <title>[Day 3] 閑的沒事就找套件 - Go原生套件&#39;net&#39;</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 3] 閑的沒事就找套件 - Go原生套件'net'">
 <meta property='og:description' content="用什麼套件建構封包 先來測一下有go有什麼packet interface好用的套件，像其他語言例如c、python可以用socket建構封包。python還有另一個套件庫scapy，專門處理各種交互式數據封包操作庫。 回來go。首先，先建立一個SYN封包。 使用Go原生庫中的net Overview Package net provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 import ( &#34;fmt&#34; &#34;net&#34; ) func main() { // 設定標的IP與PORT targetIP := &#34;10.211.55.10&#34; // 這是我建的一台測試VM targetPort := 12345 // 我在VM上起了flask web服務，web佔用12345 port // 建立TCP連接 conn, err := net.">
-<meta property='og:url' content='http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='ddos' /><meta property='article:tag' content='go' /><meta property='article:tag' content='net' /><meta property='article:published_time' content='2023-09-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 3] 閑的沒事就找套件 - Go原生套件'net'">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -780,7 +780,7 @@ targetIP也可以使用&quot;example.com&quot;等hostname</p>
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

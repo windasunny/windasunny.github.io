@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Enumeration on Sunny Site</title>
-        <link>http://localhost:1313/tags/enumeration/</link>
+        <link>https://windasunny.github.io/tags/enumeration/</link>
         <description>Recent content in Enumeration on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 06 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/enumeration/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 06 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/enumeration/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 23] 天堂雲端 - AWS Account ID Enumeration</title>
-        <link>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
+        <link>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
         <pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
+        <guid>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
         <description>&lt;h1 id=&#34;account-id--arn&#34;&gt;Account ID &amp;amp; ARN&lt;/h1&gt;
 &lt;p&gt;昨天提到可以用SSRF等技術取得API KEY等資訊。
 如果說已取得API KEY，可以用AWS CLI提供的get-access-key-info取得Account ID&lt;/p&gt;
@@ -197,10 +197,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 13] 天堂雲端 - S3 Bucket Enumeration</title>
-        <link>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
+        <link>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
         <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
+        <guid>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
         <description>&lt;p&gt;S3 Bucket是一個Object Storage Service，當物件(Object)存入Bucket的時候，這個物件(Object)會包含以下三個部分&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Key

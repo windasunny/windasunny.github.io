@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="AWS Elastic Beanstalk AWS Elastic Beanstalk是AWS提供一個全受管的PaaS服務，用於建構、部署Web應用程式，只要使用者上傳code，Elastic Beanstalk會自動部署、負載平衡、自動調整等功能。看起來就像在薛不懂infra的人。 建立新環境 建立好後去EC2看會看到beanstalk幫你建ㄧ台EC2機器。雖然本身beanstalk不收費，但這個服務就是建好infra的工作。 常見的Elastic Beanstalk漏洞 1. Takeover beanstalk web endpoint：http://[name].-[region].elasticbeanstalk.com 跟S3 takeover一樣，如果找到有DNS record存在一個被砍掉的beanstalk域名，攻擊者接管這個域名 2. SSRF/XSS/SQL Injection/ 部署的程式碼本身含有SSRF、XSS、SQL Injection等漏洞，攻擊者擷取到Metadata Service、IAM等資料。">
 <title>[Day 19] 天堂雲端 - AWS Elastic Beanstalk</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 19] 天堂雲端 - AWS Elastic Beanstalk">
 <meta property='og:description' content="AWS Elastic Beanstalk AWS Elastic Beanstalk是AWS提供一個全受管的PaaS服務，用於建構、部署Web應用程式，只要使用者上傳code，Elastic Beanstalk會自動部署、負載平衡、自動調整等功能。看起來就像在薛不懂infra的人。 建立新環境 建立好後去EC2看會看到beanstalk幫你建ㄧ台EC2機器。雖然本身beanstalk不收費，但這個服務就是建好infra的工作。 常見的Elastic Beanstalk漏洞 1. Takeover beanstalk web endpoint：http://[name].-[region].elasticbeanstalk.com 跟S3 takeover一樣，如果找到有DNS record存在一個被砍掉的beanstalk域名，攻擊者接管這個域名 2. SSRF/XSS/SQL Injection/ 部署的程式碼本身含有SSRF、XSS、SQL Injection等漏洞，攻擊者擷取到Metadata Service、IAM等資料。">
-<meta property='og:url' content='http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:tag' content='elastic beanstalk' /><meta property='article:published_time' content='2023-10-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-02T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 19] 天堂雲端 - AWS Elastic Beanstalk">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -579,7 +579,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

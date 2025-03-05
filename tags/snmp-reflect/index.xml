@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Snmp Reflect on Sunny Site</title>
-        <link>http://localhost:1313/tags/snmp-reflect/</link>
+        <link>https://windasunny.github.io/tags/snmp-reflect/</link>
         <description>Recent content in Snmp Reflect on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/snmp-reflect/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/snmp-reflect/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 19] 閑的沒事 - SNMP反射攻擊之SNMP測試</title>
-        <link>http://localhost:1313/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</link>
+        <link>https://windasunny.github.io/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</link>
         <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</guid>
+        <guid>https://windasunny.github.io/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</guid>
         <description>&lt;h1 id=&#34;snmp&#34;&gt;SNMP&lt;/h1&gt;
 &lt;p&gt;簡易網路管理通訊協定 SNMP(Simmple Network Management Protocol)用於交換網路裝置之間的管理資訊，用於傳輸控制通訊協定/網際網路通訊協定 (TCP⁄IP) 通訊協定組合的一部分。&lt;/p&gt;
 &lt;h1 id=&#34;snmp-getbulkrequest&#34;&gt;SNMP getbulkrequest&lt;/h1&gt;

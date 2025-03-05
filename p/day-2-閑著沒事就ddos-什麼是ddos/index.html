@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="什麼是DDOS 分散式阻斷服務（Distributed Denial of Service），主要是通過製造大流量來攻擊特定服務器或基礎設施，以阻斷正常流量，中斷用戶與服務器或應用程序的連接，造成流量阻塞。 什麼是DOS？ 這個很多人都會搞混，DOS（Denial of Service），同樣是大規模封包攻擊特定服務器或基礎設施，但由於是單一來源，攻擊規模較小，而且一旦識別出IP後，即可阻止攻擊。 因此，DDOS可以當作分布式的DOS。DDOS發送的封包會更複雜更多樣化，以避免用戶封鎖特定IP或特定協議來阻擋攻擊。DDOS攻擊可以針對OSI模型的不同層發起不同類型的攻擊。 來源 第一層 Physical Layer 這一層的攻擊主要是物理攻擊，例如說切斷網絡連接、摧毀網絡設備、割斷電纜等。跟主題無關。 第二層 Data Link Layer 攻擊會針對網路交換器、橋接器、或其他設備進行攻擊。可能通過MAC Spoofing、ARP Spoofing或利用數據鏈路協議漏洞來導致網絡連接中斷或混亂。 行為：MAC Spoofing、ARP Spoofing 第三層 Network Layer Network layer攻擊包括ICMP Flood、Fragment Packet Flood和Route Attack。 行為：ICMP Flood、Fragment Packet Flood、Route Attack 第四層 Transport Layer 這一層攻擊主要針對TCP、UDP協定，包括SYN Flood、UDP Flood、RST Attack等，試圖耗盡目標系統的連接資源或混淆傳輸協議以干擾正常通信。 行為：SYN Flood、UDP Flood、RST Attack、Reflection Attack 第五層 Session Layer 這些攻擊針對Session Layer會話和通信，如HTTP Flood、SSL/TLS Flood。攻擊者可能試圖使目標網站無法處理用戶的請求或使安全通信協議無法建立。 行為：HTTP Flood、SSL/TLS Flood 第六層 Presentation Layer 利用Presentation Layer協議漏洞來造成損害，但通常會依據依賴的程式碼，所以並不常見。例如說：加密漏洞、數據解碼漏洞等。 第七層 Application Layer Application Layer攻擊是最常見的DDoS攻擊類型，包括HTTP Flood、DNS Flood、SMTP Flood等。攻擊者通常針對特定應用程式及服務，試圖使其無法正常運作。 行為：HTTP Flood、DNS Flood、SMTP Flood、Amplification Attack">
 <title>[Day 2] 閑著沒事就DDOS - 什麼是DDOS</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 2] 閑著沒事就DDOS - 什麼是DDOS">
 <meta property='og:description' content="什麼是DDOS 分散式阻斷服務（Distributed Denial of Service），主要是通過製造大流量來攻擊特定服務器或基礎設施，以阻斷正常流量，中斷用戶與服務器或應用程序的連接，造成流量阻塞。 什麼是DOS？ 這個很多人都會搞混，DOS（Denial of Service），同樣是大規模封包攻擊特定服務器或基礎設施，但由於是單一來源，攻擊規模較小，而且一旦識別出IP後，即可阻止攻擊。 因此，DDOS可以當作分布式的DOS。DDOS發送的封包會更複雜更多樣化，以避免用戶封鎖特定IP或特定協議來阻擋攻擊。DDOS攻擊可以針對OSI模型的不同層發起不同類型的攻擊。 來源 第一層 Physical Layer 這一層的攻擊主要是物理攻擊，例如說切斷網絡連接、摧毀網絡設備、割斷電纜等。跟主題無關。 第二層 Data Link Layer 攻擊會針對網路交換器、橋接器、或其他設備進行攻擊。可能通過MAC Spoofing、ARP Spoofing或利用數據鏈路協議漏洞來導致網絡連接中斷或混亂。 行為：MAC Spoofing、ARP Spoofing 第三層 Network Layer Network layer攻擊包括ICMP Flood、Fragment Packet Flood和Route Attack。 行為：ICMP Flood、Fragment Packet Flood、Route Attack 第四層 Transport Layer 這一層攻擊主要針對TCP、UDP協定，包括SYN Flood、UDP Flood、RST Attack等，試圖耗盡目標系統的連接資源或混淆傳輸協議以干擾正常通信。 行為：SYN Flood、UDP Flood、RST Attack、Reflection Attack 第五層 Session Layer 這些攻擊針對Session Layer會話和通信，如HTTP Flood、SSL/TLS Flood。攻擊者可能試圖使目標網站無法處理用戶的請求或使安全通信協議無法建立。 行為：HTTP Flood、SSL/TLS Flood 第六層 Presentation Layer 利用Presentation Layer協議漏洞來造成損害，但通常會依據依賴的程式碼，所以並不常見。例如說：加密漏洞、數據解碼漏洞等。 第七層 Application Layer Application Layer攻擊是最常見的DDoS攻擊類型，包括HTTP Flood、DNS Flood、SMTP Flood等。攻擊者通常針對特定應用程式及服務，試圖使其無法正常運作。 行為：HTTP Flood、DNS Flood、SMTP Flood、Amplification Attack">
-<meta property='og:url' content='http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='ddos' /><meta property='article:published_time' content='2023-09-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 2] 閑著沒事就DDOS - 什麼是DDOS">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -596,7 +596,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

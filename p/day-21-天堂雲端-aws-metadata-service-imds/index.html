@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在接下去寫EC2 POC之前，先來解釋AWS IMDS是啥 AWS Metadata Service (IMDS) IMDS是有關實例的元數據（Metadata），可用於設定或管理正在執行的實例（例如EC2 instance）。這些元數據包含有關實例的重要資訊，例如實例的ID、IAM角色、IP地址、實例類型、安全組等等。IMDS是一個RESTful API，通常在實例內部運行，用於提供對這些數據的安全訪問。 注：IMDS僅在實例內部可用，不能通過網絡從外部訪問。 IMDS RESTful API 查詢EC2 instance ID 1 &gt; curl http://169.254.169.254/latest/meta-data/instance-id IAM Role IAM role關聯的名稱 1 &gt; curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ 如果沒有關聯的role則返回404 檢索credential 1 &gt; curl http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name} 安全組 1 &gt; curl http://169.254.169.254/latest/meta-data/security-groups IP Address 私有IP地址 1 &gt; curl http://169.254.169.254/latest/meta-data/local-ipv4 公有IP地址(如果有) 1 &gt; http://169.254.169.254/latest/meta-data/public-ipv4 主機名（包括公有DNS和私有DNS） 1 &gt; http://169.254.169.254/latest/meta-data/public-hostname 1 &gt; http://169.254.169.254/latest/meta-data/local-hostname ">
 <title>[Day 21] 天堂雲端 - AWS Metadata Service (IMDS)</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 21] 天堂雲端 - AWS Metadata Service (IMDS)">
 <meta property='og:description' content="在接下去寫EC2 POC之前，先來解釋AWS IMDS是啥 AWS Metadata Service (IMDS) IMDS是有關實例的元數據（Metadata），可用於設定或管理正在執行的實例（例如EC2 instance）。這些元數據包含有關實例的重要資訊，例如實例的ID、IAM角色、IP地址、實例類型、安全組等等。IMDS是一個RESTful API，通常在實例內部運行，用於提供對這些數據的安全訪問。 注：IMDS僅在實例內部可用，不能通過網絡從外部訪問。 IMDS RESTful API 查詢EC2 instance ID 1 &gt; curl http://169.254.169.254/latest/meta-data/instance-id IAM Role IAM role關聯的名稱 1 &gt; curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ 如果沒有關聯的role則返回404 檢索credential 1 &gt; curl http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name} 安全組 1 &gt; curl http://169.254.169.254/latest/meta-data/security-groups IP Address 私有IP地址 1 &gt; curl http://169.254.169.254/latest/meta-data/local-ipv4 公有IP地址(如果有) 1 &gt; http://169.254.169.254/latest/meta-data/public-ipv4 主機名（包括公有DNS和私有DNS） 1 &gt; http://169.254.169.254/latest/meta-data/public-hostname 1 &gt; http://169.254.169.254/latest/meta-data/local-hostname ">
-<meta property='og:url' content='http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:tag' content='ec2' /><meta property='article:tag' content='imds' /><meta property='article:published_time' content='2023-10-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-04T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 21] 天堂雲端 - AWS Metadata Service (IMDS)">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -641,7 +641,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

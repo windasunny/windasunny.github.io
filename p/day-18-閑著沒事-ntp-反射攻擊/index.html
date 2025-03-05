@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NTP NTP（Network Time Protocol）網路時間協議，用來同步主機時間的網路協議。 NTP Monlist NTP有一個monitor功能，也被稱為MON_GETLIST。這個功能為監控伺服器。NTP服務器收到monlist後就會返回與NTP服務器同步過的最後600個客戶端IP。 可以在客戶端主機輸入以下command line測試： 1 ntpdc -n -c monlist x.x.x.x | wc -l 輸出為收到的數據行數 如何避免 禁用monlist: 將ntp server升級到4.2.7p26或更高版本，在4.2.7前的版本，在配置檔設定disable monitor禁用monlist功能。 code ntp跟dns查詢一樣是發送udp封包，把payload修改一下就可以了 1 2 3 4 5 ntpdcMonlistQuery := []byte{ 0x17, 0x00, 0x03, 0x2a, // NTPDC Request Header // Monlist Query 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Cookie } 目標主機攔截封包 1 2 3 4 5 6 7 8 9 10 11 12 &gt; sudo tcpdump -i eth0 host 10.">
 <title>[Day 18] 閑著沒事 - NTP 反射攻擊</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 18] 閑著沒事 - NTP 反射攻擊">
 <meta property='og:description' content="NTP NTP（Network Time Protocol）網路時間協議，用來同步主機時間的網路協議。 NTP Monlist NTP有一個monitor功能，也被稱為MON_GETLIST。這個功能為監控伺服器。NTP服務器收到monlist後就會返回與NTP服務器同步過的最後600個客戶端IP。 可以在客戶端主機輸入以下command line測試： 1 ntpdc -n -c monlist x.x.x.x | wc -l 輸出為收到的數據行數 如何避免 禁用monlist: 將ntp server升級到4.2.7p26或更高版本，在4.2.7前的版本，在配置檔設定disable monitor禁用monlist功能。 code ntp跟dns查詢一樣是發送udp封包，把payload修改一下就可以了 1 2 3 4 5 ntpdcMonlistQuery := []byte{ 0x17, 0x00, 0x03, 0x2a, // NTPDC Request Header // Monlist Query 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Cookie } 目標主機攔截封包 1 2 3 4 5 6 7 8 9 10 11 12 &gt; sudo tcpdump -i eth0 host 10.">
-<meta property='og:url' content='http://localhost:1313/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='ntp reflect' /><meta property='article:published_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-01T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 18] 閑著沒事 - NTP 反射攻擊">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -588,7 +588,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

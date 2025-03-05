@@ -2,55 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/zh-cn/</loc>
+    <loc>https://windasunny.github.io/zh-cn/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://windasunny.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://localhost:1313/zh-tw/"
+                href="https://windasunny.github.io/zh-tw/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/"
+                href="https://windasunny.github.io/zh-cn/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/</loc>
+    <loc>https://windasunny.github.io/zh-cn/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="https://windasunny.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://localhost:1313/zh-tw/categories/"
+                href="https://windasunny.github.io/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/categories/"
+                href="https://windasunny.github.io/zh-cn/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/</loc>
+    <loc>https://windasunny.github.io/zh-cn/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="https://windasunny.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="http://localhost:1313/zh-tw/tags/"
+                href="https://windasunny.github.io/zh-tw/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/"
+                href="https://windasunny.github.io/zh-cn/tags/"
                 />
   </url>
 </urlset>

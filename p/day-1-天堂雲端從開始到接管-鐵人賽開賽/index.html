@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="鐵人賽開賽前言 不例外的第一天先來介紹一下接下來地獄30天會寫什麼。題目是雲端攻擊，但是還沒建立雲端環境（對我沒有現成的）哪來的target來攻擊？所以接下來的鐵人30天讓我們一起建構ㄧ套雲端架構然後再把它打掉。 大綱 先介紹雲服務種類架構，再來是一般架構/雲端架構、上雲優缺點。既然要上雲了，那雲供應商提供的安全性跟使用者需要自己注意的安全性是如何分攤？把前情提要都介紹完了後，那我們開始建立靶機跟POC 為什麼想要寫這個主題 雲端攻擊算是最近我有在研究的方向，雲端架構脫胎於一般落地架構，所以前面幾個章節會先大概講一下雲的基礎知識跟使用開源套件建立的架構，再來雲端架構，然後是雲端攻擊。因為我並不是專業的雲端架構師，所以對於雲端架構方面可能不是很專業的那種，但本次鐵人賽目的是建起來再打掉，所以並不會在雲端架構上面有多琢磨。 前面對於一些已經有雲端服務知識的人可能感覺沒什麼好看的，可以等到後面POC再回來。">
 <title>[Day 1] 天堂雲端從開始到接管-鐵人賽開賽</title>
 
-<link rel='canonical' href='http://localhost:1313/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/'>
+<link rel='canonical' href='https://windasunny.github.io/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 1] 天堂雲端從開始到接管-鐵人賽開賽">
 <meta property='og:description' content="鐵人賽開賽前言 不例外的第一天先來介紹一下接下來地獄30天會寫什麼。題目是雲端攻擊，但是還沒建立雲端環境（對我沒有現成的）哪來的target來攻擊？所以接下來的鐵人30天讓我們一起建構ㄧ套雲端架構然後再把它打掉。 大綱 先介紹雲服務種類架構，再來是一般架構/雲端架構、上雲優缺點。既然要上雲了，那雲供應商提供的安全性跟使用者需要自己注意的安全性是如何分攤？把前情提要都介紹完了後，那我們開始建立靶機跟POC 為什麼想要寫這個主題 雲端攻擊算是最近我有在研究的方向，雲端架構脫胎於一般落地架構，所以前面幾個章節會先大概講一下雲的基礎知識跟使用開源套件建立的架構，再來雲端架構，然後是雲端攻擊。因為我並不是專業的雲端架構師，所以對於雲端架構方面可能不是很專業的那種，但本次鐵人賽目的是建起來再打掉，所以並不會在雲端架構上面有多琢磨。 前面對於一些已經有雲端服務知識的人可能感覺沒什麼好看的，可以等到後面POC再回來。">
-<meta property='og:url' content='http://localhost:1313/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/'>
+<meta property='og:url' content='https://windasunny.github.io/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/'>
 <meta property='og:site_name' content='Sunny Site'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cloud' /><meta property='article:tag' content='security' /><meta property='article:published_time' content='2023-09-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-09-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="[Day 1] 天堂雲端從開始到接管-鐵人賽開賽">
@@ -225,11 +225,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" selected>English</option>
+                                    <option value="https://windasunny.github.io/" selected>English</option>
                                 
-                                    <option value="http://localhost:1313/zh-tw/" >繁體中文</option>
+                                    <option value="https://windasunny.github.io/zh-tw/" >繁體中文</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >簡體中文</option>
+                                    <option value="https://windasunny.github.io/zh-cn/" >簡體中文</option>
                                 
                             </select>
                         </li>
@@ -561,7 +561,7 @@
         
             2020 - 
         
-        2024 sunny tsai
+        2025 sunny tsai
     </section>
     
     <section class="powerby">

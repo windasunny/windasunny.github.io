@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Gopacket on Sunny Site</title>
-        <link>http://localhost:1313/tags/gopacket/</link>
+        <link>https://windasunny.github.io/tags/gopacket/</link>
         <description>Recent content in Gopacket on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 22 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gopacket/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 22 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/gopacket/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 9] 閑的沒事就寫封包 - gopacket建立UDP封包</title>
-        <link>http://localhost:1313/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</link>
+        <link>https://windasunny.github.io/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</link>
         <pubDate>Fri, 22 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</guid>
+        <guid>https://windasunny.github.io/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;建立封包&#34;&gt;建立封包&lt;/h1&gt;
 &lt;p&gt;UDP封包&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -223,10 +223,10 @@
         </item>
         <item>
         <title>[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）</title>
-        <link>http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</link>
+        <link>https://windasunny.github.io/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</link>
         <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</guid>
+        <guid>https://windasunny.github.io/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</guid>
         <description>&lt;p&gt;以下是一個簡單的建立單純的TCP SYN封包示例&lt;/p&gt;
 &lt;h2 id=&#34;gopacket建立封包&#34;&gt;Gopacket建立封包&lt;/h2&gt;
 &lt;p&gt;按照文件，code應該要這樣寫&lt;/p&gt;
@@ -493,10 +493,10 @@
         </item>
         <item>
         <title>[Day 7] 閑的沒事就找套件 - gopacket</title>
-        <link>http://localhost:1313/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</link>
+        <link>https://windasunny.github.io/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</link>
         <pubDate>Wed, 20 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</guid>
+        <guid>https://windasunny.github.io/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</guid>
         <description>&lt;h1 id=&#34;gopacket&#34;&gt;Gopacket&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/github.com/google/gopacket&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;gopacket&lt;/a&gt;是go的第三方庫，主要用於封包捕獲和解析。可以把它當作libpcap（tcpdump的流量捕獲庫） 和 npcap（Wireshark的流量捕獲庫）的 go 封装。&lt;/p&gt;

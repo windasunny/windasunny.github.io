@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>SSRF on Sunny Site</title>
-        <link>http://localhost:1313/tags/ssrf/</link>
+        <link>https://windasunny.github.io/tags/ssrf/</link>
         <description>Recent content in SSRF on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Thu, 05 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ssrf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/ssrf/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC</title>
-        <link>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
+        <link>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
         <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
+        <guid>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
         <description>&lt;p&gt;寫一個簡單的SSRF漏洞&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

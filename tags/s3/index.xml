@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>S3 on Sunny Site</title>
-        <link>http://localhost:1313/tags/s3/</link>
+        <link>https://windasunny.github.io/tags/s3/</link>
         <description>Recent content in S3 on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/s3/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/s3/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 18] 天堂雲端 - S3 takeover POC</title>
-        <link>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
+        <link>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
+        <guid>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
         <description>&lt;h1 id=&#34;s3-takeover-poc&#34;&gt;S3 takeover POC&lt;/h1&gt;
 &lt;p&gt;第一步：確認target ip
 第二步：掃描target ip 下符合條件的子域
@@ -112,10 +112,10 @@
         </item>
         <item>
         <title>[Day 17] 天堂雲端 - AWS S3 Misconfiguration&amp;POC</title>
-        <link>http://localhost:1313/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</link>
+        <link>https://windasunny.github.io/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</link>
         <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</guid>
+        <guid>https://windasunny.github.io/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</guid>
         <description>&lt;h1 id=&#34;misconfiguration&#34;&gt;Misconfiguration&lt;/h1&gt;
 &lt;p&gt;配置錯誤&lt;/p&gt;
 &lt;h2 id=&#34;常見的s3-bucket-配置錯誤&#34;&gt;常見的S3 bucket 配置錯誤&lt;/h2&gt;
@@ -386,10 +386,10 @@
         </item>
         <item>
         <title>[Day 16] 天堂雲端 - AWS S3 Enumerate POC</title>
-        <link>http://localhost:1313/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</link>
+        <link>https://windasunny.github.io/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</link>
         <pubDate>Fri, 29 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</guid>
+        <guid>https://windasunny.github.io/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</guid>
         <description>&lt;h1 id=&#34;enumerate&#34;&gt;Enumerate&lt;/h1&gt;
 &lt;h2 id=&#34;s3-web-endpoint&#34;&gt;S3 Web endpoint&lt;/h2&gt;
 &lt;p&gt;S3 web endpoint組成：https://{BUCKET_NAME}.s3.amazonaws.com/
@@ -504,10 +504,10 @@ enumerate（枚舉）所有可能的名詞組合建立出來的S3 bucket是否�
         </item>
         <item>
         <title>[Day 15] 天堂雲端 - Data Exfiltration on S3</title>
-        <link>http://localhost:1313/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</link>
+        <link>https://windasunny.github.io/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</link>
         <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</guid>
+        <guid>https://windasunny.github.io/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</guid>
         <description>&lt;h1 id=&#34;aws-s3-複寫策略replication-policies&#34;&gt;AWS S3 複寫策略(Replication Policies)&lt;/h1&gt;
 &lt;p&gt;AWS S3 replication policy - &lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/getting-started/hands-on/replicate-data-using-amazon-s3-replication/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;使用 Amazon S3 複寫在 AWS 區域內和區域間複寫資料&lt;/a&gt;。S3是一個高彈性、全受管、低成本的雲端服務，而複寫策略(Replication Policies)可以使得S3 bucket在&lt;strong&gt;不同的bucket或是不同帳戶下的bucket&lt;/strong&gt;間複寫物件(object)。&lt;/p&gt;
@@ -677,10 +677,10 @@ enumerate（枚舉）所有可能的名詞組合建立出來的S3 bucket是否�
         </item>
         <item>
         <title>[Day 14] 天堂雲端 - S3 takeover</title>
-        <link>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
+        <link>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
         <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
+        <guid>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
         <description>&lt;p&gt;前天寫道每個S3 bucket object都有唯一的URL訪問路口，格式會長得像這樣：
 https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
 &lt;p&gt;如果在S3 bucket裡面設定了靜態託管服務
@@ -768,10 +768,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 13] 天堂雲端 - S3 Bucket Enumeration</title>
-        <link>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
+        <link>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
         <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
+        <guid>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
         <description>&lt;p&gt;S3 Bucket是一個Object Storage Service，當物件(Object)存入Bucket的時候，這個物件(Object)會包含以下三個部分&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Key
@@ -970,10 +970,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？</title>
-        <link>http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</link>
+        <link>https://windasunny.github.io/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</link>
         <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</guid>
+        <guid>https://windasunny.github.io/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</guid>
         <description>&lt;h1 id=&#34;aws-s3&#34;&gt;AWS S3&lt;/h1&gt;
 &lt;p&gt;是什麼？&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/s3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

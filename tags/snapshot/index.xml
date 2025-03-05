@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Snapshot on Sunny Site</title>
-        <link>http://localhost:1313/tags/snapshot/</link>
+        <link>https://windasunny.github.io/tags/snapshot/</link>
         <description>Recent content in Snapshot on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Sat, 07 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/snapshot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 07 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/tags/snapshot/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 24] 天堂雲端 - 取得EC2快照(snapshot)</title>
-        <link>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
+        <link>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
         <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
+        <guid>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
         <description>&lt;h1 id=&#34;aws-ebs&#34;&gt;AWS EBS&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/ebs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Block Store(EBS)&lt;/a&gt;是AWS提供的可擴展的高效能區塊儲存服務。通常EC2 instance上面的數據（包括操作系統、應用程序數據等）通常儲存在EBS上。而EC2的快照(snapshot)是EC2 instance的狀態的定期副本，通常是基於EBS volumes的，快照捕捉了EBS volumes上的數據的狀態。&lt;/p&gt;
