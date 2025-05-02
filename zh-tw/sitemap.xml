@@ -2,79 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://windasunny.github.io/zh-tw/</loc>
+    <loc>http://localhost:1313/zh-tw/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windasunny.github.io/"
+                href="http://localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://windasunny.github.io/zh-cn/"
+                href="http://localhost:1313/zh-cn/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://windasunny.github.io/zh-tw/"
+                href="http://localhost:1313/zh-tw/"
                 />
   </url><url>
-    <loc>https://windasunny.github.io/zh-tw/categories/</loc>
+    <loc>http://localhost:1313/zh-tw/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windasunny.github.io/categories/"
+                href="http://localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://windasunny.github.io/zh-cn/categories/"
+                href="http://localhost:1313/zh-cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://windasunny.github.io/zh-tw/categories/"
+                href="http://localhost:1313/zh-tw/categories/"
                 />
   </url><url>
-    <loc>https://windasunny.github.io/zh-tw/page/</loc>
+    <loc>http://localhost:1313/zh-tw/page/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windasunny.github.io/page/"
+                href="http://localhost:1313/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://windasunny.github.io/zh-tw/page/"
+                href="http://localhost:1313/zh-tw/page/"
                 />
   </url><url>
-    <loc>https://windasunny.github.io/zh-tw/tags/</loc>
+    <loc>http://localhost:1313/zh-tw/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windasunny.github.io/tags/"
+                href="http://localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://windasunny.github.io/zh-cn/tags/"
+                href="http://localhost:1313/zh-cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://windasunny.github.io/zh-tw/tags/"
+                href="http://localhost:1313/zh-tw/tags/"
                 />
   </url><url>
-    <loc>https://windasunny.github.io/zh-tw/%E9%97%9C%E6%96%BC/</loc>
+    <loc>http://localhost:1313/zh-tw/%E9%97%9C%E6%96%BC/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windasunny.github.io/about/"
+                href="http://localhost:1313/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://windasunny.github.io/zh-tw/%E9%97%9C%E6%96%BC/"
+                href="http://localhost:1313/zh-tw/%E9%97%9C%E6%96%BC/"
                 />
   </url>
 </urlset>

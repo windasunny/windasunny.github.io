@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Peb on Sunny Site</title>
+        <link>http://localhost:1313/tags/peb/</link>
+        <description>Recent content in Peb on Sunny Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>sunny tsai</copyright>
+        <lastBuildDate>Fri, 18 Apr 2025 17:26:45 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/peb/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Calling Calc.exe in Pure Shellcode by Walking the PEB</title>
+        <link>http://localhost:1313/p/calling-calc.exe-in-pure-shellcode-by-walking-the-peb/</link>
+        <pubDate>Fri, 18 Apr 2025 17:26:45 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/calling-calc.exe-in-pure-shellcode-by-walking-the-peb/</guid>
+        <description>&lt;!-- markdownlint-disable MD025 --&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;h1 id=&#34;why-c-based-code-cannot-be-used-as-shellcode&#34;&gt;Why C-Based Code Cannot Be Used as Shellcode&lt;/h1&gt;
+&lt;h2 id=&#34;using-c-to-build-a-calcexe-executable&#34;&gt;Using C to Build a &lt;code&gt;calc.exe&lt;/code&gt; Executable&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;windows.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;WinExec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;calc.exe&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SW_SHOW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Then extract the .text section using objcopy:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x86_64-w64-mingw32-objcopy -O binary --only-section=.text exec_calc.exe exec_calc.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Disassemble with ndisasm&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ndisasm -b 64 exec_calc.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;From the disassembly, we can observe:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NOP Padding&lt;/strong&gt; – Instructions such as nop word &lt;strong&gt;[cs:rax+rax+0x0]&lt;/strong&gt; are inserted by the compiler for alignment or anti-disassembly purposes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Strong Dependencies&lt;/strong&gt; – Frequent usage of rel instructions (e.g., mov rax, [rel 0x34a0]) and API calls via the Import Address Table (IAT), such as jmp [rel 0x72ac] for WinExec.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Indirect Jumps&lt;/strong&gt; – Instructions like FF25 (e.g., jmp [rel 0x72ac]) rely on fixed addresses in the import table, indicating tight coupling with the PE loader.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PE Format Reliance&lt;/strong&gt; – The code uses system APIs through the IAT and expects the Windows PE loader to handle relocation, section initialization, and runtime setup.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Static API References&lt;/strong&gt; – API calls like WinExec are accessed through statically defined entries in the import table.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Excessive Padding and Alignment&lt;/strong&gt; – Compiler-inserted padding like &lt;code&gt;0F1F4000 nop dword [rax+0x0]&lt;/code&gt; and section alignment at addresses like 0x1800.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;using-msfvenom-to-generate-shellcode-for-calcexe&#34;&gt;Using &lt;code&gt;msfvenom&lt;/code&gt; to Generate Shellcode for calc.exe&lt;/h2&gt;
+&lt;p&gt;payload:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;msfvenom -p windows/x64/exec CMD=calc.exe -f raw -o calc.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Disassemble the Shellcode&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ndisasm -b 64 calc.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;compare-msf-shellcode-and-c&#34;&gt;Compare MSF shellcode and C&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Msfvenom&lt;/th&gt;
+&lt;th&gt;C&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Generator Tool&lt;/td&gt;
+&lt;td&gt;Metaploit’s &lt;code&gt;msfvenom&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Extracted &lt;code&gt;.text&lt;/code&gt; section from compiled PE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Code Type&lt;/td&gt;
+&lt;td&gt;Pure position-independent code (PIC)&lt;/td&gt;
+&lt;td&gt;Compiler-generated, PE-dependent&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dependency&lt;/td&gt;
+&lt;td&gt;No external dependencies, self-contained&lt;/td&gt;
+&lt;td&gt;Requires PE runtime, IAT, and relocation support&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Size&lt;/td&gt;
+&lt;td&gt;Compact (about 66 bytes)&lt;/td&gt;
+&lt;td&gt;Large (about 6KB)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Feature&lt;/td&gt;
+&lt;td&gt;1. Direct system calls, no standard library dependencies&lt;br&gt;2. Dynamically resolve WinExec address (via PEB traversal)&lt;br&gt;3. No redundant data, completely location independent&lt;/td&gt;
+&lt;td&gt;1. Rely on PE Import Table (IAT) parsing API&lt;br&gt;2. Contains compiler-generated prologue/epilogue (such as stack frame adjustments)&lt;br&gt;3. Relocations and debugging information are present (even if the .text section is extracted)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Execute Environmental&lt;/td&gt;
+&lt;td&gt;Can run from any memory address&lt;/td&gt;
+&lt;td&gt;Requires full PE loader support&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;API call method&lt;/td&gt;
+&lt;td&gt;Dynamic resolution (gs:[0x60]→PEB→kernel32.dll)&lt;/td&gt;
+&lt;td&gt;Hard-coded address via IAT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Code alignment&lt;/td&gt;
+&lt;td&gt;No padding bytes&lt;/td&gt;
+&lt;td&gt;Contains NOPs and alignment for structure&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Minimal, self-contained&lt;/td&gt;
+&lt;td&gt;Contains additional runtime/library code&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-improve-c-based-shellcode&#34;&gt;How to Improve C-Based Shellcode&lt;/h2&gt;
+&lt;p&gt;To make your payload suitable for shellcode use, consider the following techniques:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PEB Traversal&lt;/strong&gt;: Manually traverse the Process Environment Block (PEB) to locate loaded modules like kernel32.dll and resolve API addresses dynamically.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic API Resolution&lt;/strong&gt;: Avoid using the Import Table; instead, resolve API addresses at runtime using hash-based or name-based lookup.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Avoid Compiler-Inserted Code&lt;/strong&gt;: Use assembly or minimal C with inline assembly to bypass compiler-generated code (e.g., prologue/epilogue, SEH).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Position-Independent Code&lt;/strong&gt;: Ensure your code can execute from any memory address without relying on relocations or fixed sections.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;peb-traversal&#34;&gt;PEB Traversal&lt;/h1&gt;
+&lt;h2 id=&#34;what-is-the-peb&#34;&gt;What is the PEB?&lt;/h2&gt;
+&lt;p&gt;The Process Environment Block (PEB) is a data structure that stores process-wide information. It is a member of the Thread Environment Block (TEB) and contains information about the process, including a linked list of all loaded modules.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-get-the-peb-pointer&#34;&gt;How to Get the PEB Pointer?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;fs:[0x30] is PEB&lt;/code&gt; and &lt;code&gt;fs:[0x18] is TEB&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Module enumeration typically starts from the PEB, so retrieving its pointer is the first step. The PEB pointer resides within the TEB, and the TEB pointer is located at fs:[0x18] on x86 or gs:[0x30] on x64 systems.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Common Methods to Access TEB/PEB:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Debugger View (e.g., x64dbg, WinDbg)&lt;/strong&gt; :
+View the fs/gs register — it points to the TEB. Then follow the offset to get the PEB.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Disassemble or Examine Memory Layouts&lt;/strong&gt; : Use TEB struct layout to locate the PEB.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Accessing via Segment Register&lt;/strong&gt;
+TEB and TIB Layout&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;# ref: https:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//www.vergiliusproject.com/kernels/x64/windows-11/24h2/_NT_TIB32
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_NT_TIB32&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ExceptionList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;         &lt;span class=&#34;c1&#34;&gt;// 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StackBase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;             &lt;span class=&#34;c1&#34;&gt;// 0x04
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StackLimit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;// 0x08
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SubSystemTib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;          &lt;span class=&#34;c1&#34;&gt;// 0x0C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;union&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FiberData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;         &lt;span class=&#34;c1&#34;&gt;// 0x10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ArbitraryUserPointer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 0x14
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;                  &lt;span class=&#34;c1&#34;&gt;// 0x18 &amp;lt;- fs:[0x18] = TEB pointer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;# ref: https:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//www.vergiliusproject.com/kernels/x64/windows-11/24h2/_TEB32
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_TEB32&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_NT_TIB32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NtTib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;// 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;EnvironmentPointer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// 0x1C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_CLIENT_ID32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ClientId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 0x20
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ActiveRpcHandle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;// 0x28
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ThreadLocalStoragePointer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 0x2C
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;ULONG&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ProcessEnvironmentBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// 0x30 &amp;lt;- fs:[0x30] = PEB pointer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;TIB struct is included in TEB as the first member, so the first address of TIB is the first address of TEB.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;dynamic-api-resolution&#34;&gt;Dynamic API Resolution&lt;/h1&gt;
+&lt;h2 id=&#34;retrieving-kernel32dll-base-address&#34;&gt;Retrieving Kernel32.dll Base Address&lt;/h2&gt;
+&lt;h3 id=&#34;using-powershell&#34;&gt;Using PowerShell:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Get-Process&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Id&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1300&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;ForEach-Object&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Modules&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Where-Object&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ModuleName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-like&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;kernel32.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;Select-Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ModuleName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;BaseAddress&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Expression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;={&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;BaseAddress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;ToString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;X&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}},&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FileName&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ygnmm9u4ea50bdza2ehp.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;using-x64dbg&#34;&gt;Using x64dbg:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1ndyeyt23gndl1tkd6fa.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;using-windbg-follow-pointer-chain&#34;&gt;Using WinDbg (Follow Pointer Chain):&lt;/h3&gt;
+&lt;p&gt;TEB-&amp;gt;PEB-&amp;gt;Ldr-&amp;gt;InMemoryOrderLoadList-&amp;gt;currentProgram-&amp;gt;ntdll-&amp;gt;kernel32.BaseDll&lt;/p&gt;
+&lt;h2 id=&#34;export-table-traversal-flow&#34;&gt;Export Table Traversal Flow&lt;/h2&gt;
+&lt;p&gt;When resolving functions like WinExec dynamically, the process is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Access Kernel32 Base Address&lt;/li&gt;
+&lt;li&gt;Parse PE Headers
+&lt;ul&gt;
+&lt;li&gt;Locate IMAGE_DOS_HEADER at DllBase&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;e_lfanew&lt;/code&gt; to find IMAGE_NT_HEADERS&lt;/li&gt;
+&lt;li&gt;Locate the Export Directory via Optional Header → DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Resolve API
+&lt;ul&gt;
+&lt;li&gt;Parse Export Directory&lt;/li&gt;
+&lt;li&gt;Match target name in Name Table&lt;/li&gt;
+&lt;li&gt;Retrieve its Ordinal&lt;/li&gt;
+&lt;li&gt;Use Ordinal to index Function Address Table&lt;/li&gt;
+&lt;li&gt;Resolve absolute address = DllBase + Function RVA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;windbgmemory-viewer-visuals&#34;&gt;WinDbg/Memory Viewer Visuals&lt;/h3&gt;
+&lt;h4 id=&#34;1-displaying-the-thread-environment-block-teb-structure&#34;&gt;1. &lt;strong&gt;Displaying the Thread Environment Block (TEB) Structure&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Locating the PEB&lt;/strong&gt;: The TEB contains a pointer to the PEB (PEB* ProcessEnvironmentBlock), which is essential for finding loaded modules (e.g., kernel32.dll).
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wb03z2z412at7o5g8mez.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Display TEB&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-displaying-the-process-environment-block-peb-structure&#34;&gt;2. &lt;strong&gt;Displaying the Process Environment Block (PEB) Structure&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Process Environment Block (PEB)&lt;/strong&gt; is a fundamental Windows structure containing process-wide data such as:
+• &lt;strong&gt;Loaded Modules (DLLs)&lt;/strong&gt; via &lt;code&gt;PEB_LDR_DATA* Ldr&lt;/code&gt;
+• Command-line Arguments
+• Heap Information
+• Binary Image Base Address
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mof4tj4396xgf2ul90nj.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Display PEB&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-analyzing-the-peb_ldr_data-structure-for-module-enumeration&#34;&gt;3. &lt;strong&gt;Analyzing the PEB_LDR_DATA Structure for Module Enumeration&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Displays the &lt;strong&gt;PEB_LDR_DATA&lt;/strong&gt; structure, a critical part of the Process Environment Block (PEB) that manages loaded modules (DLLs/EXEs) in a process. This structure contains three doubly linked lists used to track modules in different load orders:
+a. InLoadOrderModuleList – Lists modules in the order they were &lt;em&gt;loaded&lt;/em&gt;.
+b. &lt;strong&gt;InMemoryOrderModuleList&lt;/strong&gt; – Lists modules in the order they appear in &lt;em&gt;memory&lt;/em&gt;.
+c. InInitializationOrderModuleList – Lists modules in the order they were &lt;em&gt;initialized&lt;/em&gt;.
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nn79z017lrkkems8y5zv.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;4-analyzing-the-_ldr_data_table_entry-structure&#34;&gt;4. &lt;strong&gt;Analyzing the _LDR_DATA_TABLE_ENTRY Structure&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;code&gt;_LDR_DATA_TABLE_ENTRY&lt;/code&gt;&lt;/strong&gt; structure contains critical information about each loaded module (DLL/EXE) in a process.&lt;/p&gt;
+&lt;p&gt;Key Fields Explained:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DllBase&lt;/strong&gt;: The base address of the loaded module (essential for finding exported functions)&lt;/li&gt;
+&lt;li&gt;FullDllName/BaseDllName: The module&amp;rsquo;s path and filename (e.g., &amp;ldquo;C:\Windows\System32\kernel32.dll&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;InXXXOrderLinks: Linked list entries for different load orders&lt;/li&gt;
+&lt;li&gt;SizeOfImage: The module&amp;rsquo;s size in memory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1vpioullhrem0ftukfus.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;5-examining-the-_image_data_directory-structure&#34;&gt;5. &lt;strong&gt;Examining the _IMAGE_DATA_DIRECTORY Structure&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;_IMAGE_DATA_DIRECTORY&lt;/code&gt; structure is a fundamental part of the &lt;strong&gt;Portable Executable (PE) file format&lt;/strong&gt; in Windows. It describes a data directory entry in the PE header, which points to critical sections of a binary (EXE/DLL), such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Export Table&lt;/strong&gt; (for API functions)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Import Table&lt;/strong&gt; (for dependencies)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Base Relocation Table&lt;/strong&gt; (for ASLR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Debug Information&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TLS (Thread Local Storage) Data&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ep72wo2ry22njbvwl1gu.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Data Directory address&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Data Directory address : 00007fffc97770000 (kernel32.dll) + 0x90160 (data directory).&lt;/p&gt;
+&lt;h4 id=&#34;6-analyzing-pe-headers-with-_image_dos_header&#34;&gt;6. &lt;strong&gt;Analyzing PE Headers with _IMAGE_DOS_HEADER&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The _IMAGE_DOS_HEADER structure is the starting point of every PE (Portable Executable) file (EXE/DLL). When examining it at a module&amp;rsquo;s base address (e.g., kernel32.dll), you can:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Validate the PE file signature&lt;/strong&gt; (&lt;code&gt;e_magic = 0x5A4D&lt;/code&gt; → &amp;ldquo;MZ&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Locate the NT headers&lt;/strong&gt; via &lt;code&gt;e_lfanew&lt;/code&gt; (offset to _IMAGE_NT_HEADERS).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l35qs6v4hyx96ls8yceq.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;7-analyzing-64-bit-pe-nt-headers-_image_nt_headers64&#34;&gt;7. &lt;strong&gt;Analyzing 64-bit PE NT Headers (_IMAGE_NT_HEADERS64)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;code&gt;_IMAGE_NT_HEADERS64&lt;/code&gt;&lt;/strong&gt; structure defines the &lt;strong&gt;core metadata of a 64-bit PE file&lt;/strong&gt;, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PE Signature&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;&amp;quot;PE\0\0&amp;quot;&lt;/code&gt;&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File Header&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;_IMAGE_FILE_HEADER&lt;/code&gt;&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optional Header&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;_IMAGE_OPTIONAL_HEADER64&lt;/code&gt;&lt;/strong&gt;) — Contains critical data directories (exports, imports, relocations).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/idx0806jgtpzh2vrehhb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;8-analyzing-64-bit-pe-optional-header-_image_optional_header64&#34;&gt;8. &lt;strong&gt;Analyzing 64-bit PE Optional Header (_IMAGE_OPTIONAL_HEADER64)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;code&gt;_IMAGE_OPTIONAL_HEADER64&lt;/code&gt;&lt;/strong&gt; structure contains &lt;strong&gt;critical metadata for 64-bit PE files&lt;/strong&gt;, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Image base address&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;AddressOfEntryPoint&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;ImageBase&lt;/code&gt;&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Section alignment/sizes&lt;/strong&gt; (&lt;strong&gt;&lt;code&gt;SectionAlignment&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;FileAlignment&lt;/code&gt;&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data directories&lt;/strong&gt; (exports, imports, relocations, TLS, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is where you find the &lt;strong&gt;RVA (Relative Virtual Address)&lt;/strong&gt; of key structures like the &lt;strong&gt;Export Directory&lt;/strong&gt;
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ax23d45iqnc3vu64pny9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;9-dumping-pe-data-directories&#34;&gt;9. &lt;strong&gt;Dumping PE Data Directories&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Get the RVA (Relative Virtual Address) and size of 16 PE data directories
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nbfjysc0bif64ssvlpvi.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;10-analyze-export-directory&#34;&gt;10. &lt;strong&gt;Analyze Export Directory&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/trg3s65a5fu9lm5f1bxh.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;11-list-all-function&#34;&gt;11. &lt;strong&gt;List All function&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0eqnic5p3320oko5gokt.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;PE Parsing Reference&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Offset&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0x3c into the file&lt;/td&gt;
+&lt;td&gt;RVA of PE signature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0x78 bytes after PE signature&lt;/td&gt;
+&lt;td&gt;RVA of Export Table&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0x14 into the Export Table&lt;/td&gt;
+&lt;td&gt;Number of functions exported by a module&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0x1c into the Export Table&lt;/td&gt;
+&lt;td&gt;RVA of Address Table - addresses of exported functions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0x20 into the Export Table&lt;/td&gt;
+&lt;td&gt;RVA of Name Pointer Table - addresses of exported function names&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0x24 into the Export Table&lt;/td&gt;
+&lt;td&gt;RVA of Ordinal Table - function order number as listed in the table&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Get &lt;code&gt;AddressOfNames RVA&lt;/code&gt; - 00091afc&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/95znwczflsvtxpnttaaq.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;12-dump-addressofnames&#34;&gt;12. Dump AddressOfNames&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ipk53v16sv0c56fhqmdo.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;
+Compare the first 8 bytes to see if it is &amp;ldquo;GetProcA&amp;rdquo;
+&amp;hellip;
+TOO MUCH!!
+Let&amp;rsquo;s change to tool named &lt;code&gt;PEView&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;13-export-table---number-of-exported-functions&#34;&gt;13. Export Table - Number of Exported Functions&lt;/h4&gt;
+&lt;p&gt;In this case, RVA contains 643 functions that module kernel32.dll export.
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gr8codqz43oo9ctk1me4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;WinExec RVA is &lt;code&gt;000A48D3&lt;/code&gt; (not real base address)
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yhk3nusw9ok9x6yv2yzw.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ExitProcess RVA is &lt;code&gt;0009D4DE&lt;/code&gt; (not real base address)
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d3whw129998xzsg3bowo.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;direct-get-process-base-address&#34;&gt;Direct get process base address&lt;/h5&gt;
+&lt;p&gt;GetProcAddress
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9qffw3pwdg73g8edtznu.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;WinExec
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kfaybqwn9p8j1wu4nzu2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ExitProcess
+&lt;img src=&#34;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/msoi99r4bb26nuaklcr4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Some functions are forwarded/thunked; symbols may refer to implementation aliases like ExitProcessImplementation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;manually-resolving-api-addresses-from-peb-x64-shellcode-style&#34;&gt;Manually Resolving API Addresses from PEB (x64 Shellcode Style)&lt;/h3&gt;
+&lt;h4 id=&#34;overview&#34;&gt;Overview&lt;/h4&gt;
+&lt;p&gt;This above explains how to manually resolve function addresses such as &lt;code&gt;WinExec&lt;/code&gt;, &lt;code&gt;LoadLibraryA&lt;/code&gt;, and &lt;code&gt;ExitProcess&lt;/code&gt; from within a shellcode or assembly stub. We walk through parsing the PEB (Process Environment Block), traversing the loader&amp;rsquo;s module list, parsing the PE headers, and locating the desired API in the Export Address Table of kernel32.dll.&lt;/p&gt;
+&lt;h4 id=&#34;process-flow&#34;&gt;Process Flow&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Obtain kernel32.dll Base Address from the PEB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Parse PE Structure starting from the base address:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DOS Header → NT Header (via offset 0x3C)&lt;/li&gt;
+&lt;li&gt;NT Header → Optional Header → Data Directory → Export Directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Parse Export Directory to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Locate the function name (WinExec, etc.) via the Name Pointer Table&lt;/li&gt;
+&lt;li&gt;Resolve its ordinal&lt;/li&gt;
+&lt;li&gt;Use the ordinal to get the RVA from the AddressOfFunctions table&lt;/li&gt;
+&lt;li&gt;Add RVA to the DLL base address → function&amp;rsquo;s actual memory address&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;get-peb-process-environment-block-address-x64&#34;&gt;Get PEB (Process Environment Block) Address (x64):&lt;/h4&gt;
+&lt;p&gt;In x64 Windows, the PEB is accessible via the GS segment register. GS:[0x60] points directly to the PEB structure.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rcx, rcx                  ; RCX = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rax, [gs:rcx + 0x60]      ; Get PEB (Process Environment Block) from GS segment (offset 0x60)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;access-peb_ldr_data&#34;&gt;Access &lt;code&gt;PEB_LDR_DATA&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Offset 0x18 within the PEB points to the Ldr field, which holds module loader information.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rax, [rax + 0x18]         ; PEB -&amp;gt; Ldr (PEB_LDR_DATA)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;get-inmemoryordermodulelist&#34;&gt;Get InMemoryOrderModuleList&lt;/h4&gt;
+&lt;p&gt;This doubly-linked list at offset 0x20 of PEB_LDR_DATA contains entries for all loaded modules.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rsi, [rax + 0x20]         ; Ldr -&amp;gt; InMemoryOrderModuleList.Flink
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;traverse-module-list&#34;&gt;Traverse Module List&lt;/h4&gt;
+&lt;p&gt;Each node in the list is a _LDR_DATA_TABLE_ENTRY. Modules are typically ordered as:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Executable itself&lt;/li&gt;
+&lt;li&gt;ntdll.dll&lt;/li&gt;
+&lt;li&gt;kernel32.dll&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lodsq                         ; Load first module (ntdll.dll) into RAX, increment RSI
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xchg rax, rsi                 ; Swap RAX and RSI (now RSI points to next module)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lodsq                         ; Load second module (kernel32.dll) into RAX
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;get-base-address-of-kernel32dll&#34;&gt;Get Base Address of kernel32.dll&lt;/h4&gt;
+&lt;p&gt;The DllBase field at offset 0x20 of the _LDR_DATA_TABLE_ENTRY gives the base address.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rbx, [rax + 0x20]         ; Get kernel32.dll base address (DLLBase field at offset 0x20)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;parse-export-table&#34;&gt;Parse Export Table&lt;/h4&gt;
+&lt;p&gt;We now locate the Export Directory inside the PE header of kernel32.dll.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Search Export Table
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor r8, r8                    ; R8 = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov r8d, [rbx + 0x3c]         ; Get PE header offset (e_lfanew at offset 0x3C)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rdx, r8                   ; Copy PE header offset to RDX
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rdx, rbx                  ; Calculate PE header address (base + offset)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov r8d, [rdx + 0x88]         ; Get Export Table RVA (offset 0x88 in PE header)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add r8, rbx.                  ; Calculate Export Table address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;locate-function-name&#34;&gt;Locate Function Name&lt;/h4&gt;
+&lt;p&gt;We want to find the address of &lt;strong&gt;GetProcAddress&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Search Name Pointer Table, prepare to find function name
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rsi, rsi                  ; RSI = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov esi, [r8 + 0x20]          ; AddressOfNames (offset 0x20 in Export Table)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rsi, rbx                  ; Calculate Name Pointer Table address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rcx, rcx                  ; Zero out RCX (will be used as counter)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov r9, 0x41636f7250746547    ; Prepare first 8 bytes of &amp;#34;GetProcA&amp;#34; for comparison (little-endian)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Find GetProcAddress in function name
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Get_Function:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;inc rcx                       ; Increment function counter
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rax, rax                  ; RAX = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov eax, [rsi + rcx * 4]      ; Get RVA of function name (array of 4-byte RVAs)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rax, rbx                  ; Calculate function name address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cmp QWORD [rax], r9           ; Compare first 8 bytes is &amp;#34;GetProcA&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jnz Get_Function              ; If not matched, continue searching
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rsi, rsi                  ; RSI = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov esi, [r8 + 0x24]          ; AddressOfNameOrdinals (offset 0x24 in Export Table)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rsi, rbx                  ; Calculate Ordinal Table address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov cx, [rsi + rcx * 2]       ; Get function ordinal (array of 2-byte values)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rsi, rsi                  ; RSI = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov esi, [r8 + 0x1c]          ; AddressOfFunctions (offset 0x1C in Export Table)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rsi, rbx                  ; Calculate Address Table address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xor rdx, rdx                  ; RDX = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov edx, [rsi + rcx * 4]      ; Get function RVA (array of 4-byte RVAs)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rdx, rbx                  ; Calculate function address (base + RVA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rdi, rdx                  ; Store GetProcAddress address in RDI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;use-getprocaddress-to-get-loadlibrarya-address&#34;&gt;Use GetProcAddress to get LoadLibraryA address&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Use GetProcAddress to get LoadLibraryA address
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;getprocaddr:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rcx, 0x41797261           ; Prepare second part of &amp;#34;LoadLibraryA&amp;#34; string (&amp;#34;aryA&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;push rcx                      ; Push to stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rcx, 0x7262694c64616f4c.  ; Prepare first part of &amp;#34;LoadLibraryA&amp;#34; string (&amp;#34;LoadLibr&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;push rcx                      ; Push to stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rdx, rsp                  ; RDX points to &amp;#34;LoadLibraryA&amp;#34; string on stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rcx, rbx                  ; RCX contains kernel32.dll base address
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sub rsp, 0x30                 ; Allocate shadow space (32 bytes) + align stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;call rdi                      ; Call GetProcAddress(kernel32.dll, &amp;#34;LoadLibraryA&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rsp, 0x30                 ; Restore stack pointer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add rsp, 0x10                 ; Clean up string from stack (16 bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mov rsi, rax                  ; Store LoadLibraryA address in RSI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Continue: Resolve WinExec, ExitProcess, etc.
+Repeating the steps: locate name in Export Table → get ordinal → get RVA → resolve to VA.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the link to the &lt;a class=&#34;link&#34; href=&#34;https://github.com/nevernever69/windows64bit-shellcode/blob/main/windowsx64%20shellcode%20to%20spwan%20calc.asm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;full code&lt;/a&gt; — thanks to &lt;strong&gt;nevernever69&lt;/strong&gt; for providing the ultimate code to the call calc.exe shellcode.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
