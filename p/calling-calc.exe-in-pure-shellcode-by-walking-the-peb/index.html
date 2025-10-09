@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/p/calling-calc.exe-in-pure-shellcode-by-walking-the-peb/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="Calling Calc.exe in Pure Shellcode by Walking the PEB">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="Calling Calc.exe in Pure Shellcode by Walking the PEB">
 <meta property='og:description' content="Why C-Based Code Cannot Be Used as Shellcode Using C to Build a calc.exe Executable 1 2 3 4 5 6 7 #include &lt;windows.h&gt; #include &lt;stdio.h&gt; int main() { WinExec(&#34;calc.exe&#34;, SW_SHOW); return 0; } Then extract the .text section using objcopy: 1 x86_64-w64-mingw32-objcopy -O binary --only-section=.text exec_calc.exe exec_calc.bin Disassemble with ndisasm 1 ndisasm -b 64 exec_calc.bin From the disassembly, we can observe: NOP Padding – Instructions such as nop word [cs:rax+rax+0x0] are inserted by the compiler for alignment or anti-disassembly purposes.">
 <meta property='og:url' content='http://localhost:1313/p/calling-calc.exe-in-pure-shellcode-by-walking-the-peb/'>
 <meta property='og:site_name' content='Sunny Site'>
@@ -353,6 +353,14 @@
     <header class="article-header">
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/edr-evade/" style="background-color: #560ac1ff; color: #fff;">
+                Researching Evade Techniques For Morden EDR System
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
@@ -1260,6 +1268,67 @@ Repeating the steps: locate name in Export Table → get ordinal → get RVA →
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/traverse-the-process-environment-block-peb-in-rust/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Traverse the Process Environment Block (PEB) in Rust</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/lsass-memory-dumping-using-native-windows-apis/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">LSASS Memory Dumping Using Native Windows APIs</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/exploring-process-injection-hollowing-and-shellcode-execution-in-windows/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Exploring Process Injection, Hollowing, and Shellcode Execution in Windows</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/building-a-reverse-shell-in-rust-using-peb-techniques/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Building a Reverse Shell in Rust Using PEB Techniques</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

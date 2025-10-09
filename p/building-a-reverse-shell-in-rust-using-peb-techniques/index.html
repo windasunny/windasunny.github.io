@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines. Initial Implementation: Traditional API Call Chain To begin, I created a basic reverse shell using the typical Windows API calls.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="title = &lsquo;Building a Reverse Shell in Rust Using PEB Techniques&rsquo; date = 2025-06-03T16:41:09+08:00 draft = true series = &lsquo;Researching Evade Techniques For Morden EDR System&rsquo; +++ This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines.">
 <title>Building a Reverse Shell in Rust Using PEB Techniques</title>
 
 <link rel='canonical' href='http://localhost:1313/p/building-a-reverse-shell-in-rust-using-peb-techniques/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="Building a Reverse Shell in Rust Using PEB Techniques">
-<meta property='og:description' content="This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines. Initial Implementation: Traditional API Call Chain To begin, I created a basic reverse shell using the typical Windows API calls.">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="Building a Reverse Shell in Rust Using PEB Techniques">
+<meta property='og:description' content="title = &lsquo;Building a Reverse Shell in Rust Using PEB Techniques&rsquo; date = 2025-06-03T16:41:09+08:00 draft = true series = &lsquo;Researching Evade Techniques For Morden EDR System&rsquo; +++ This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines.">
 <meta property='og:url' content='http://localhost:1313/p/building-a-reverse-shell-in-rust-using-peb-techniques/'>
 <meta property='og:site_name' content='Sunny Site'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-03T16:41:09&#43;08:00'/><meta property='article:modified_time' content='2025-06-03T16:41:09&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='security' /><meta property='article:tag' content='kernel' /><meta property='article:tag' content='reverse shell' /><meta property='article:tag' content='peb traversal' /><meta property='article:published_time' content='2025-06-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-09T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Building a Reverse Shell in Rust Using PEB Techniques">
-<meta name="twitter:description" content="This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines. Initial Implementation: Traditional API Call Chain To begin, I created a basic reverse shell using the typical Windows API calls.">
+<meta name="twitter:description" content="title = &lsquo;Building a Reverse Shell in Rust Using PEB Techniques&rsquo; date = 2025-06-03T16:41:09+08:00 draft = true series = &lsquo;Researching Evade Techniques For Morden EDR System&rsquo; +++ This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines.">
     </head>
     <body class="
     article-page
@@ -310,6 +310,14 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/edr-evade/" style="background-color: #560ac1ff; color: #fff;">
+                Researching Evade Techniques For Morden EDR System
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
@@ -335,7 +343,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jun 03, 2025</time>
+                <time class="article-time--published">Jun 09, 2025</time>
             </div>
         
 
@@ -365,7 +373,12 @@
     <section class="article-content">
     
     
-    <!-- markdownlint-disable MD025 -->
+    <p>title = &lsquo;Building a Reverse Shell in Rust Using PEB Techniques&rsquo;
+date = 2025-06-03T16:41:09+08:00
+draft = true
+series = &lsquo;Researching Evade Techniques For Morden EDR System&rsquo;
++++</p>
+<!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD033 -->
 <p>This post documents my exploration of implementing a reverse shell in Rust, starting from a standard API approach, and gradually shifting toward a stealthier variant that leverages manual parsing of the Process Environment Block (PEB). The goal is to reduce detection by Antivirus (AV) and Endpoint Detection and Response (EDR) engines.</p>
 <h2 id="initial-implementation-traditional-api-call-chain">Initial Implementation: Traditional API Call Chain</h2>
@@ -507,6 +520,18 @@
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/security/">Security</a>
+        
+            <a href="/tags/kernel/">Kernel</a>
+        
+            <a href="/tags/reverse-shell/">Reverse Shell</a>
+        
+            <a href="/tags/peb-traversal/">Peb Traversal</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -529,6 +554,67 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/lsass-memory-dumping-using-native-windows-apis/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">LSASS Memory Dumping Using Native Windows APIs</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/exploring-process-injection-hollowing-and-shellcode-execution-in-windows/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Exploring Process Injection, Hollowing, and Shellcode Execution in Windows</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/traverse-the-process-environment-block-peb-in-rust/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Traverse the Process Environment Block (PEB) in Rust</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/calling-calc.exe-in-pure-shellcode-by-walking-the-peb/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Calling Calc.exe in Pure Shellcode by Walking the PEB</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

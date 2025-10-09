@@ -7,10 +7,58 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 18 Apr 2025 17:26:45 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 02 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Kernel</title>
+        <link>http://localhost:1313/tags/kernel/</link>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/kernel/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Lsass Dump</title>
+        <link>http://localhost:1313/tags/lsass-dump/</link>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/lsass-dump/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Minidump</title>
+        <link>http://localhost:1313/tags/minidump/</link>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/minidump/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Security</title>
+        <link>http://localhost:1313/tags/security/</link>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/security/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Peb Traversal</title>
+        <link>http://localhost:1313/tags/peb-traversal/</link>
+        <pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/peb-traversal/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Reverse Shell</title>
+        <link>http://localhost:1313/tags/reverse-shell/</link>
+        <pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/tags/reverse-shell/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Calc.exe</title>
         <link>http://localhost:1313/tags/calc.exe/</link>
-        <pubDate>Fri, 18 Apr 2025 17:26:45 +0800</pubDate>
+        <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/tags/calc.exe/</guid>
         <description></description>
@@ -18,7 +66,7 @@
         <item>
         <title>Peb</title>
         <link>http://localhost:1313/tags/peb/</link>
-        <pubDate>Fri, 18 Apr 2025 17:26:45 +0800</pubDate>
+        <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/tags/peb/</guid>
         <description></description>
@@ -109,14 +157,6 @@
         <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/tags/tcp/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Reverse Shell</title>
-        <link>http://localhost:1313/tags/reverse-shell/</link>
-        <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/reverse-shell/</guid>
         <description></description>
         </item>
         <item>
@@ -389,14 +429,6 @@
         <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/tags/net/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Security</title>
-        <link>http://localhost:1313/tags/security/</link>
-        <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/security/</guid>
         <description></description>
         </item>
         

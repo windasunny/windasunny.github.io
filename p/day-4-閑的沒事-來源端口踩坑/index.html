@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 4] 閑的沒事 - 來源端口（踩坑）">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="[Day 4] 閑的沒事 - 來源端口（踩坑）">
 <meta property='og:description' content="發送封包 昨天建立一個TCP SYN packet TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&hellip; 使用net建立packet的時候，go通常不會幫我們選擇未使用的來源port。它期望我們明確指定來源port。因此，我們要自己設定一個未使用的來源port。 機器要丟一個封包出去，首先就是在1~65535的port隨機找一個還沒被服務站用的port 來源PORT 建立隨機數字1~65535，當作來源地址發送的PORT 因為PORT被佔用就不能發送封包，所以先把容易被佔用的PORT剔除，這邊列出nmap top 100作為容易佔用的PORT 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 func randomPort() int { // Nmap top ports nmapTopPorts := []int{ 21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 443, 445, 993, 995, 1723, 3306, 3389, 5900, 8080, 8443, 8888, 9090, 1433, 2000, 5432, } rand := rand.">
 <meta property='og:url' content='http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/'>
 <meta property='og:site_name' content='Sunny Site'>

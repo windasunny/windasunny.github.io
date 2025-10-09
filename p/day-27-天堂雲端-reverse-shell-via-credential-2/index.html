@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="[Day 27] 天堂雲端 - reverse shell via credential 2">
+<link rel="stylesheet" href="/scss/style.min.c7c03936adecbbfd2050017468829a90830458726defff133b601ad15ba6780a.css"><meta property='og:title' content="[Day 27] 天堂雲端 - reverse shell via credential 2">
 <meta property='og:description' content="建立新的EC2 instance做reverse shell並不一直是一個好的主意，首先，新啟動一個EC2很容易被發現。 利用現有instance 必須要有的權限： ec2:DescribeInstances ec2:ModifyInstanceAttribute 首先，先暫停ec2，沒有暫停不能修改 1 &gt; aws ec2 stop-instances --instance-ids {EC2_INSTANCE_IP} 沒暫停的Output 1 An error occurred (IncorrectInstanceState) when calling the ModifyInstanceAttribute operation: The instance &#39;i-XXXXXXXXXXXX&#39; is not in the &#39;stopped&#39; state. 成功暫停的Output 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 { &#34;StoppingInstances&#34;: [ { &#34;CurrentState&#34;: { &#34;Code&#34;: 64, &#34;Name&#34;: &#34;stopping&#34; }, &#34;InstanceId&#34;: &#34;i-XXXXXXXXXXXX&#34;, &#34;PreviousState&#34;: { &#34;Code&#34;: 16, &#34;Name&#34;: &#34;running&#34; } } ] } Build blackdoor.">
 <meta property='og:url' content='http://localhost:1313/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/'>
 <meta property='og:site_name' content='Sunny Site'>

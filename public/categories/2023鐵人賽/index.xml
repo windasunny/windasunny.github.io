@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>2023鐵人賽 on Sunny Site</title>
-        <link>https://windasunny.github.io/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
+        <link>http://localhost:1313/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
         <description>Recent content in 2023鐵人賽 on Sunny Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>sunny tsai</copyright>
-        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://windasunny.github.io/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Day 30] 天堂雲端 - SSM</title>
-        <link>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
+        <link>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</link>
         <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
+        <guid>http://localhost:1313/p/day-30-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ssm/</guid>
         <description>&lt;h1 id=&#34;ssmsendcommand&#34;&gt;ssm:SendCommand&lt;/h1&gt;
 &lt;p&gt;擁有該權限的用戶可以發送命令到一個或多個已註冊在SSM的EC2 instance或其他服務，允許在這些instance或主機上執行操作，例如運行腳本、管理更新或執行其他自動化任務。&lt;/p&gt;
 &lt;h2 id=&#34;使用send-command執行reverse-shell&#34;&gt;使用send command執行reverse shell&lt;/h2&gt;
@@ -140,10 +140,10 @@ Output:&lt;/p&gt;
         </item>
         <item>
         <title>[Day 30] 閑的沒事 - HTTP SESSION</title>
-        <link>https://windasunny.github.io/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</link>
+        <link>http://localhost:1313/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</link>
         <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</guid>
+        <guid>http://localhost:1313/p/day-30-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-http-session/</guid>
         <description>&lt;h1 id=&#34;http-session&#34;&gt;Http session&lt;/h1&gt;
 &lt;p&gt;Http session 利用了HTTP/1.1中的&lt;code&gt;Keep-Alive&lt;/code&gt;功能。&lt;/p&gt;
 &lt;h1 id=&#34;keep-alive&#34;&gt;Keep-Alive&lt;/h1&gt;
@@ -156,10 +156,10 @@ Output:&lt;/p&gt;
         </item>
         <item>
         <title>[Day 29] 天堂雲端 - Systems Manager</title>
-        <link>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
+        <link>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</link>
         <pubDate>Thu, 12 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
+        <guid>http://localhost:1313/p/day-29-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-systems-manager/</guid>
         <description>&lt;h1 id=&#34;ssm&#34;&gt;SSM&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_tw/systems-manager/latest/userguide/what-is-systems-manager.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Systems Manager (SSM)&lt;/a&gt; 是一個AWS服務，提供一個集中式的解決方案，用於管理和遠程操作AWS環境中的多個instance。&lt;/p&gt;
@@ -215,10 +215,10 @@ Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執�
         </item>
         <item>
         <title>[Day 29] 閑的沒事 - Fragmentation UDP</title>
-        <link>https://windasunny.github.io/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/</link>
+        <link>http://localhost:1313/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/</link>
         <pubDate>Thu, 12 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/</guid>
+        <guid>http://localhost:1313/p/day-29-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-udp/</guid>
         <description>&lt;h1 id=&#34;code&#34;&gt;Code&lt;/h1&gt;
 &lt;p&gt;udp封包分片&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -324,10 +324,10 @@ Session Manager是SSM的一部分，允許使用AWS控制台或CLI直接從執�
         </item>
         <item>
         <title>[Day 28] 天堂雲端 - EC2權限升級</title>
-        <link>https://windasunny.github.io/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</link>
+        <link>http://localhost:1313/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</link>
         <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</guid>
+        <guid>http://localhost:1313/p/day-28-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E6%AC%8A%E9%99%90%E5%8D%87%E7%B4%9A/</guid>
         <description>&lt;h1 id=&#34;權限升級&#34;&gt;權限升級&lt;/h1&gt;
 &lt;p&gt;在AWS雲端環境中，權限升級是透過IAM完成升級的，攻擊者需要找到哪個帳戶可以做到這件事。&lt;/p&gt;
 &lt;h2 id=&#34;shadow-admin&#34;&gt;Shadow admin&lt;/h2&gt;
@@ -548,10 +548,10 @@ iam-SetDefaultPolicyVersion權限允許將特定權限版本設定為默認版�
         </item>
         <item>
         <title>[Day 28] 閑的沒事 - Fragmentation TCP</title>
-        <link>https://windasunny.github.io/p/day-28-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-tcp/</link>
+        <link>http://localhost:1313/p/day-28-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-tcp/</link>
         <pubDate>Wed, 11 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-28-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-tcp/</guid>
+        <guid>http://localhost:1313/p/day-28-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-fragmentation-tcp/</guid>
         <description>&lt;h1 id=&#34;code&#34;&gt;Code&lt;/h1&gt;
 &lt;p&gt;使用Dail發送tcp封包
 Payload暫定長度1360&lt;/p&gt;
@@ -691,10 +691,10 @@ payload長度1360，分割為每個分片不超過長度100，出現write: broke
         </item>
         <item>
         <title>[Day 27] 天堂雲端 - reverse shell via credential 2</title>
-        <link>https://windasunny.github.io/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/</link>
+        <link>http://localhost:1313/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/</link>
         <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/</guid>
+        <guid>http://localhost:1313/p/day-27-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential-2/</guid>
         <description>&lt;p&gt;建立新的EC2 instance做reverse shell並不一直是一個好的主意，首先，新啟動一個EC2很容易被發現。&lt;/p&gt;
 &lt;h1 id=&#34;利用現有instance&#34;&gt;利用現有instance&lt;/h1&gt;
 &lt;p&gt;必須要有的權限：&lt;/p&gt;
@@ -889,10 +889,10 @@ ec2:ModifyInstanceAttribute&lt;/p&gt;
         </item>
         <item>
         <title>[Day 27] 閑的沒事 - 碎片攻擊（Fragmentation Attack）之理論</title>
-        <link>https://windasunny.github.io/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/</link>
+        <link>http://localhost:1313/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/</link>
         <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/</guid>
+        <guid>http://localhost:1313/p/day-27-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E7%A2%8E%E7%89%87%E6%94%BB%E6%93%8Afragmentation-attack%E4%B9%8B%E7%90%86%E8%AB%96/</guid>
         <description>&lt;h1 id=&#34;fragmentation-attack&#34;&gt;Fragmentation Attack&lt;/h1&gt;
 &lt;p&gt;Fragmentation Attack（碎片攻擊）指的是利用IP協議的碎片化（fragmentation）機制來達成攻擊目的。IP碎片是指將一個較大的IP數據包拆分成多個較小的數據包，以適應網絡中最大傳輸單位（MTU）的限制。
 以太網的MTU是1500，如果IP層有要傳輸的封包長度超過1500，那IP層就要對封包進行分片(fragmentation)，使每個封包的長度都小於1500。
@@ -941,10 +941,10 @@ ping of death是一個很老的攻擊手段，現在的作業系統已經不讓�
         </item>
         <item>
         <title>[Day 26] 閑的沒事 - Smurf ddos</title>
-        <link>https://windasunny.github.io/p/day-26-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-smurf-ddos/</link>
+        <link>http://localhost:1313/p/day-26-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-smurf-ddos/</link>
         <pubDate>Mon, 09 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-26-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-smurf-ddos/</guid>
+        <guid>http://localhost:1313/p/day-26-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-smurf-ddos/</guid>
         <description>&lt;h1 id=&#34;smurf-ddos&#34;&gt;Smurf DDOS&lt;/h1&gt;
 &lt;p&gt;攻擊者發送大量偽造來源地址的ICMP封包，回應請求(ping)到目標主機，主要目的是消耗目標網絡的頻寬和資源，使其無法正常運作。
 注：ICMP Flood是一種DoS攻擊，不像Smurf攻擊一樣偽造來源IP地址，只是連續地向目標主機發送ICMP消息，通常是ping請求。這將使目標主機的CPU和網絡資源耗盡，導致服務中斷。&lt;/p&gt;
@@ -1065,10 +1065,10 @@ ping of death是一個很老的攻擊手段，現在的作業系統已經不讓�
         </item>
         <item>
         <title>[Day 25] 天堂雲端 - EC2 桌面截圖（screenshot）</title>
-        <link>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
+        <link>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</link>
         <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
+        <guid>http://localhost:1313/p/day-25-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-%E6%A1%8C%E9%9D%A2%E6%88%AA%E5%9C%96screenshot/</guid>
         <description>&lt;h1 id=&#34;桌面截圖&#34;&gt;桌面截圖&lt;/h1&gt;
 &lt;p&gt;在滲透測試中，桌面截圖是一種獲得額外信息或增加攻擊者瞭解目標環境的重要手段&lt;/p&gt;
 &lt;ul&gt;
@@ -1273,10 +1273,10 @@ ping of death是一個很老的攻擊手段，現在的作業系統已經不讓�
         </item>
         <item>
         <title>[Day 25] 閑的沒事 - QOTD反射攻擊</title>
-        <link>https://windasunny.github.io/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-25-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-qotd%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;qotd&#34;&gt;QOTD&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/alphaolomi/51f27912abe699dd5db95cfbc21d1a2d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Quote of the Day（每日引言）&lt;/a&gt;協議是為了在網際網絡上提供一種簡單的測試和演示網路通訊的能力而創建的。它的主要目的不是為了傳送實際的有用數據，而是為了展示伺服器之間的基本通信能力和連接性。在現今已經相對不常見，並且在大多數實際應用中已經被淘汰或不再使用。但是還是出現在了&lt;a class=&#34;link&#34; href=&#34;https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2021-q2-zh-tw/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1298,10 +1298,10 @@ ping of death是一個很老的攻擊手段，現在的作業系統已經不讓�
         </item>
         <item>
         <title>[Day 26] 天堂雲端 - reverse shell via credential</title>
-        <link>https://windasunny.github.io/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/</link>
+        <link>http://localhost:1313/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/</link>
         <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/</guid>
+        <guid>http://localhost:1313/p/day-26-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-reverse-shell-via-credential/</guid>
         <description>&lt;h1 id=&#34;aws-cloudinit&#34;&gt;AWS CloudInit&lt;/h1&gt;
 &lt;p&gt;cloud-init package是Canonical建構的開源應用程式，用於引導在雲端環境中的Linux image。&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/amazon-linux-ami-basics.html#amazon-linux-cloud-init&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS CloudInit&lt;/a&gt;是一種用於自動化EC2 instance初始化和設置的工具，可以在EC2 instance啟動過程中執行各種初始化任務。&lt;/p&gt;
@@ -1451,10 +1451,10 @@ ec2:RunInstances&lt;/p&gt;
         </item>
         <item>
         <title>[Day 24] 天堂雲端 - 取得EC2快照(snapshot)</title>
-        <link>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
+        <link>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</link>
         <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
+        <guid>http://localhost:1313/p/day-24-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%8F%96%E5%BE%97ec2%E5%BF%AB%E7%85%A7snapshot/</guid>
         <description>&lt;h1 id=&#34;aws-ebs&#34;&gt;AWS EBS&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/ebs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Block Store(EBS)&lt;/a&gt;是AWS提供的可擴展的高效能區塊儲存服務。通常EC2 instance上面的數據（包括操作系統、應用程序數據等）通常儲存在EBS上。而EC2的快照(snapshot)是EC2 instance的狀態的定期副本，通常是基於EBS volumes的，快照捕捉了EBS volumes上的數據的狀態。&lt;/p&gt;
@@ -1606,10 +1606,10 @@ ec2:RunInstances&lt;/p&gt;
         </item>
         <item>
         <title>[Day 24] 閑的沒事 - Memcached反射攻擊</title>
-        <link>https://windasunny.github.io/p/day-24-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-memcached%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-24-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-memcached%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Sat, 07 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-24-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-memcached%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-24-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-memcached%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;memcached&#34;&gt;Memcached&lt;/h1&gt;
 &lt;p&gt;Memcached跟Redis都是常見的快取（Caching）和分佈式數據儲存解決方案，兩者都是in-memory database，兩者都提供使用者低延遲、高效率來存取資料。兩者通常也都忘記設定權限。&lt;/p&gt;
 &lt;h1 id=&#34;測試&#34;&gt;測試&lt;/h1&gt;
@@ -1706,10 +1706,10 @@ ec2:RunInstances&lt;/p&gt;
         </item>
         <item>
         <title>[Day 23] 天堂雲端 - AWS Account ID Enumeration</title>
-        <link>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
+        <link>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</link>
         <pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
+        <guid>http://localhost:1313/p/day-23-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-account-id-enumeration/</guid>
         <description>&lt;h1 id=&#34;account-id--arn&#34;&gt;Account ID &amp;amp; ARN&lt;/h1&gt;
 &lt;p&gt;昨天提到可以用SSRF等技術取得API KEY等資訊。
 如果說已取得API KEY，可以用AWS CLI提供的get-access-key-info取得Account ID&lt;/p&gt;
@@ -1894,10 +1894,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 23] 閑的沒事 - CLDAP放大攻擊</title>
-        <link>https://windasunny.github.io/p/day-23-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-cldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-23-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-cldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</link>
         <pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-23-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-cldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-23-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-cldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;cldap&#34;&gt;CLDAP&lt;/h1&gt;
 &lt;p&gt;Connectionless Lightweight Directory Access Protocol(CLDAP)無連結輕量級目錄協議，與LDAP類似，基於UDP協議。為了效能與便利性，使用UDP 389 port進行傳輸。&lt;/p&gt;
 &lt;h1 id=&#34;code&#34;&gt;code&lt;/h1&gt;
@@ -1973,10 +1973,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 22] 天堂雲端 - EC2 MetaService Credentials洩漏 by SSRF POC</title>
-        <link>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
+        <link>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</link>
         <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
+        <guid>http://localhost:1313/p/day-22-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2-metaservice-credentials%E6%B4%A9%E6%BC%8F-by-ssrf-poc/</guid>
         <description>&lt;p&gt;寫一個簡單的SSRF漏洞&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2094,10 +2094,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 22] 閑的沒事 - LDAP放大攻擊</title>
-        <link>https://windasunny.github.io/p/day-22-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-22-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</link>
         <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-22-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-22-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;p&gt;繼續昨天沒寫完的坑&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2227,10 +2227,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 21] 天堂雲端 - AWS Metadata Service (IMDS)</title>
-        <link>https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</link>
+        <link>http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</link>
         <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</guid>
+        <guid>http://localhost:1313/p/day-21-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-metadata-service-imds/</guid>
         <description>&lt;p&gt;在接下去寫EC2 POC之前，先來解釋AWS IMDS是啥&lt;/p&gt;
 &lt;h1 id=&#34;aws-metadata-service-imds&#34;&gt;AWS Metadata Service (IMDS)&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2315,10 +2315,10 @@ UpdateAssumeRolePolicy是AWS提供的一個更新IAM角色的AssumeRole的策略
         </item>
         <item>
         <title>[Day 21] 閑的沒事 - LDAP放大攻擊之sladp發送ldap協定</title>
-        <link>https://windasunny.github.io/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/</link>
+        <link>http://localhost:1313/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/</link>
         <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/</guid>
+        <guid>http://localhost:1313/p/day-21-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-ldap%E6%94%BE%E5%A4%A7%E6%94%BB%E6%93%8A%E4%B9%8Bsladp%E7%99%BC%E9%80%81ldap%E5%8D%94%E5%AE%9A/</guid>
         <description>&lt;h1 id=&#34;ldap&#34;&gt;LDAP&lt;/h1&gt;
 &lt;p&gt;Lightweight Directory Access Protocol（LDAP）是一種輕量的目錄服務協定（Directory Access Protocol，DAP）。目錄服務通常提供了有組織的記錄集合，這些記錄通常具有層級結構，也就是說這些資料之間存在著父子或是兄弟的關係。
 LDAP的常見用途之一是提供中央位置來進行身份驗證，其中包括用戶帳戶和密碼的儲存，例如在&lt;code&gt;Docker&lt;/code&gt;、&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Kubernetes&lt;/code&gt;、&lt;code&gt;Open VPN&lt;/code&gt;和&lt;code&gt;Linux Samba&lt;/code&gt;等服務中用於驗證帳戶和密碼。此外，系統管理員還可以使用LDAP單一登入來控制對LDAP資料庫的訪問。
@@ -2360,10 +2360,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 20] 天堂雲端 - EC2之建立靶機</title>
-        <link>https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</link>
+        <link>http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</link>
         <pubDate>Tue, 03 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</guid>
+        <guid>http://localhost:1313/p/day-20-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-ec2%E4%B9%8B%E5%BB%BA%E7%AB%8B%E9%9D%B6%E6%A9%9F/</guid>
         <description>&lt;h1 id=&#34;aws-ec2&#34;&gt;AWS EC2&lt;/h1&gt;
 &lt;p&gt;Amazon Elastic Compute Cloud (AWS EC2)是AWS提供的IaaS服務，等同於在AWS上開啟虛擬機。&lt;/p&gt;
 &lt;h1 id=&#34;建立ec2&#34;&gt;建立EC2&lt;/h1&gt;
@@ -2416,10 +2416,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 20] 閑的沒事 - Chargen反射攻擊</title>
-        <link>https://windasunny.github.io/p/day-20-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-chargen%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-20-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-chargen%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Tue, 03 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-20-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-chargen%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-20-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-chargen%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;chargen&#34;&gt;Chargen&lt;/h1&gt;
 &lt;p&gt;字符產生器協定The Character Generator Protocol (Chargen)顧名思義就是會一直發送字元的協定。默認PORT為19/UDP跟19/TCP，初衷是為了測試與診斷網際網路連線，發送方式有TCP跟UDP兩種：&lt;/p&gt;
 &lt;ul&gt;
@@ -2639,10 +2639,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 19] 天堂雲端 - AWS Elastic Beanstalk</title>
-        <link>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
+        <link>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</link>
         <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
+        <guid>http://localhost:1313/p/day-19-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-elastic-beanstalk/</guid>
         <description>&lt;h1 id=&#34;aws-elastic-beanstalk&#34;&gt;AWS Elastic Beanstalk&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/elasticbeanstalk/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;AWS Elastic Beanstalk&lt;/a&gt;是AWS提供一個全受管的PaaS服務，用於建構、部署Web應用程式，只要使用者上傳code，Elastic Beanstalk會自動部署、負載平衡、自動調整等功能。&lt;del&gt;看起來就像在薛不懂infra的人。&lt;/del&gt;&lt;/p&gt;
@@ -2666,10 +2666,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 19] 閑的沒事 - SNMP反射攻擊之SNMP測試</title>
-        <link>https://windasunny.github.io/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</link>
+        <link>http://localhost:1313/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</link>
         <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</guid>
+        <guid>http://localhost:1313/p/day-19-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-snmp%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E4%B9%8Bsnmp%E6%B8%AC%E8%A9%A6/</guid>
         <description>&lt;h1 id=&#34;snmp&#34;&gt;SNMP&lt;/h1&gt;
 &lt;p&gt;簡易網路管理通訊協定 SNMP(Simmple Network Management Protocol)用於交換網路裝置之間的管理資訊，用於傳輸控制通訊協定/網際網路通訊協定 (TCP⁄IP) 通訊協定組合的一部分。&lt;/p&gt;
 &lt;h1 id=&#34;snmp-getbulkrequest&#34;&gt;SNMP getbulkrequest&lt;/h1&gt;
@@ -2734,10 +2734,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 18] 天堂雲端 - S3 takeover POC</title>
-        <link>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
+        <link>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</link>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
+        <guid>http://localhost:1313/p/day-18-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover-poc/</guid>
         <description>&lt;h1 id=&#34;s3-takeover-poc&#34;&gt;S3 takeover POC&lt;/h1&gt;
 &lt;p&gt;第一步：確認target ip
 第二步：掃描target ip 下符合條件的子域
@@ -2837,10 +2837,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 18] 閑著沒事 - NTP 反射攻擊</title>
-        <link>https://windasunny.github.io/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-18-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-ntp-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;ntp&#34;&gt;NTP&lt;/h1&gt;
 &lt;p&gt;NTP（Network Time Protocol）網路時間協議，用來同步主機時間的網路協議。&lt;/p&gt;
 &lt;h1 id=&#34;ntp-monlist&#34;&gt;NTP Monlist&lt;/h1&gt;
@@ -2912,10 +2912,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 17] 天堂雲端 - AWS S3 Misconfiguration&amp;POC</title>
-        <link>https://windasunny.github.io/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</link>
+        <link>http://localhost:1313/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</link>
         <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</guid>
+        <guid>http://localhost:1313/p/day-17-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-misconfigurationpoc/</guid>
         <description>&lt;h1 id=&#34;misconfiguration&#34;&gt;Misconfiguration&lt;/h1&gt;
 &lt;p&gt;配置錯誤&lt;/p&gt;
 &lt;h2 id=&#34;常見的s3-bucket-配置錯誤&#34;&gt;常見的S3 bucket 配置錯誤&lt;/h2&gt;
@@ -3186,10 +3186,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 17] 閑著沒事 - DNS反射攻擊</title>
-        <link>https://windasunny.github.io/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
+        <link>http://localhost:1313/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</link>
         <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
+        <guid>http://localhost:1313/p/day-17-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-dns%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A/</guid>
         <description>&lt;h1 id=&#34;dns反射攻擊&#34;&gt;DNS反射攻擊&lt;/h1&gt;
 &lt;h2 id=&#34;攻擊手法&#34;&gt;攻擊手法&lt;/h2&gt;
 &lt;p&gt;攻擊者向反射服務器發送解析DNS request，反射服務器向目標主機發送大量的DNS response回覆給目標主機，造成攻擊者只要發送一點流量就能使目標主機收到大量的無意義的封包流量攻擊。&lt;/p&gt;
@@ -3386,10 +3386,10 @@ client端發送request
         </item>
         <item>
         <title>[Day 16] 天堂雲端 - AWS S3 Enumerate POC</title>
-        <link>https://windasunny.github.io/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</link>
+        <link>http://localhost:1313/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</link>
         <pubDate>Fri, 29 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</guid>
+        <guid>http://localhost:1313/p/day-16-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-aws-s3-enumerate-poc/</guid>
         <description>&lt;h1 id=&#34;enumerate&#34;&gt;Enumerate&lt;/h1&gt;
 &lt;h2 id=&#34;s3-web-endpoint&#34;&gt;S3 Web endpoint&lt;/h2&gt;
 &lt;p&gt;S3 web endpoint組成：https://{BUCKET_NAME}.s3.amazonaws.com/
@@ -3504,10 +3504,10 @@ enumerate（枚舉）所有可能的名詞組合建立出來的S3 bucket是否�
         </item>
         <item>
         <title>[Day 16] 閑著沒事 - 反射攻擊理論</title>
-        <link>https://windasunny.github.io/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</link>
+        <link>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</link>
         <pubDate>Fri, 29 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</guid>
+        <guid>http://localhost:1313/p/day-16-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B-%E5%8F%8D%E5%B0%84%E6%94%BB%E6%93%8A%E7%90%86%E8%AB%96/</guid>
         <description>&lt;h1 id=&#34;什麼是反射攻擊&#34;&gt;什麼是反射攻擊&lt;/h1&gt;
 &lt;p&gt;反射攻擊指的就是利用大量代理伺服器或是開放的資源來放大流量，通常使用允許小的request生成大量的response，這些response會被重定向的目標伺服器&lt;/p&gt;
 &lt;h2 id=&#34;步驟&#34;&gt;步驟&lt;/h2&gt;
@@ -3579,10 +3579,10 @@ SSDP用於Universal Plug and Play（UPnP）設備上，用來發現設備。特�
         </item>
         <item>
         <title>[Day 15] 天堂雲端 - Data Exfiltration on S3</title>
-        <link>https://windasunny.github.io/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</link>
+        <link>http://localhost:1313/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</link>
         <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</guid>
+        <guid>http://localhost:1313/p/day-15-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-data-exfiltration-on-s3/</guid>
         <description>&lt;h1 id=&#34;aws-s3-複寫策略replication-policies&#34;&gt;AWS S3 複寫策略(Replication Policies)&lt;/h1&gt;
 &lt;p&gt;AWS S3 replication policy - &lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/getting-started/hands-on/replicate-data-using-amazon-s3-replication/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;使用 Amazon S3 複寫在 AWS 區域內和區域間複寫資料&lt;/a&gt;。S3是一個高彈性、全受管、低成本的雲端服務，而複寫策略(Replication Policies)可以使得S3 bucket在&lt;strong&gt;不同的bucket或是不同帳戶下的bucket&lt;/strong&gt;間複寫物件(object)。&lt;/p&gt;
@@ -3752,10 +3752,10 @@ SSDP用於Universal Plug and Play（UPnP）設備上，用來發現設備。特�
         </item>
         <item>
         <title>[Day 15] 閑著沒事就寫寫code</title>
-        <link>https://windasunny.github.io/p/day-15-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%AF%ABcode/</link>
+        <link>http://localhost:1313/p/day-15-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%AF%ABcode/</link>
         <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-15-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%AF%ABcode/</guid>
+        <guid>http://localhost:1313/p/day-15-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%AF%ABcode/</guid>
         <description>&lt;p&gt;已經大致寫好了SYN、UDP、ACK、ICMP封包&lt;/p&gt;
 &lt;p&gt;先把做好的封包都做整理&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3902,10 +3902,10 @@ SSDP用於Universal Plug and Play（UPnP）設備上，用來發現設備。特�
         </item>
         <item>
         <title>[Day 14] 天堂雲端 - S3 takeover</title>
-        <link>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
+        <link>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</link>
         <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
+        <guid>http://localhost:1313/p/day-14-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-takeover/</guid>
         <description>&lt;p&gt;前天寫道每個S3 bucket object都有唯一的URL訪問路口，格式會長得像這樣：
 https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
 &lt;p&gt;如果在S3 bucket裡面設定了靜態託管服務
@@ -3993,10 +3993,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 14] 閑的沒事就寫封包 - ICMP Flood之建立封包</title>
-        <link>https://windasunny.github.io/p/day-14-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-icmp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
+        <link>http://localhost:1313/p/day-14-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-icmp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
         <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-14-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-icmp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
+        <guid>http://localhost:1313/p/day-14-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-icmp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;icmp-flood&#34;&gt;ICMP Flood&lt;/h1&gt;
 &lt;p&gt;攻擊者大量發送icmp(Internet Control Message Protocol)回應請求封包使目標機器不刊負荷，導致正常流量無法進入目標機器。
 &lt;img src=&#34;https://imgur.com/ICnfXm6.png&#34;
@@ -4202,10 +4202,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 13] 天堂雲端 - S3 Bucket Enumeration</title>
-        <link>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
+        <link>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</link>
         <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
+        <guid>http://localhost:1313/p/day-13-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3-bucket-enumeration/</guid>
         <description>&lt;p&gt;S3 Bucket是一個Object Storage Service，當物件(Object)存入Bucket的時候，這個物件(Object)會包含以下三個部分&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Key
@@ -4404,10 +4404,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 13] 閑的沒事就寫封包 - ACK Flood之建立封包</title>
-        <link>https://windasunny.github.io/p/day-13-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-ack-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
+        <link>http://localhost:1313/p/day-13-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-ack-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
         <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-13-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-ack-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
+        <guid>http://localhost:1313/p/day-13-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-ack-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;ack-flood&#34;&gt;ACK Flood&lt;/h1&gt;
 &lt;p&gt;ACK(Acknowledgement) Flood指的是攻擊者大量發送ACK封包，目標主機需要消耗資源在已建立的連接列表中查找與這些偽造的ACK封包對應的TCP連接。由於這些連接並不存在，導致目標主機花費大量的資源在處理這些無效的封包。&lt;/p&gt;
 &lt;p&gt;目標：主要針對防火牆，ACK Flood攻擊主要針對那些維護與追蹤TCP連接的狀態的機器。&lt;/p&gt;
@@ -4569,10 +4569,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 12] 天堂雲端 - S3之為什麼要打開公有存取權？</title>
-        <link>https://windasunny.github.io/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</link>
+        <link>http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</link>
         <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</guid>
+        <guid>http://localhost:1313/p/day-12-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-s3%E4%B9%8B%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%93%E9%96%8B%E5%85%AC%E6%9C%89%E5%AD%98%E5%8F%96%E6%AC%8A/</guid>
         <description>&lt;h1 id=&#34;aws-s3&#34;&gt;AWS S3&lt;/h1&gt;
 &lt;p&gt;是什麼？&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/tw/s3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4640,10 +4640,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 12] 閑的沒事就寫封包 - UDP Flood之建立封包</title>
-        <link>https://windasunny.github.io/p/day-12-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-udp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
+        <link>http://localhost:1313/p/day-12-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-udp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
         <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-12-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-udp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
+        <guid>http://localhost:1313/p/day-12-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-udp-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;udp-flood&#34;&gt;UDP Flood&lt;/h1&gt;
 &lt;p&gt;udp(User Datagram Protocol)是一種非連線型的傳輸協定，意思是說，udp協定只要把封包丟出去就好了，不需要像tcp一樣還要確認連線。攻擊者產生任意PORT的udp封包傳送到伺服器，目標主機收到udp封包後，先判斷有沒有應用程式正在監聽這個PORT，如果沒有就回傳一個ICMP封包回覆此目的地無法到達。意思是說，只要此PORT沒有被應用程式監聽，目標主機收到一個udp封包就會回傳一個ICMP封包。
 &lt;img src=&#34;https://imgur.com/6LoWesC.png&#34;
@@ -4805,10 +4805,10 @@ https://{S3_BUCKET_NAME}.s3.amazonaws.com/{FILE_NAME}&lt;/p&gt;
         </item>
         <item>
         <title>[Day 11] 天堂雲端 - 曾經的0day AppSync</title>
-        <link>https://windasunny.github.io/p/day-11-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E6%9B%BE%E7%B6%93%E7%9A%840day-appsync/</link>
+        <link>http://localhost:1313/p/day-11-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E6%9B%BE%E7%B6%93%E7%9A%840day-appsync/</link>
         <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-11-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E6%9B%BE%E7%B6%93%E7%9A%840day-appsync/</guid>
+        <guid>http://localhost:1313/p/day-11-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E6%9B%BE%E7%B6%93%E7%9A%840day-appsync/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://imgur.com/lVApQ1d.png&#34;
 	
 	
@@ -4847,10 +4847,10 @@ GraphQL可以精準的取得數據，避免了RESTful API提取整個資源的�
         </item>
         <item>
         <title>[Day 11] 閑的沒事就寫封包 - SYN Flood之建立封包</title>
-        <link>https://windasunny.github.io/p/day-11-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-syn-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
+        <link>http://localhost:1313/p/day-11-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-syn-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</link>
         <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-11-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-syn-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
+        <guid>http://localhost:1313/p/day-11-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-syn-flood%E4%B9%8B%E5%BB%BA%E7%AB%8B%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;syn-flood&#34;&gt;SYN Flood&lt;/h1&gt;
 &lt;p&gt;盡其所能的丟SYN封包，消耗目標伺服器所有可用的資源。使TCP三方交握無法正常工作，使標的無法回應或緩慢回應合法流量。&lt;/p&gt;
 &lt;h2 id=&#34;tcp三方交握three-way-handshake&#34;&gt;TCP三方交握（Three Way Handshake）&lt;/h2&gt;
@@ -5080,10 +5080,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 10] 天堂雲端 - 雲端曾經出現過的漏洞</title>
-        <link>https://windasunny.github.io/p/day-10-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9B%BE%E7%B6%93%E5%87%BA%E7%8F%BE%E9%81%8E%E7%9A%84%E6%BC%8F%E6%B4%9E/</link>
+        <link>http://localhost:1313/p/day-10-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9B%BE%E7%B6%93%E5%87%BA%E7%8F%BE%E9%81%8E%E7%9A%84%E6%BC%8F%E6%B4%9E/</link>
         <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-10-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9B%BE%E7%B6%93%E5%87%BA%E7%8F%BE%E9%81%8E%E7%9A%84%E6%BC%8F%E6%B4%9E/</guid>
+        <guid>http://localhost:1313/p/day-10-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9B%BE%E7%B6%93%E5%87%BA%E7%8F%BE%E9%81%8E%E7%9A%84%E6%BC%8F%E6%B4%9E/</guid>
         <description>&lt;p&gt;雲端技術雖然帶來了便利和效能，但並非銅牆鐵壁。它不僅有潛在的硬體問題，也可能因供應商或使用者的不當操作而產生安全漏洞。&lt;/p&gt;
 &lt;h1 id=&#34;硬體造成的漏洞掃到颱風尾&#34;&gt;硬體造成的漏洞（掃到颱風尾）&lt;/h1&gt;
 &lt;p&gt;雲供應商使用的硬體造成的漏洞，影響到雲端服務。&lt;/p&gt;
@@ -5176,10 +5176,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 10] 閑的沒事就寫benchmark</title>
-        <link>https://windasunny.github.io/p/day-10-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%ABbenchmark/</link>
+        <link>http://localhost:1313/p/day-10-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%ABbenchmark/</link>
         <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-10-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%ABbenchmark/</guid>
+        <guid>http://localhost:1313/p/day-10-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%ABbenchmark/</guid>
         <description>&lt;h1 id=&#34;什麼是benchmark&#34;&gt;什麼是benchmark&lt;/h1&gt;
 &lt;p&gt;基準測試(benchmark)是一種程式碼的測試方法，在特定時間或特定操作下或功能在一定條件下的測試速度，通常以次數與時間做基本。&lt;/p&gt;
 &lt;h1 id=&#34;benchmark&#34;&gt;Benchmark&lt;/h1&gt;
@@ -5274,10 +5274,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 9] 天堂雲端 - 審核雲端環境（紅隊）</title>
-        <link>https://windasunny.github.io/p/day-9-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E7%B4%85%E9%9A%8A/</link>
+        <link>http://localhost:1313/p/day-9-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E7%B4%85%E9%9A%8A/</link>
         <pubDate>Fri, 22 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-9-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E7%B4%85%E9%9A%8A/</guid>
+        <guid>http://localhost:1313/p/day-9-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E7%B4%85%E9%9A%8A/</guid>
         <description>&lt;h1 id=&#34;紅隊視角-審核雲端環境&#34;&gt;紅隊視角-審核雲端環境&lt;/h1&gt;
 &lt;h2 id=&#34;辨識雲端&#34;&gt;辨識雲端&lt;/h2&gt;
 &lt;p&gt;為了快速辨識雲端環境，需要辨識以下內容：&lt;/p&gt;
@@ -5320,10 +5320,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 9] 閑的沒事就寫封包 - gopacket建立UDP封包</title>
-        <link>https://windasunny.github.io/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</link>
+        <link>http://localhost:1313/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</link>
         <pubDate>Fri, 22 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</guid>
+        <guid>http://localhost:1313/p/day-9-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%BB%BA%E7%AB%8Budp%E5%B0%81%E5%8C%85/</guid>
         <description>&lt;h1 id=&#34;建立封包&#34;&gt;建立封包&lt;/h1&gt;
 &lt;p&gt;UDP封包&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -5534,10 +5534,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 8] 天堂雲端 - 審核雲端環境（藍隊）</title>
-        <link>https://windasunny.github.io/p/day-8-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E8%97%8D%E9%9A%8A/</link>
+        <link>http://localhost:1313/p/day-8-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E8%97%8D%E9%9A%8A/</link>
         <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-8-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E8%97%8D%E9%9A%8A/</guid>
+        <guid>http://localhost:1313/p/day-8-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AF%A9%E6%A0%B8%E9%9B%B2%E7%AB%AF%E7%92%B0%E5%A2%83%E8%97%8D%E9%9A%8A/</guid>
         <description>&lt;h1 id=&#34;藍隊視角---一般情況下雲端環境漏洞&#34;&gt;藍隊視角 - 一般情況下雲端環境漏洞&lt;/h1&gt;
 &lt;h3 id=&#34;配置錯誤misconfigurations&#34;&gt;配置錯誤（Misconfigurations）&lt;/h3&gt;
 &lt;p&gt;雲端服務提供預設配置，但不能說就完全沒有問題，錯誤的配置、開放的端口和未使用的服務都可能造成漏洞。&lt;/p&gt;
@@ -5563,10 +5563,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 8] 閑的沒事就寫封包 - gopacket初建封包（未完）</title>
-        <link>https://windasunny.github.io/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</link>
+        <link>http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</link>
         <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</guid>
+        <guid>http://localhost:1313/p/day-8-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%AF%AB%E5%B0%81%E5%8C%85-gopacket%E5%88%9D%E5%BB%BA%E5%B0%81%E5%8C%85%E6%9C%AA%E5%AE%8C/</guid>
         <description>&lt;p&gt;以下是一個簡單的建立單純的TCP SYN封包示例&lt;/p&gt;
 &lt;h2 id=&#34;gopacket建立封包&#34;&gt;Gopacket建立封包&lt;/h2&gt;
 &lt;p&gt;按照文件，code應該要這樣寫&lt;/p&gt;
@@ -5833,10 +5833,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 7] 天堂雲端 - 安全性由誰負責？</title>
-        <link>https://windasunny.github.io/p/day-7-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AE%89%E5%85%A8%E6%80%A7%E7%94%B1%E8%AA%B0%E8%B2%A0%E8%B2%AC/</link>
+        <link>http://localhost:1313/p/day-7-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AE%89%E5%85%A8%E6%80%A7%E7%94%B1%E8%AA%B0%E8%B2%A0%E8%B2%AC/</link>
         <pubDate>Wed, 20 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-7-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AE%89%E5%85%A8%E6%80%A7%E7%94%B1%E8%AA%B0%E8%B2%A0%E8%B2%AC/</guid>
+        <guid>http://localhost:1313/p/day-7-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E5%AE%89%E5%85%A8%E6%80%A7%E7%94%B1%E8%AA%B0%E8%B2%A0%E8%B2%AC/</guid>
         <description>&lt;p&gt;昨天有講到雲端攻擊大多在於使用者設定不當，那來談談關於雲端供應商對於資訊安全方面做了哪些？需要使用者注意哪些？&lt;/p&gt;
 &lt;h1 id=&#34;aws&#34;&gt;AWS&lt;/h1&gt;
 &lt;h2 id=&#34;shared-responsibility-model&#34;&gt;Shared Responsibility Model&lt;/h2&gt;
@@ -5908,10 +5908,10 @@ sysSyn.go&lt;/p&gt;
         </item>
         <item>
         <title>[Day 7] 閑的沒事就找套件 - gopacket</title>
-        <link>https://windasunny.github.io/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</link>
+        <link>http://localhost:1313/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</link>
         <pubDate>Wed, 20 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</guid>
+        <guid>http://localhost:1313/p/day-7-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-gopacket/</guid>
         <description>&lt;h1 id=&#34;gopacket&#34;&gt;Gopacket&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/github.com/google/gopacket&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;gopacket&lt;/a&gt;是go的第三方庫，主要用於封包捕獲和解析。可以把它當作libpcap（tcpdump的流量捕獲庫） 和 npcap（Wireshark的流量捕獲庫）的 go 封装。&lt;/p&gt;
@@ -6196,10 +6196,10 @@ Payload&lt;/p&gt;
         </item>
         <item>
         <title>[Day 6] 天堂雲端 - 上雲有什麼好處？</title>
-        <link>https://windasunny.github.io/p/day-6-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%8A%E9%9B%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95/</link>
+        <link>http://localhost:1313/p/day-6-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%8A%E9%9B%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95/</link>
         <pubDate>Tue, 19 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-6-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%8A%E9%9B%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95/</guid>
+        <guid>http://localhost:1313/p/day-6-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%8A%E9%9B%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95/</guid>
         <description>&lt;p&gt;所以，上雲真的比較好嗎？&lt;/p&gt;
 &lt;h1 id=&#34;雲端的優點&#34;&gt;雲端的優點&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;成本效益&lt;/strong&gt;
@@ -6222,10 +6222,10 @@ Payload&lt;/p&gt;
         </item>
         <item>
         <title>[Day 6] 閑的沒事就攔截封包 - 封包解析</title>
-        <link>https://windasunny.github.io/p/day-6-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%94%94%E6%88%AA%E5%B0%81%E5%8C%85-%E5%B0%81%E5%8C%85%E8%A7%A3%E6%9E%90/</link>
+        <link>http://localhost:1313/p/day-6-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%94%94%E6%88%AA%E5%B0%81%E5%8C%85-%E5%B0%81%E5%8C%85%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Tue, 19 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-6-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%94%94%E6%88%AA%E5%B0%81%E5%8C%85-%E5%B0%81%E5%8C%85%E8%A7%A3%E6%9E%90/</guid>
+        <guid>http://localhost:1313/p/day-6-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%94%94%E6%88%AA%E5%B0%81%E5%8C%85-%E5%B0%81%E5%8C%85%E8%A7%A3%E6%9E%90/</guid>
         <description>&lt;p&gt;昨天用sys.unix寫好了SYN封包&lt;/p&gt;
 &lt;h2 id=&#34;發送封包&#34;&gt;發送封包&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -6304,10 +6304,10 @@ Payload&lt;/p&gt;
         </item>
         <item>
         <title>[Day 5] 天堂雲端 - 雲端架構</title>
-        <link>https://windasunny.github.io/p/day-5-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9E%B6%E6%A7%8B/</link>
+        <link>http://localhost:1313/p/day-5-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9E%B6%E6%A7%8B/</link>
         <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-5-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9E%B6%E6%A7%8B/</guid>
+        <guid>http://localhost:1313/p/day-5-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%9B%B2%E7%AB%AF%E6%9E%B6%E6%A7%8B/</guid>
         <description>&lt;h1 id=&#34;雲端架構&#34;&gt;雲端架構&lt;/h1&gt;
 &lt;p&gt;AWS版本的分布式雲端架構
 &lt;img src=&#34;https://imgur.com/Vmxwmgr.png&#34;
@@ -6355,10 +6355,10 @@ AWS提供的無服務器互動式分析服務，以流量計費。建立在Trino
         </item>
         <item>
         <title>[Day 5] 閑的沒事就建立socket - sys</title>
-        <link>https://windasunny.github.io/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</link>
+        <link>http://localhost:1313/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</link>
         <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</guid>
+        <guid>http://localhost:1313/p/day-5-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E5%BB%BA%E7%AB%8Bsocket-sys/</guid>
         <description>&lt;p&gt;在syscall還未被棄用的時後是用syscall建立socket指定來源PORT。現在使用&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/golang.org/x/sys&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;sys&lt;/a&gt;
 （主題是做DDOS，其實有沒有指定PORT不是重點，但這個在後面做raw socket是重點）&lt;/p&gt;
@@ -6489,10 +6489,10 @@ AWS提供的無服務器互動式分析服務，以流量計費。建立在Trino
         </item>
         <item>
         <title>[Day 4] 天堂雲端 - 題外話：一般架構</title>
-        <link>https://windasunny.github.io/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/</link>
+        <link>http://localhost:1313/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/</link>
         <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/</guid>
+        <guid>http://localhost:1313/p/day-4-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E9%A1%8C%E5%A4%96%E8%A9%B1%E4%B8%80%E8%88%AC%E6%9E%B6%E6%A7%8B/</guid>
         <description>&lt;h1 id=&#34;雲端架構-vs-一般架構&#34;&gt;雲端架構 v.s. 一般架構&lt;/h1&gt;
 &lt;p&gt;雲端架構主要基於一般架構，雲端架構只是將一般架構搬上雲，並利用雲供應商提供的雲服務取代一部份的服務，例如隊列(SQS、Azure Service Bus)、資料庫(SQL database、RDS)、快取(ElasticCache)、存儲服務(S3、 Google Cloud Storage)&lt;/p&gt;
 &lt;h1 id=&#34;一般架構&#34;&gt;一般架構&lt;/h1&gt;
@@ -6564,10 +6564,10 @@ AWS提供的無服務器互動式分析服務，以流量計費。建立在Trino
         </item>
         <item>
         <title>[Day 4] 閑的沒事 - 來源端口（踩坑）</title>
-        <link>https://windasunny.github.io/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</link>
+        <link>http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</link>
         <pubDate>Sun, 17 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</guid>
+        <guid>http://localhost:1313/p/day-4-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B-%E4%BE%86%E6%BA%90%E7%AB%AF%E5%8F%A3%E8%B8%A9%E5%9D%91/</guid>
         <description>&lt;h1 id=&#34;發送封包&#34;&gt;發送封包&lt;/h1&gt;
 &lt;p&gt;昨天建立一個TCP SYN packet
 TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&amp;hellip;&lt;/p&gt;
@@ -6701,10 +6701,10 @@ TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&
         </item>
         <item>
         <title>[Day 3] 天堂雲端-三大雲端服務類型</title>
-        <link>https://windasunny.github.io/p/day-3-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E6%9C%8D%E5%8B%99%E9%A1%9E%E5%9E%8B/</link>
+        <link>http://localhost:1313/p/day-3-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E6%9C%8D%E5%8B%99%E9%A1%9E%E5%9E%8B/</link>
         <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-3-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E6%9C%8D%E5%8B%99%E9%A1%9E%E5%9E%8B/</guid>
+        <guid>http://localhost:1313/p/day-3-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E6%9C%8D%E5%8B%99%E9%A1%9E%E5%9E%8B/</guid>
         <description>&lt;h1 id=&#34;雲端服務模型cloud-service-models&#34;&gt;雲端服務模型（Cloud Service Models）&lt;/h1&gt;
 &lt;h2 id=&#34;什麼是雲端服務&#34;&gt;什麼是雲端服務&lt;/h2&gt;
 &lt;p&gt;雲端服務，顧名思義就是在雲端上面使用的服務。主要目的是提供使用者利用網路連接到雲端的服務，並藉此運算、儲存、備份在雲端服務上的資料或資源。可以把雲端服務分成三大類：自行創建、半成品加工、提供完整的服務給使用者&lt;/p&gt;
@@ -6767,10 +6767,10 @@ TCP Header建立好了，TCP Data暫時不建立。缺了什麼？缺了srcPort&
         </item>
         <item>
         <title>[Day 3] 閑的沒事就找套件 - Go原生套件&#39;net&#39;</title>
-        <link>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
+        <link>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</link>
         <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
+        <guid>http://localhost:1313/p/day-3-%E9%96%91%E7%9A%84%E6%B2%92%E4%BA%8B%E5%B0%B1%E6%89%BE%E5%A5%97%E4%BB%B6-go%E5%8E%9F%E7%94%9F%E5%A5%97%E4%BB%B6net/</guid>
         <description>&lt;h1 id=&#34;用什麼套件建構封包&#34;&gt;用什麼套件建構封包&lt;/h1&gt;
 &lt;p&gt;先來測一下有go有什麼packet interface好用的套件，像其他語言例如c、python可以用socket建構封包。python還有另一個套件庫scapy，專門處理各種交互式數據封包操作庫。&lt;/p&gt;
 &lt;p&gt;回來go。首先，先建立一個SYN封包。
@@ -6998,10 +6998,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 2] 天堂雲端-三大雲端運算部署類型</title>
-        <link>https://windasunny.github.io/p/day-2-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97%E9%83%A8%E7%BD%B2%E9%A1%9E%E5%9E%8B/</link>
+        <link>http://localhost:1313/p/day-2-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97%E9%83%A8%E7%BD%B2%E9%A1%9E%E5%9E%8B/</link>
         <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-2-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97%E9%83%A8%E7%BD%B2%E9%A1%9E%E5%9E%8B/</guid>
+        <guid>http://localhost:1313/p/day-2-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF-%E4%B8%89%E5%A4%A7%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97%E9%83%A8%E7%BD%B2%E9%A1%9E%E5%9E%8B/</guid>
         <description>&lt;h1 id=&#34;雲端運算cloud-compute&#34;&gt;雲端運算（Cloud Compute）&lt;/h1&gt;
 &lt;h2 id=&#34;什麼是雲端運算&#34;&gt;什麼是雲端運算&lt;/h2&gt;
 &lt;p&gt;使用者利用遠端主機的資源，來實現資料庫、伺服器、儲存空間、分析等運算服務。雲端供應商藉由虛擬化技術取代實體硬體設備，使用者不必花費硬體採購及維護費用，加上可依據規模的高彈性使用，使得近期雲端大受歡迎。&lt;/p&gt;
@@ -7086,10 +7086,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 2] 閑著沒事就DDOS - 什麼是DDOS</title>
-        <link>https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</link>
+        <link>http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</link>
         <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</guid>
+        <guid>http://localhost:1313/p/day-2-%E9%96%91%E8%91%97%E6%B2%92%E4%BA%8B%E5%B0%B1ddos-%E4%BB%80%E9%BA%BC%E6%98%AFddos/</guid>
         <description>&lt;h1 id=&#34;什麼是ddos&#34;&gt;什麼是DDOS&lt;/h1&gt;
 &lt;p&gt;分散式阻斷服務（Distributed Denial of Service），主要是通過製造大流量來攻擊特定服務器或基礎設施，以阻斷正常流量，中斷用戶與服務器或應用程序的連接，造成流量阻塞。&lt;/p&gt;
 &lt;p&gt;什麼是&lt;strong&gt;DOS&lt;/strong&gt;？
@@ -7128,10 +7128,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 1] DDOS開賽前言</title>
-        <link>https://windasunny.github.io/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</link>
+        <link>http://localhost:1313/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</link>
         <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</guid>
+        <guid>http://localhost:1313/p/day-1-ddos%E9%96%8B%E8%B3%BD%E5%89%8D%E8%A8%80/</guid>
         <description>&lt;h2 id=&#34;鐵人賽開賽前言&#34;&gt;鐵人賽開賽前言&lt;/h2&gt;
 &lt;p&gt;其實這是我今年7月就準備寫的一個side project，結果拖到了現在一個code都沒有寫好。
 今年7月我寫了一個Go的併發爬蟲專案，併發爬蟲並丟到資料庫，跑了一個超快超迅速，沒有特定釋出memory的情況下還不吃memory，然後我就突然愛上Go了。我原本有用python寫關於底層封包設定，後來想想，既然要寫DDOS，代表說機器丟封包可能需要丟得越快越好，然後我就決定改用Go寫。&lt;del&gt;然後我就拖到現在都沒寫，還去參加了救生員訓練，delay了3個禮拜&lt;/del&gt;&lt;/p&gt;
@@ -7143,10 +7143,10 @@ targetIP也可以使用&amp;quot;example.com&amp;quot;等hostname&lt;/p&gt;
         </item>
         <item>
         <title>[Day 1] 天堂雲端從開始到接管-鐵人賽開賽</title>
-        <link>https://windasunny.github.io/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/</link>
+        <link>http://localhost:1313/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/</link>
         <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://windasunny.github.io/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/</guid>
+        <guid>http://localhost:1313/p/day-1-%E5%A4%A9%E5%A0%82%E9%9B%B2%E7%AB%AF%E5%BE%9E%E9%96%8B%E5%A7%8B%E5%88%B0%E6%8E%A5%E7%AE%A1-%E9%90%B5%E4%BA%BA%E8%B3%BD%E9%96%8B%E8%B3%BD/</guid>
         <description>&lt;h2 id=&#34;鐵人賽開賽前言&#34;&gt;鐵人賽開賽前言&lt;/h2&gt;
 &lt;p&gt;不例外的第一天先來介紹一下接下來地獄30天會寫什麼。題目是雲端攻擊，但是還沒建立雲端環境（對我沒有現成的）哪來的target來攻擊？所以接下來的鐵人30天讓我們一起建構ㄧ套雲端架構然後再把它打掉。&lt;/p&gt;
 &lt;h2 id=&#34;大綱&#34;&gt;大綱&lt;/h2&gt;
